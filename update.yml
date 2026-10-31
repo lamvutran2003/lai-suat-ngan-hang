@@ -1,0 +1,63 @@
+name: Update rates
+
+on:
+  schedule:
+    - cron: "17 2 * * *"   # 09:17 Vietnam time
+    - cron: "17 9 * * *"   # 16:17 Vietnam time (catches afternoon rate changes)
+  workflow_dispatch:        # "Run workflow" button for a manual refresh
+
+permissions:
+  contents: write   # commit the day's data/ (builds the rate history)
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-rates
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Parser tests
+        run: python -m pytest -q tests
+
+      - name: Scrape banks
+        run: python -m scraper.run
+
+      - name: Build site
+        run: python -m scraper.build_site
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Save today's data
+        run: |
+          git config user.name "rate-bot"
+          git config user.email "rate-bot@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Rates $(TZ=Asia/Ho_Chi_Minh date +%F)"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      # Runs last on purpose: the site still deploys with yesterday's numbers for
+      # a broken bank, and this step fails the run so GitHub emails you.
+      - name: Alert if any bank scraper broke
+        run: python -m scraper.check

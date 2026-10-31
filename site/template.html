@@ -1,0 +1,257 @@
+<title>Sổ Lãi Suất</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap&subset=vietnamese">
+<style>
+/* Layout: one column tool — compact masthead, control panel, ranked list for the chosen term, full bank × term matrix, sources. */
+:root{
+  --bg:#f3f6f5; --surface:#ffffff; --sunken:#e8eeec; --line:#d3ddd9;
+  --ink:#13201c; --muted:#5b6b66; --accent:#0d6b56; --accent-ink:#ffffff;
+  --accent-soft:#d9ece6; --gold:#9a6a10; --gold-soft:#f6ead0;
+  --display:"Bricolage Grotesque","Be Vietnam Pro",system-ui,sans-serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1412; --surface:#151d1a; --sunken:#1b2521; --line:#2a3732;
+  --ink:#e4ebe8; --muted:#97a8a2; --accent:#4cc3a0; --accent-ink:#06231b;
+  --accent-soft:#173a30; --gold:#e3b456; --gold-soft:#3a2f17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1412; --surface:#151d1a; --sunken:#1b2521; --line:#2a3732;
+  --ink:#e4ebe8; --muted:#97a8a2; --accent:#4cc3a0; --accent-ink:#06231b;
+  --accent-soft:#173a30; --gold:#e3b456; --gold-soft:#3a2f17; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:860px;margin:0 auto;padding-block:28px 56px;display:grid;gap:28px}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* Masthead */
+.mast{display:grid;gap:10px}
+.brand{font:800 15px/1 var(--display);letter-spacing:.02em;color:var(--accent);display:flex;align-items:center;gap:8px}
+.brand i{width:18px;height:22px;border:2px solid currentColor;border-radius:3px 3px 3px 7px;display:inline-block;position:relative}
+.brand i::after{content:"";position:absolute;left:3px;right:3px;top:5px;height:2px;background:currentColor;box-shadow:0 5px 0 currentColor}
+h1{font:800 clamp(28px,5.4vw,44px)/1.08 var(--display);letter-spacing:-.02em;margin:0;text-wrap:balance;max-width:20ch}
+.lede{margin:0;color:var(--muted);max-width:62ch}
+.stamp{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:13px;color:var(--muted)}
+.stamp b{color:var(--ink);font-weight:600}
+
+/* Controls */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:16px}
+.field{display:grid;gap:8px}
+.label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.amount{display:flex;align-items:baseline;gap:8px;border-bottom:2px solid var(--line);padding-bottom:4px}
+.amount:focus-within{border-color:var(--accent)}
+.amount input{all:unset;flex:1;min-width:0;font:600 clamp(24px,5vw,32px)/1.2 var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.amount span{color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 14px/1 var(--body);
+  padding:9px 12px;border-radius:999px;cursor:pointer;min-height:36px}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.row2{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end}
+@media (max-width:620px){.row2{grid-template-columns:1fr}}
+
+/* Results */
+.section-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2{font:700 20px/1.25 var(--display);margin:0;text-wrap:balance}
+.insight{margin:0;padding:12px 14px;background:var(--accent-soft);border-radius:8px;font-size:14px}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.item{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line)}
+.mono{width:44px;height:44px;border-radius:8px;background:var(--sunken);display:grid;place-items:center;font:700 12px/1 var(--mono);color:var(--muted);letter-spacing:.02em}
+.who{min-width:0;display:grid;gap:3px}
+.who strong{font-weight:600;font-size:16px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 10px;font-size:13px;color:var(--muted);align-items:center}
+.pill{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--sunken);color:var(--ink)}
+.pill.online{background:var(--accent-soft);color:var(--accent)}
+.best{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:var(--gold-soft);padding:3px 8px;border-radius:4px}
+.fig{text-align:right;display:grid;gap:2px}
+.rate{font:600 24px/1 var(--mono);font-variant-numeric:tabular-nums}
+.rate small{font-size:13px;color:var(--muted);font-weight:500}
+.earn{font-size:13px;color:var(--muted)}
+.earn b{color:var(--ink);font-family:var(--mono);font-weight:600}
+.item.top .rate{color:var(--gold)}
+.cta{grid-column:2/4;justify-self:start;font-size:13px;font-weight:600}
+.empty{padding:20px 4px;color:var(--muted)}
+@media (max-width:460px){.item{grid-template-columns:36px minmax(0,1fr) auto;gap:4px 10px}.mono{width:36px;height:36px;font-size:11px}.rate{font-size:20px}}
+
+/* Matrix */
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface)}
+thead th{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.04em;background:var(--sunken)}
+thead th:first-child{background:var(--sunken)}
+tbody tr:last-child td{border-bottom:0}
+td.r{font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.hi{color:var(--gold);font-weight:600;background:var(--gold-soft)}
+td.na{color:var(--line)}
+td .ch{display:block;font-size:11px;color:var(--muted);font-family:var(--body)}
+.note{font-size:13px;color:var(--muted);margin:0;max-width:70ch}
+
+/* Sources */
+.sources{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px 20px;font-size:13px;margin:0;padding:0;list-style:none}
+.sources li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dashed var(--line);padding:6px 0}
+.ok{color:var(--accent)} .stale{color:var(--gold)}
+footer{font-size:12px;color:var(--muted);display:grid;gap:6px;max-width:70ch}
+@media (prefers-reduced-motion:no-preference){.item{transition:background .15s}.item:hover{background:var(--sunken)}}
+</style>
+<!--BODY-->
+<div class="wrap">
+  <header class="mast">
+    <div class="brand"><i aria-hidden="true"></i>Sổ Lãi Suất</div>
+    <h1>So sánh lãi suất tiết kiệm hôm nay</h1>
+    <p class="lede">Lãi suất tiền gửi lấy trực tiếp từ website các ngân hàng, cập nhật mỗi ngày. Nhập số tiền và kỳ hạn để xem nơi gửi có lợi nhất và số tiền lãi bạn nhận được.</p>
+    <div class="stamp"><span>Cập nhật <b id="updated">__UPDATED_VN__</b></span><span><b id="bankCount">__BANK_COUNT__</b> ngân hàng</span><span>Đơn vị: %/năm</span></div>
+  </header>
+
+  <section class="panel" aria-label="Bộ lọc">
+    <div class="row2">
+      <div class="field">
+        <label class="label" for="amount">Số tiền gửi</label>
+        <div class="amount"><input id="amount" inputmode="numeric" autocomplete="off" value="100.000.000"><span>₫</span></div>
+      </div>
+      <div class="chips" id="amountChips" role="group" aria-label="Số tiền nhanh">
+        <button class="chip" data-v="50000000">50 triệu</button><button class="chip" data-v="100000000">100 triệu</button>
+        <button class="chip" data-v="500000000">500 triệu</button><button class="chip" data-v="1000000000">1 tỷ</button>
+      </div>
+    </div>
+    <div class="field"><span class="label" id="termLbl">Kỳ hạn</span><div class="chips" id="termChips" role="group" aria-labelledby="termLbl"></div></div>
+    <div class="field"><span class="label" id="chLbl">Hình thức gửi</span>
+      <div class="chips" id="chanChips" role="group" aria-labelledby="chLbl">
+        <button class="chip" data-v="all">Tất cả</button><button class="chip" data-v="online">Gửi online</button><button class="chip" data-v="counter">Tại quầy</button>
+      </div></div>
+  </section>
+
+  <section style="display:grid;gap:14px" aria-live="polite">
+    <div class="section-h"><h2 id="resTitle">Kỳ hạn 12 tháng</h2><span class="note" id="resSub"></span></div>
+    <p class="insight" id="insight" hidden></p>
+    <ol class="list" id="list"></ol>
+  </section>
+
+  <section style="display:grid;gap:12px">
+    <div class="section-h"><h2>Bảng lãi suất theo kỳ hạn</h2><span class="note">Mức cao nhất của mỗi ngân hàng (online hoặc tại quầy) ở mức tiền 100 triệu</span></div>
+    <div class="scroll" id="matrixWrap">__STATIC_MATRIX__</div>
+    <p class="note">Ô vàng là mức cao nhất trong cột. Tiền lãi ước tính theo cách trả lãi cuối kỳ, chưa trừ thuế và có thể lệch vài nghìn đồng so với cách tính theo ngày của ngân hàng.</p>
+  </section>
+
+  <section style="display:grid;gap:12px">
+    <h2>Nguồn dữ liệu</h2>
+    <ul class="sources" id="sources"></ul>
+  </section>
+
+  <footer>
+    <p>Thông tin chỉ mang tính tham khảo, không phải lời khuyên tài chính. Lãi suất thực tế có thể khác theo chi nhánh, số tiền và chương trình ưu đãi; hãy xác nhận với ngân hàng trước khi gửi.</p>
+  </footer>
+</div>
+
+<script type="application/json" id="rates-data">__RATES_JSON__</script>
+<script type="application/json" id="affiliates-data">__AFFILIATES_JSON__</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById("rates-data").textContent);
+  let AFF = {}; try { AFF = JSON.parse(document.getElementById("affiliates-data").textContent) || {}; } catch(e){}
+  const BANKS = Object.fromEntries(D.banks.map(b => [b.code, b]));
+  const MONO = {vcb:"VCB",bidv:"BIDV",vietin:"CTG",agri:"AGR",acb:"ACB",tpb:"TPB"};
+  const CH = {online:"Online", counter:"Tại quầy"};
+  const TERMS = [...new Set(D.rates.map(r => r.term_months))].filter(t => [1,3,6,9,12,13,18,24,36].includes(t)).sort((a,b)=>a-b);
+  const vnd = n => new Intl.NumberFormat("vi-VN").format(Math.round(n));
+  const pct = n => n.toFixed(2).replace(".", ",");
+  const dmy = iso => iso ? iso.slice(0,10).split("-").reverse().join("/") : "không ghi";
+
+  const state = {amount:100000000, term: TERMS.includes(12) ? 12 : TERMS[0], ch:"all"};
+  try { const s = JSON.parse(localStorage.getItem("slsState")||"null"); if (s) Object.assign(state, s); } catch(e){}
+  if (!TERMS.includes(state.term)) state.term = TERMS[0];
+  const save = () => { try { localStorage.setItem("slsState", JSON.stringify(state)); } catch(e){} };
+
+  // Rate a bank pays on one channel/term for a given amount (tiered tables pick the matching band).
+  function rateFor(bank, ch, term, amount){
+    const c = D.rates.filter(r => r.bank===bank && r.channel===ch && r.term_months===term &&
+      r.min_amount <= amount && (r.max_amount==null || amount < r.max_amount));
+    return c.length ? c.reduce((a,b)=> b.rate>a.rate?b:a) : null;
+  }
+  function quotes(term, amount, ch){
+    const out = [];
+    for (const b of D.banks) for (const c of ["online","counter"]) {
+      if (ch!=="all" && ch!==c) continue;
+      const r = rateFor(b.code, c, term, amount);
+      if (r) out.push({bank:b, ch:c, rate:r.rate, notes:r.notes||[], interest: amount*r.rate/100*term/12});
+    }
+    return out.sort((a,b)=> b.rate-a.rate || a.bank.name.localeCompare(b.bank.name));
+  }
+
+  const $ = id => document.getElementById(id);
+  const amountEl = $("amount");
+
+  function renderTerms(){
+    $("termChips").innerHTML = TERMS.map(t => `<button class="chip" data-v="${t}" aria-pressed="${t===state.term}">${t} tháng</button>`).join("");
+  }
+  function press(groupId, v){ for (const b of $(groupId).children) b.setAttribute("aria-pressed", String(b.dataset.v===String(v))); }
+
+  function renderList(){
+    const q = quotes(state.term, state.amount, state.ch);
+    $("resTitle").textContent = `Kỳ hạn ${state.term} tháng`;
+    $("resSub").textContent = `${q.length} lựa chọn · gửi ${vnd(state.amount)} ₫`;
+    if (!q.length){ $("list").innerHTML = `<li class="empty">Chưa có ngân hàng nào niêm yết kỳ hạn này cho hình thức đã chọn.</li>`; $("insight").hidden = true; return; }
+    const top = q[0].rate;
+    $("list").innerHTML = q.map(x => {
+      const isTop = x.rate === top, aff = AFF[x.bank.code];
+      const extra = x.interest - q[q.length-1].interest;
+      return `<li class="item${isTop?" top":""}">
+        <div class="mono" aria-hidden="true">${MONO[x.bank.code]||x.bank.code.toUpperCase()}</div>
+        <div class="who"><strong>${x.bank.name}</strong>
+          <div class="meta"><span class="pill ${x.ch}">${CH[x.ch]}</span>${isTop?'<span class="best">Cao nhất</span>':""}
+          ${x.notes.length?`<span>${x.notes[0]}</span>`:""}</div></div>
+        <div class="fig"><div class="rate num">${pct(x.rate)}<small>%</small></div>
+          <div class="earn">Lãi <b>${vnd(x.interest)} ₫</b></div></div>
+        ${aff?`<a class="cta" href="${aff}" target="_blank" rel="sponsored noopener">Mở tài khoản ${x.bank.name} →</a>`:""}
+      </li>`;}).join("");
+    // Insight: biggest online-vs-counter gap at this term, else spread between best and worst.
+    let gap = null;
+    for (const b of D.banks){
+      const on = rateFor(b.code,"online",state.term,state.amount), co = rateFor(b.code,"counter",state.term,state.amount);
+      if (on && co && on.rate-co.rate>0.05 && (!gap || on.rate-co.rate>gap.d)) gap = {b, d:on.rate-co.rate, on:on.rate, co:co.rate};
+    }
+    const ins = $("insight");
+    if (gap && state.ch!=="counter"){
+      const diff = state.amount*gap.d/100*state.term/12;
+      ins.innerHTML = `Gửi online tại <b>${gap.b.name}</b> được ${pct(gap.on)}%, cao hơn tại quầy (${pct(gap.co)}%). Với ${vnd(state.amount)} ₫ trong ${state.term} tháng, bạn nhận thêm khoảng <b>${vnd(diff)} ₫</b>.`;
+      ins.hidden = false;
+    } else if (q.length>1 && q[0].rate>q[q.length-1].rate){
+      ins.innerHTML = `Chọn mức cao nhất thay vì thấp nhất giúp bạn nhận thêm khoảng <b>${vnd(q[0].interest-q[q.length-1].interest)} ₫</b> tiền lãi.`;
+      ins.hidden = false;
+    } else ins.hidden = true;
+  }
+
+  function renderMatrix(){
+    const amt = 100000000, cols = TERMS;
+    const best = {}; for (const t of cols){ best[t] = Math.max(0, ...D.banks.map(b => cellFor(b.code,t,amt)?.rate||0)); }
+    function cellFor(code,t,a){ const on=rateFor(code,"online",t,a), co=rateFor(code,"counter",t,a);
+      if (!on && !co) return null; return (!co || (on && on.rate>=co.rate)) ? {rate:on.rate, ch:"online"} : {rate:co.rate, ch:"counter"}; }
+    const rows = D.banks.map(b => `<tr><td>${b.name}</td>${cols.map(t => { const c = cellFor(b.code,t,amt);
+      return c ? `<td class="r${c.rate===best[t]?" hi":""}">${pct(c.rate)}<span class="ch">${CH[c.ch]}</span></td>` : `<td class="r na">–</td>`; }).join("")}</tr>`).join("");
+    $("matrixWrap").innerHTML = `<table><thead><tr><th scope="col">Ngân hàng</th>${cols.map(t=>`<th scope="col">${t} th</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table>`;
+  }
+
+  function renderSources(){
+    $("sources").innerHTML = D.banks.map(b => `<li><a href="${b.source_url}" target="_blank" rel="noopener">${b.name}</a>
+      <span class="${b.stale?"stale":"ok"}">${b.stale?"Dữ liệu cũ, ":""}${b.as_of?"Áp dụng "+dmy(b.as_of):"Kiểm tra "+dmy(b.fetched_at)}</span></li>`).join("");
+  }
+
+  function setAmount(n){ state.amount = Math.max(1000000, Math.min(n||0, 1e12)) || 1000000; amountEl.value = vnd(state.amount); press("amountChips", state.amount); }
+  amountEl.addEventListener("input", () => { const n = parseInt(amountEl.value.replace(/\D/g,""),10)||0; state.amount = n;
+    const pos = amountEl.value.length - amountEl.selectionStart; amountEl.value = n?vnd(n):""; amountEl.setSelectionRange(amountEl.value.length-pos, amountEl.value.length-pos);
+    press("amountChips", n); if (n>=1000000){ renderList(); save(); } });
+  amountEl.addEventListener("blur", () => { setAmount(state.amount); renderList(); save(); });
+  $("amountChips").addEventListener("click", e => { const b=e.target.closest("button"); if(!b) return; setAmount(+b.dataset.v); renderList(); save(); });
+  $("termChips").addEventListener("click", e => { const b=e.target.closest("button"); if(!b) return; state.term=+b.dataset.v; press("termChips", state.term); renderList(); save(); });
+  $("chanChips").addEventListener("click", e => { const b=e.target.closest("button"); if(!b) return; state.ch=b.dataset.v; press("chanChips", state.ch); renderList(); save(); });
+
+  renderTerms(); setAmount(state.amount); press("chanChips", state.ch); renderList(); renderMatrix(); renderSources();
+})();
+</script>
