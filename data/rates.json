@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T13:53+07:00",
+ "generated_at": "2026-11-01T02:31+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -7,8 +7,8 @@
    "source_url": "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/KHCN---Lai-suat",
    "status": "ok",
    "stale": false,
-   "as_of": "2026-10-25",
-   "fetched_at": "2026-10-25T13:53+07:00",
+   "as_of": "2026-10-31",
+   "fetched_at": "2026-11-01T02:31+07:00",
    "count": 16
   },
   {
@@ -18,15 +18,16 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-10-25T13:53+07:00",
+   "fetched_at": "2026-11-01T02:31+07:00",
    "count": 29
   },
   {
    "code": "vietin",
    "name": "VietinBank",
    "source_url": "https://www.vietinbank.vn/ca-nhan/cong-cu-tien-ich/lai-suat-khcn?type=bang-lai-suat",
-   "status": "ok",
-   "stale": false,
+   "status": "error",
+   "error": "HTTPError: 405 Client Error: Not Allowed for url: https://www.vietinbank.vn/ca-nhan/cong-cu-tien-ich/lai-suat-khcn?type=bang-lai-suat",
+   "stale": true,
    "as_of": null,
    "fetched_at": "2026-10-25T13:53+07:00",
    "count": 16
@@ -38,7 +39,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-10-25T13:53+07:00",
+   "fetched_at": "2026-11-01T02:31+07:00",
    "count": 16
   },
   {
@@ -48,7 +49,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-10-25T13:53+07:00",
+   "fetched_at": "2026-11-01T02:31+07:00",
    "count": 37
   },
   {
@@ -58,7 +59,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-10-25T13:53+07:00",
+   "fetched_at": "2026-11-01T02:31+07:00",
    "count": 12
   }
  ],
