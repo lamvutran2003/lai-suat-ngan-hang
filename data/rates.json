@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T20:02+07:00",
+ "generated_at": "2026-11-03T23:48+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 102
   },
   {
@@ -68,8 +68,32 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-03T20:02+07:00",
+   "fetched_at": "2026-11-03T23:48+07:00",
    "count": 72
+  },
+  {
+   "code": "tcb",
+   "name": "Techcombank",
+   "source_url": "https://techcombank.com/cong-cu-tien-ich/bieu-phi-lai-suat",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-24",
+   "fetched_at": "2026-11-03T23:48+07:00",
+   "count": 171
+  },
+  {
+   "code": "vpb",
+   "name": "VPBank",
+   "source_url": "https://www.vpbank.com.vn/tai-lieu-bieu-mau?path=%2Ftai-lieu-bieu-mau%2Flai-suat-huy-dong%2Fkhach-hang-ca-nhan%2F2026&category=%2Ftai-lieu-bieu-mau%2Flai-suat-huy-dong",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-11-02",
+   "fetched_at": "2026-11-03T23:48+07:00",
+   "count": 68,
+   "manual": true,
+   "checked_at": "2026-11-03",
+   "document_url": "https://www.vpbank.com.vn/-/media/vpbank-latest/tai-lieu-bieu-mau/lai-suat-huy-dong/khcn/2026/2.-20261102-Phu-luc-BLS-niem-yet.pdf",
+   "product": "Tiết kiệm thường / tiền gửi có kỳ hạn, lĩnh lãi cuối kỳ"
   }
  ],
  "rates": [
@@ -2912,6 +2936,2396 @@
    "rate": 6.8,
    "product": "Tiết kiệm trực tuyến",
    "min_amount": 500000001,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.15,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.05,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.05,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.15,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.05,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.05,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.45,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.45,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.45,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.35,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.65,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.55,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.75,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.75,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 14,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 14,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 14,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 16,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 16,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 16,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 17,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 17,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 17,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 19,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 19,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 19,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 20,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 20,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 20,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 21,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 21,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 21,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 22,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 22,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 22,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 23,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 23,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 23,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 25,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 25,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 25,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 26,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 26,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 26,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 27,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 27,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 27,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 28,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 28,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 28,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 29,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 29,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 29,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 30,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 30,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 30,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 31,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 31,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 31,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 32,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 32,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 32,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 33,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 33,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 33,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 34,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 34,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 34,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 35,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 35,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 35,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.95,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.85,
+   "product": "Tiết kiệm Phát Lộc",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.55,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 6.05,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.25,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 14,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 14,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 14,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 19,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 19,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 19,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 20,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 20,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 20,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 25,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 25,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 25,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 3000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 1000000000,
+   "max_amount": 3000000000,
+   "notes": []
+  },
+  {
+   "bank": "tcb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.35,
+   "product": "Tiền gửi Phát Lộc Online",
+   "min_amount": 0,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.45,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.45,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 6.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 6.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.45,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.45,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 6.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 6.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 7.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 7.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 7.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 6.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 7.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 7.1,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 7.1,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 7.4,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 7.4,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 7.1,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vpb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 6.0,
+   "product": "",
+   "min_amount": 10000000000,
    "max_amount": null,
    "notes": []
   }
