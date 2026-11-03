@@ -18,7 +18,7 @@ tests/                parser tests against saved copies of each bank's page
 .github/workflows/    the schedule (09:17 and 16:17 Vietnam time)
 ```
 
-## Banks covered (01/11/2026)
+## Banks covered (03/11/2026)
 
 | Bank | Source type | Counter | Online | Amount tiers |
 |---|---|---|---|---|
@@ -32,11 +32,6 @@ tests/                parser tests against saved copies of each bank's page
 
 Switched off: **VietinBank** (`scraper/banks/vietin.py`) — its site refuses
 GitHub's servers (HTTP 405). Its rates matched Vietcombank and BIDV anyway.
-
-Known issue (03/11/2026): **OCB** relaunched its website and its rate page
-(`/vi/cong-cu/lai-suat`, still linked from OCB's own menu) returns 404, and the
-old rate PDF was removed. OCB is left off the page until it comes back; if the
-new page uses a different format, `scraper/banks/ocb.py` needs updating.
 
 Checked and **not covered**: VPBank (rate sheet is a scanned PDF with no
 text; would need OCR), MB (rates published only as an image), Techcombank,
