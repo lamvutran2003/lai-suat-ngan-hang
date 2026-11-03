@@ -78,6 +78,7 @@ def has_footnote(text: str) -> bool:
 _TERM_PATTERNS = [
     (re.compile(r"(\d+)\s*-?\s*(?:t|tháng|month|months)"), lambda m: int(m.group(1))),
     (re.compile(r"từ (\d+) tháng đến dưới \d+ tháng"), lambda m: int(m.group(1))),
+    (re.compile(r"từ (\d+) đến dưới \d+ tháng"), lambda m: int(m.group(1))),
     (re.compile(r"trên \d+ tháng đến (\d+) tháng"), lambda m: int(m.group(1))),
 ]
 
@@ -99,6 +100,34 @@ def parse_term_months(label: str) -> Optional[int]:
             months = fn(m)
             return months if 1 <= months <= 60 else None
     return None
+
+
+_AMOUNT = re.compile(r"(\d+(?:[.,]\d+)?)\s*(triệu|tỷ)")
+_UNIT = {"triệu": 1_000_000, "tỷ": 1_000_000_000}
+
+
+def parse_amount_range(label: str) -> tuple[int, Optional[int]]:
+    """Deposit-size band -> (min VND inclusive, max VND exclusive or None).
+
+    'Dưới 500 triệu đồng'                 -> (0, 500tr)
+    'Từ 500 triệu đồng đến dưới 2 tỷ đồng' -> (500tr, 2 tỷ)
+    'Từ 100 triệu đồng đến 500 triệu đồng' -> (100tr, 500tr + 1)   # upper bound inclusive
+    'Từ 2 tỷ đồng' / 'Trên 500 triệu đồng' -> (2 tỷ, None) / (500tr + 1, None)
+    """
+    t = clean(label).lower()
+    amounts = [int(float(n.replace(",", ".")) * _UNIT[u]) for n, u in _AMOUNT.findall(t)]
+    if not amounts:
+        raise ParseError(f"amount band not understood: {label!r}")
+    if t.startswith("dưới"):
+        return 0, amounts[0]
+    if t.startswith("trên"):
+        return amounts[0] + 1, None
+    if t.startswith("từ") and len(amounts) == 1:
+        return amounts[0], None
+    if t.startswith("từ") and len(amounts) == 2:
+        upper_exclusive = "dưới" in t.split("đến", 1)[1]
+        return amounts[0], amounts[1] if upper_exclusive else amounts[1] + 1
+    raise ParseError(f"amount band not understood: {label!r}")
 
 
 def table_grid(table: Tag) -> list[list[str]]:

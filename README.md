@@ -1,4 +1,4 @@
-# Sổ Lãi Suất — Vietnamese savings-rate comparison
+# Tiết Kiệm Đâu? (tietkiemdau.vn) — Vietnamese savings-rate comparison
 
 Scrapes deposit rates from bank websites twice a day, rebuilds a static page,
 and deploys it to GitHub Pages for free. No server, no database.
@@ -12,20 +12,24 @@ tests/                parser tests against saved copies of each bank's page
 .github/workflows/    the schedule (09:17 and 16:17 Vietnam time)
 ```
 
-## Banks covered (25/10/2026)
+## Banks covered (01/11/2026)
 
 | Bank | Source type | Counter | Online | Amount tiers |
 |---|---|---|---|---|
 | Vietcombank | JSON API | ✓ | ✓ | |
 | BIDV | 2 JSON endpoints | ✓ | ✓ | |
-| VietinBank | HTML table | ✓ | | |
 | Agribank | HTML fragment | ✓ | | |
 | ACB | HTML tables | ✓ | ✓ | ✓ |
 | TPBank | HTML fragment (flaky server, retried) | ✓ | ✓ | |
+| Sacombank | PDF at a fixed address | ✓ | ✓ | ✓ |
+| OCB | PDF linked from the rate page | ✓ | ✓ | ✓ (online) |
 
-Checked and **not yet covered**: MB (rates published only as an image),
-Techcombank (dated PDF files), VPBank, Sacombank, VIB (rates behind
-interactive widgets; would need a headless browser).
+Switched off: **VietinBank** (`scraper/banks/vietin.py`) — its site refuses
+GitHub's servers (HTTP 405). Its rates matched Vietcombank and BIDV anyway.
+
+Checked and **not covered**: VPBank (rate sheet is a scanned PDF with no
+text; would need OCR), MB (rates published only as an image), Techcombank,
+LPBank, MSB, MBV, BVBank (rates load in ways not yet worked out).
 
 ## Run locally
 

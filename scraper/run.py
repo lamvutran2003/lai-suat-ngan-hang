@@ -27,7 +27,13 @@ VN_TZ = timezone(timedelta(hours=7))
 MIN_RECORDS = 4          # fewer than this = the parser probably broke
 RATE_RANGE = (0.1, 15.0)  # % per year; anything outside is a parsing error
 FIXTURE_NAMES = {"vcb": "vcb.json", "bidv": "bidv.json", "vietin": "vietin.html",
-                 "agri": "agri.html", "acb": "acb.html", "tpb": "tpb.html"}
+                 "agri": "agri.html", "acb": "acb.html", "tpb": "tpb.html",
+                 "stb": "stb.pdf", "ocb": "ocb.pdf"}
+
+
+def read_fixture(folder: Path, code: str):
+    path = folder / FIXTURE_NAMES[code]
+    return path.read_bytes() if path.suffix == ".pdf" else path.read_text(encoding="utf-8")
 
 
 def validate(code: str, rates) -> None:
@@ -57,8 +63,7 @@ def run(fixtures: Path | None = None) -> dict:
     for mod in ADAPTERS:
         entry = {"code": mod.CODE, "name": mod.NAME, "source_url": mod.SOURCE_URL}
         try:
-            raw = ((fixtures / FIXTURE_NAMES[mod.CODE]).read_text(encoding="utf-8")
-                   if fixtures else mod.fetch(session))
+            raw = read_fixture(fixtures, mod.CODE) if fixtures else mod.fetch(session)
             parsed, as_of = mod.parse(raw)
             validate(mod.CODE, parsed)
             entry.update(status="ok", stale=False, as_of=as_of,

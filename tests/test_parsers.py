@@ -7,20 +7,34 @@ from pathlib import Path
 
 import pytest
 
-from scraper.banks import acb, agri, bidv, tpb, vcb, vietin
-from scraper.common import parse_rate, parse_term_months, soup, table_grid
+from scraper.banks import acb, agri, bidv, ocb, stb, tpb, vcb, vietin
+from scraper.common import parse_amount_range, parse_rate, parse_term_months, soup, table_grid
 
 FX = Path(__file__).parent / "fixtures"
+M = 1_000_000
 
 
 def rates_of(mod, fixture):
-    rates, as_of = mod.parse((FX / fixture).read_text(encoding="utf-8"))
+    path = FX / fixture
+    raw = path.read_bytes() if path.suffix == ".pdf" else path.read_text(encoding="utf-8")
+    rates, as_of = mod.parse(raw)
     return {(r.channel, r.term_months, r.min_amount): r.rate for r in rates}, as_of
+
+
+@pytest.mark.parametrize("label,band", [
+    ("Dưới 500 triệu đồng", (0, 500 * M)),
+    ("Từ 500 triệu đồng đến\ndưới 2 tỷ đồng", (500 * M, 2000 * M)),
+    ("Từ 2 tỷ đồng", (2000 * M, None)),
+    ("Từ 100 triệu đồng đến 500 triệu đồng", (100 * M, 500 * M + 1)),
+    ("Trên 500 triệu đồng", (500 * M + 1, None)),
+])
+def test_amount_bands(label, band):
+    assert parse_amount_range(label) == band
 
 
 @pytest.mark.parametrize("label,months", [
     ("12 tháng", 12), ("12T", 12), ("12 THÁNG", 12), ("12-months", 12), ("12 months", 12),
-    ("Từ 6 tháng đến dưới 7 tháng", 6), ("Trên 12 tháng đến 13 tháng", 13),
+    ("Từ 6 tháng đến dưới 7 tháng", 6), ("Trên 12 tháng đến 13 tháng", 13), ("Từ 1 đến\ndưới 2 tháng", 1),
     ("Không kỳ hạn", None), ("7 ngày", None), ("1 - 3 tuần", None),
     ("Trên 13 tháng đến dưới 18 tháng", None), ("Dưới 1 tháng", None),
 ])
@@ -77,3 +91,19 @@ def test_tpb():
     assert as_of == "2026-10-19"
     assert r[("online", 1, 0)] == 4.75 and r[("online", 12, 0)] == 5.5
     assert r[("counter", 6, 0)] == 5.0 and ("counter", 12, 0) not in r  # blank cell on the bank's table
+
+
+def test_sacombank_counter_and_online_bands():
+    r, as_of = rates_of(stb, "stb.pdf")
+    assert as_of == "2026-10-20"
+    assert r[("counter", 12, 0)] == 5.4 and r[("counter", 12, 500 * M)] == 5.5 and r[("counter", 12, 2000 * M)] == 5.6
+    assert r[("counter", 1, 0)] == 4.5                     # "Từ 1 đến dưới 2 tháng"
+    assert r[("online", 12, 0)] == 6.5 and r[("online", 12, 50 * M)] == 6.8 and r[("online", 12, 500 * M)] == 7.0
+    assert r[("online", 24, 500 * M)] == 7.3
+
+
+def test_ocb_counter_and_online_bands():
+    r, as_of = rates_of(ocb, "ocb.pdf")
+    assert as_of == "2026-10-20"
+    assert r[("counter", 6, 0)] == 5.9 and r[("counter", 12, 0)] == 6.2 and r[("counter", 36, 0)] == 6.5
+    assert r[("online", 12, 0)] == 6.3 and r[("online", 12, 100 * M)] == 6.4 and r[("online", 12, 500 * M + 1)] == 6.5
