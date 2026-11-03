@@ -41,6 +41,8 @@ jobs:
         run: python -m scraper.build_site
         env:
           SITE_URL: ${{ vars.SITE_URL }}
+          CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}   # optional: Cloudflare Web Analytics
+          CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}       # optional: defaults to lienhe@tietkiemdau.vn
 
       - name: Save today's data
         run: |

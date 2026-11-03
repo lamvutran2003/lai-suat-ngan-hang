@@ -1,0 +1,39 @@
+<footer class="gutter">
+  <div class="wrap">
+    <div class="share">
+      <button class="btn" id="shareBottom" type="button">Chia sẻ qua Zalo, Messenger…</button>
+      <a class="btn" id="fbShare" href="https://www.facebook.com/sharer/sharer.php?u=__PAGE_URL__" target="_blank" rel="noopener">Chia sẻ lên Facebook</a>
+      <button class="btn" id="copyLink" type="button">Sao chép liên kết</button>
+    </div>
+    <nav class="foot-links" aria-label="Liên kết cuối trang">
+      <a href="/">Lãi suất hôm nay</a>
+      <a href="/gioi-thieu/">Giới thiệu &amp; phương pháp</a>
+      <a href="/chinh-sach-bao-mat/">Chính sách bảo mật</a>
+      <span>Liên hệ: <span class="sel">__CONTACT_EMAIL__</span></span>
+    </nav>
+    <p>Lãi suất chỉ mang tính tham khảo, không phải lời khuyên tài chính. Mức lãi thực tế có thể khác theo chi nhánh, số tiền, hạng khách hàng và chương trình ưu đãi; vui lòng xác nhận với ngân hàng trước khi gửi tiền.</p>
+    <p>© 2026 tietkiemdau.vn</p>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+<script>window.TKD_URL = "__PAGE_URL__";</script>
+<script>
+(function(){
+  const URL_ = window.TKD_URL || location.href;
+  const $ = id => document.getElementById(id);
+  function toast(msg){ const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 2400); }
+  async function copyLink(){
+    try { await navigator.clipboard.writeText(URL_); toast("Đã sao chép liên kết"); }
+    catch(e){ toast(URL_); }
+  }
+  async function share(){
+    const data = {title: document.title, text: "So sánh lãi suất tiết kiệm các ngân hàng, cập nhật mỗi ngày", url: URL_};
+    if (navigator.share){ try { await navigator.share(data); return; } catch(e){ if (e && e.name === "AbortError") return; } }
+    copyLink();
+  }
+  $("shareTop").addEventListener("click", share);
+  $("shareBottom").addEventListener("click", share);
+  $("copyLink").addEventListener("click", copyLink);
+  $("fbShare").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(URL_);
+})();
+</script>

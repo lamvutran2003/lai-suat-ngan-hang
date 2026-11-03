@@ -6,7 +6,11 @@ and deploys it to GitHub Pages for free. No server, no database.
 ```
 scraper/banks/*.py    one adapter per bank: fetch() + parse()
 scraper/run.py        fetch all banks, validate, write data/rates.json + data/history/<date>.json
-scraper/build_site.py fill site/template.html -> dist/ (index.html, rates.json, sitemap, robots)
+scraper/build_site.py assemble site/ -> dist/ (all pages, rates.json, sitemap, robots, icons)
+site/home.html        homepage (rate table + calculator)
+site/pages/*.html     text pages; each becomes /<file-name>/ (title/description in the top comment)
+site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
+site/static/          favicon, share image (og.png): copied to the site root
 scraper/check.py      exit 1 if any bank failed (triggers GitHub's failure email)
 tests/                parser tests against saved copies of each bank's page
 .github/workflows/    the schedule (09:17 and 16:17 Vietnam time)
@@ -63,6 +67,13 @@ marked "Dữ liệu cũ". To fix:
 1. Open the failed run; the last step names the bank and the error.
 2. Save the bank's current page over its file in `tests/fixtures/`.
 3. Run `pytest`, adjust that bank's adapter until the test passes, push.
+
+## Optional settings (Settings → Secrets and variables → Actions → Variables)
+
+- `SITE_URL`: the site address, e.g. `https://tietkiemdau.vn`
+- `CF_BEACON_TOKEN`: Cloudflare Web Analytics token. When set, visitor stats are switched on and the
+  privacy page gains a paragraph saying so.
+- `CONTACT_EMAIL`: shown on the About, privacy and footer (default `lienhe@tietkiemdau.vn`)
 
 ## Affiliate links
 

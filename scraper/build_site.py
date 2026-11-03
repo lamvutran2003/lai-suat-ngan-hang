@@ -16,10 +16,9 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-TEMPLATE = ROOT / "site" / "template.html"
 DIST = ROOT / "dist"
 HISTORY = ROOT / "data" / "history"
-SITE_URL = os.environ.get("SITE_URL", "https://tietkiemdau.vn").rstrip("/")
+SITE_URL = (os.environ.get("SITE_URL") or "https://tietkiemdau.vn").rstrip("/")
 
 TABLE_TERMS = [1, 3, 6, 12, 24]          # columns of the comparison table
 DEFAULT_CHANNEL = "online"
@@ -131,7 +130,77 @@ def best_sentence(data, term=12) -> str:
 
 
 # ---------------------------------------------------------------- build
+SITE = ROOT / "site"
+FONT_LINK = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:'
+             'wght@400;500;600;700&display=swap&subset=vietnamese">\n')
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL") or "lienhe@tietkiemdau.vn"
+CF_BEACON_TOKEN = os.environ.get("CF_BEACON_TOKEN", "").strip()   # Cloudflare Web Analytics, optional
+
+
+def read(rel: str) -> str:
+    return (SITE / rel).read_text(encoding="utf-8")
+
+
+def front_matter(src: str) -> tuple[dict, str]:
+    """Pages start with an HTML comment of 'key: value' lines (title, description)."""
+    meta = {}
+    if src.startswith("<!--"):
+        end = src.index("-->")
+        for line in src[4:end].strip().splitlines():
+            k, _, v = line.partition(":")
+            meta[k.strip()] = v.strip()
+        src = src[end + 3:].lstrip("\n")
+    return meta, src
+
+
+def analytics_blocks(src: str) -> str:
+    """Keep <!--IF_ANALYTICS--> ... <!--/IF_ANALYTICS--> only when analytics is switched on."""
+    import re
+    if CF_BEACON_TOKEN:
+        return src.replace("<!--IF_ANALYTICS-->\n", "").replace("<!--/IF_ANALYTICS-->\n", "")
+    return re.sub(r"<!--IF_ANALYTICS-->.*?<!--/IF_ANALYTICS-->\n", "", src, flags=re.S)
+
+
+def head_tags(title: str, desc: str, url: str) -> str:
+    e = html.escape
+    tags = (f"<title>{e(title)}</title>\n"
+            f'<meta name="description" content="{e(desc)}">\n'
+            f'<link rel="canonical" href="{url}">\n'
+            '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
+            '<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">\n'
+            '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
+            '<meta name="theme-color" content="#0f4c81">\n'
+            f'<meta property="og:title" content="{e(title)}">\n'
+            f'<meta property="og:description" content="{e(desc)}">\n'
+            f'<meta property="og:url" content="{url}">\n'
+            f'<meta property="og:image" content="{SITE_URL}/og.png">\n'
+            '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+            '<meta property="og:type" content="website">\n<meta property="og:locale" content="vi_VN">\n'
+            '<meta property="og:site_name" content="Tiết Kiệm Đâu?">\n'
+            '<meta name="twitter:card" content="summary_large_image">\n')
+    if CF_BEACON_TOKEN:
+        tags += ('<script defer src="https://static.cloudflareinsights.com/beacon.min.js" '
+                 f"data-cf-beacon='{{\"token\": \"{e(CF_BEACON_TOKEN)}\"}}'></script>\n")
+    return tags
+
+
+def fill(src: str, values: dict) -> str:
+    for k, v in values.items():
+        src = src.replace(k, v)
+    return src
+
+
+def full_page(title, desc, url, body, css) -> str:
+    return ('<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            + head_tags(title, desc, url) + FONT_LINK + f"<style>\n{css}</style>\n</head>\n<body>\n"
+            + body + "\n</body>\n</html>\n")
+
+
 def build() -> None:
+    import shutil
     data = json.loads((ROOT / "data" / "rates.json").read_text(encoding="utf-8"))
     aff_path = ROOT / "data" / "affiliates.json"
     affiliates = json.loads(aff_path.read_text(encoding="utf-8")) if aff_path.exists() else {}
@@ -139,41 +208,62 @@ def build() -> None:
     data["changes"] = compute_changes(data["rates"], HISTORY, generated.date())
     data["site_url"] = SITE_URL + "/"
 
-    head, body = TEMPLATE.read_text(encoding="utf-8").split("<!--BODY-->")
+    css, header, footer = read("partials/style.css"), read("partials/header.html"), read("partials/footer.html")
     safe_json = lambda obj: json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
-    body = (body.replace("__RATES_JSON__", safe_json(data))
-                .replace("__AFFILIATES_JSON__", safe_json(affiliates))
-                .replace("__STATIC_TABLE__", static_table(data, data["changes"]))
-                .replace("__UPDATED_TIME__", generated.strftime("%H:%M"))
-                .replace("__UPDATED_DATE__", generated.strftime("%d/%m/%Y"))
-                .replace("__BANK_COUNT__", str(len(data["banks"])))
-                .replace("__SITE_URL__", html.escape(SITE_URL + "/")))
-
-    updated_vn = generated.strftime("%d/%m/%Y")
-    desc = (f"So sánh lãi suất tiết kiệm {len(data['banks'])} ngân hàng, cập nhật {updated_vn}. "
-            f"{best_sentence(data)} Tính tiền lãi theo số tiền và kỳ hạn.")
-    seo = (f'<meta name="description" content="{html.escape(desc)}">\n'
-           f'<link rel="canonical" href="{SITE_URL}/">\n'
-           f'<meta property="og:title" content="Lãi suất tiết kiệm hôm nay {updated_vn} | Tiết Kiệm Đâu?">\n'
-           f'<meta property="og:description" content="{html.escape(desc)}">\n'
-           f'<meta property="og:url" content="{SITE_URL}/">\n'
-           f'<meta property="og:type" content="website">\n'
-           f'<meta property="og:locale" content="vi_VN">\n')
-    page = ('<!doctype html>\n<html lang="vi">\n<head>\n<meta charset="utf-8">\n'
-            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-            + seo + head.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', "")
-            + '</head>\n<body>\n' + body + '\n</body>\n</html>\n')
-
+    banks_with_data = [b["name"] for b in data["banks"] if b.get("count")]
+    common = {
+        "__BANK_COUNT__": str(len(banks_with_data)),
+        "__BANK_LIST__": ", ".join(banks_with_data),
+        "__CONTACT_EMAIL__": html.escape(CONTACT_EMAIL),
+        "__UPDATED_TIME__": generated.strftime("%H:%M"),
+        "__UPDATED_DATE__": generated.strftime("%d/%m/%Y"),
+        "__SITE_URL__": html.escape(SITE_URL + "/"),
+    }
     DIST.mkdir(exist_ok=True)
-    (DIST / "index.html").write_text(page, encoding="utf-8")
+    pages = []  # (path, lastmod)
+
+    # Homepage
+    updated_vn = generated.strftime("%d/%m/%Y")
+    home_desc = (f"So sánh lãi suất tiết kiệm {len(banks_with_data)} ngân hàng, cập nhật {updated_vn}. "
+                 f"{best_sentence(data)} Tính tiền lãi theo số tiền và kỳ hạn.")
+    home_body = fill(header + read("home.html") + "\n" + footer, {
+        **common, "__PAGE_URL__": SITE_URL + "/",
+        "__RATES_JSON__": safe_json(data), "__AFFILIATES_JSON__": safe_json(affiliates),
+        "__STATIC_TABLE__": static_table(data, data["changes"]),
+    })
+    home_title = f"Lãi suất tiết kiệm hôm nay {updated_vn} | Tiết Kiệm Đâu?"
+    (DIST / "index.html").write_text(full_page(home_title, home_desc, SITE_URL + "/", home_body, css), encoding="utf-8")
+    pages.append(("/", generated.date().isoformat()))
+    # Body-only copy for the claude.ai preview (it adds its own <html>/<head>)
+    (ROOT / "preview.html").write_text(
+        '<title>Tiết Kiệm Đâu?</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'
+        + FONT_LINK + f"<style>\n{css}</style>\n" + home_body, encoding="utf-8")
+
+    # Text pages: site/pages/<slug>.html -> /<slug>/
+    for src_path in sorted((SITE / "pages").glob("*.html")):
+        meta, src = front_matter(src_path.read_text(encoding="utf-8"))
+        slug = src_path.stem
+        url = f"{SITE_URL}/{slug}/"
+        body = fill(header + analytics_blocks(src) + "\n" + footer, {**common, "__PAGE_URL__": url})
+        out = DIST / slug
+        out.mkdir(exist_ok=True)
+        (out / "index.html").write_text(full_page(meta.get("title", slug), meta.get("description", ""), url, body, css),
+                                        encoding="utf-8")
+        pages.append((f"/{slug}/", None))
+
+    # Static files (icons, share image) go to the site root
+    for f in (SITE / "static").glob("*"):
+        if f.is_file():
+            shutil.copy2(f, DIST / f.name)
+
     (DIST / "rates.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
-    (DIST / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        f"<url><loc>{SITE_URL}/</loc><lastmod>{generated.date().isoformat()}</lastmod>"
-        "<changefreq>daily</changefreq></url></urlset>\n", encoding="utf-8")
-    (ROOT / "preview.html").write_text(head + body, encoding="utf-8")
-    print(f"built dist/index.html ({len(page)//1024} KB), {len(data['changes'])} recent changes — {desc}")
+    urls = "".join(f"<url><loc>{SITE_URL}{path}</loc>" + (f"<lastmod>{lm}</lastmod>" if lm else "") + "</url>"
+                   for path, lm in pages)
+    (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
+                                      f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',
+                                      encoding="utf-8")
+    print(f"built {len(pages)} pages, {len(data['changes'])} recent changes — {home_desc}")
 
 
 if __name__ == "__main__":
