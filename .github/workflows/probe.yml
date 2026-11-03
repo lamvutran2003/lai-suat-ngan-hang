@@ -1,0 +1,21 @@
+name: Probe gold sources (temporary)
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36"
+          p() { echo "=== $1 $2"; curl -sS -m 25 -A "$UA" "${@:2}" -o out -w "HTTP %{http_code} %{size_download}B\n" || true; head -c 700 out | tr '\n' ' '; echo; }
+          p GET https://sjc.com.vn/
+          p POST https://sjc.com.vn/GoldPrice/Services/PriceService.ashx -d "method=GetCurrentGoldPricesByBranch&BranchId=1"
+          p POST https://sjc.com.vn/GoldPrice/Services/PriceService.ashx -d "method=GetSJCGoldPriceByDate&toDate=03/11/2026"
+          p GET "https://giavang.doji.vn/api/giavang/?api_key=258fbd2a72ce8481089d88c678e9fe4f"
+          p GET https://banggia.doji.vn/
+          p GET "http://api.btmc.vn/api/BTMCAPI/getpricebtmc?key=3kd8ub1llcg9t45hnoh8hmn7t5kc2v"
+          p GET https://btmc.vn/
+          p GET "https://edge-api.pnj.io/ecom-frontend/v1/get-gold-price?zone=00"
+          p GET https://phuquygroup.vn/
+          p GET https://baotinmanhhai.vn/
+          p GET https://api.gold-api.com/price/XAU
+          p GET "https://www.vietcombank.com.vn/api/exchangerates?date=2026-11-03"
