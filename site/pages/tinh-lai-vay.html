@@ -1,0 +1,172 @@
+<!--
+title: Tính lãi vay mua nhà, mua xe: số tiền trả hàng tháng | Tiết Kiệm Đâu?
+description: Công cụ tính lãi vay ngân hàng theo dư nợ giảm dần hoặc trả góp đều, có lãi suất ưu đãi và lãi thả nổi sau ưu đãi. Xem số tiền trả mỗi tháng, tổng tiền lãi và lịch trả nợ theo năm.
+-->
+<section class="page gutter">
+  <div class="wrap stack">
+    <nav class="crumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a> › <span>Tính lãi vay</span></nav>
+    <div>
+      <h1>Tính lãi vay mua nhà, mua xe</h1>
+      <p class="lede">Nhập khoản vay và lãi suất ngân hàng đưa ra để xem số tiền phải trả mỗi tháng, trong thời gian ưu đãi và sau khi lãi suất thả nổi.</p>
+    </div>
+
+    <div class="loan-grid">
+      <div class="inputs" id="loanForm">
+        <div class="field">
+          <label class="label" for="lAmount">Số tiền vay (VNĐ)</label>
+          <div class="amount"><input id="lAmount" inputmode="numeric" autocomplete="off" value="2.000.000.000"><span>₫</span></div>
+          <div class="chips" id="lAmountChips" role="group" aria-label="Chọn nhanh số tiền vay">
+            <button class="chip" type="button" data-v="500000000">500 triệu</button><button class="chip" type="button" data-v="1000000000">1 tỷ</button>
+            <button class="chip" type="button" data-v="2000000000">2 tỷ</button><button class="chip" type="button" data-v="3000000000">3 tỷ</button>
+          </div>
+        </div>
+        <div class="field"><span class="label" id="lYearsLbl">Thời hạn vay</span>
+          <div class="chips" id="lYears" role="group" aria-labelledby="lYearsLbl">
+            <button class="chip" type="button" data-v="5">5 năm</button><button class="chip" type="button" data-v="10">10 năm</button>
+            <button class="chip" type="button" data-v="15">15 năm</button><button class="chip" type="button" data-v="20">20 năm</button>
+            <button class="chip" type="button" data-v="25">25 năm</button>
+          </div>
+        </div>
+        <div class="two">
+          <div class="field"><label class="label" for="lPromo">Lãi suất ưu đãi (%/năm)</label>
+            <input class="num-in" id="lPromo" inputmode="decimal" value="6,5"></div>
+          <div class="field"><label class="label" for="lPromoMonths">Thời gian ưu đãi (tháng)</label>
+            <input class="num-in" id="lPromoMonths" inputmode="numeric" value="12"></div>
+        </div>
+        <div class="field"><label class="label" for="lFloat">Lãi suất sau ưu đãi (%/năm)</label>
+          <input class="num-in" id="lFloat" inputmode="decimal" value="10,5">
+          <p class="hint">Sau ưu đãi, lãi thường thả nổi theo lãi suất cơ sở của ngân hàng cộng một biên độ ghi trong hợp đồng. Hãy hỏi ngân hàng con số này.</p></div>
+        <div class="field"><span class="label" id="lMethodLbl">Cách trả nợ</span>
+          <div class="tabs" role="radiogroup" aria-labelledby="lMethodLbl" id="lMethod">
+            <button class="tab" type="button" role="radio" aria-checked="true" data-v="principal">Dư nợ giảm dần</button>
+            <button class="tab" type="button" role="radio" aria-checked="false" data-v="annuity">Trả đều hàng tháng</button>
+          </div>
+          <p class="hint" id="lMethodHint"></p></div>
+      </div>
+
+      <div class="results" aria-live="polite">
+        <div class="tiles loan-tiles" id="lTiles"></div>
+        <div class="chart-card">
+          <p class="label">Số tiền trả mỗi tháng</p>
+          <div id="lChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="block">
+      <h2>Lịch trả nợ theo năm</h2>
+      <div class="card"><div class="scroll"><table class="rates term-rows" id="lTable"></table></div></div>
+      <p class="sub">Kết quả là ước tính, giả định lãi suất sau ưu đãi giữ nguyên đến hết khoản vay và không trả nợ trước hạn. Ngân hàng tính lãi theo số ngày thực tế nên số tiền từng tháng có thể chênh lệch nhỏ. Lãi suất thả nổi có thể tăng hoặc giảm trong thời gian vay.</p>
+    </section>
+  </div>
+</section>
+
+<script>
+(function(){
+  const $ = id => document.getElementById(id);
+  const vnd = n => new Intl.NumberFormat("vi-VN").format(Math.round(n));
+  const short = n => n >= 1e9 ? (n/1e9).toLocaleString("vi-VN",{maximumFractionDigits:2}) + " tỷ"
+                   : n >= 1e6 ? Math.round(n/1e6).toLocaleString("vi-VN") + " triệu" : vnd(n);
+  const num = s => parseFloat(String(s).replace(/\./g,"").replace(",", ".")) || 0;
+  const S = {amount:2e9, years:20, promo:6.5, promoMonths:12, float:10.5, method:"principal"};
+  try { Object.assign(S, JSON.parse(localStorage.getItem("tkdLoan")||"{}")); } catch(e){}
+  const save = () => { try { localStorage.setItem("tkdLoan", JSON.stringify(S)); } catch(e){} };
+
+  // Month-by-month schedule. Annuity payments are recalculated when the rate changes,
+  // which is how Vietnamese banks reprice an equal-instalment loan after the promo period.
+  function schedule(){
+    const n = S.years * 12, out = [];
+    let bal = S.amount, pay = 0;
+    for (let m = 1; m <= n && bal > 0.5; m++){
+      const rate = (m <= S.promoMonths ? S.promo : S.float) / 100 / 12;
+      let principal, interest = bal * rate;
+      if (S.method === "principal"){
+        principal = S.amount / n;
+      } else {
+        if (m === 1 || m === S.promoMonths + 1){
+          const left = n - m + 1;
+          pay = rate === 0 ? bal / left : bal * rate / (1 - Math.pow(1 + rate, -left));
+        }
+        principal = pay - interest;
+      }
+      principal = Math.min(principal, bal);
+      bal -= principal;
+      out.push({m, principal, interest, pay: principal + interest, bal: Math.max(bal, 0)});
+    }
+    return out;
+  }
+
+  function chart(rows){
+    const W = 560, H = 190, padL = 8, padR = 8, padT = 22, padB = 26;
+    const max = Math.max(...rows.map(r => r.pay)), min = 0;
+    const x = i => padL + (W - padL - padR) * (i / Math.max(rows.length - 1, 1));
+    const y = v => padT + (H - padT - padB) * (1 - (v - min) / (max - min || 1));
+    const pts = rows.map((r,i) => `${x(i).toFixed(1)},${y(r.pay).toFixed(1)}`).join(" ");
+    const area = `${padL},${y(0)} ${pts} ${x(rows.length-1).toFixed(1)},${y(0)}`;
+    const iMax = rows.findIndex(r => r.pay === max);
+    const years = S.years, ticks = [0, Math.round(years/2), years];
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Số tiền trả mỗi tháng theo thời gian, cao nhất ${vnd(max)} đồng" style="width:100%;height:auto;display:block">
+      <line x1="${padL}" x2="${W-padR}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line-strong)"/>
+      <polygon points="${area}" fill="var(--primary-soft)"/>
+      <polyline points="${pts}" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="${x(iMax)}" cy="${y(max)}" r="4" fill="var(--ink)"/>
+      <text x="${Math.min(x(iMax)+8, W-150)}" y="${Math.max(y(max)-8, 14)}" font-size="12" fill="var(--ink)" font-weight="600">Cao nhất ${short(max)}/tháng</text>
+      ${ticks.map(t => `<text x="${x(Math.min(t*12, rows.length-1))}" y="${H-8}" font-size="11" fill="var(--muted)" text-anchor="${t===0?"start":t===years?"end":"middle"}">${t===0?"Bắt đầu":"Năm "+t}</text>`).join("")}
+    </svg>`;
+  }
+
+  function render(){
+    const rows = schedule();
+    const first = rows[0], after = rows[Math.min(S.promoMonths, rows.length-1)];
+    const totalInt = rows.reduce((s,r) => s + r.interest, 0);
+    const maxPay = Math.max(...rows.map(r => r.pay));
+    $("lTiles").innerHTML = [
+      ["Tháng đầu tiên", vnd(first.pay) + " ₫", `gốc ${short(first.principal)} + lãi ${short(first.interest)}`],
+      [S.promoMonths > 0 && S.promoMonths < rows.length ? `Tháng ${S.promoMonths+1} (hết ưu đãi)` : "Cao nhất mỗi tháng",
+       vnd(S.promoMonths > 0 && S.promoMonths < rows.length ? after.pay : maxPay) + " ₫",
+       S.promoMonths > 0 && S.promoMonths < rows.length ? `lãi ${String(S.float).replace(".", ",")}%/năm` : ""],
+      ["Tổng tiền lãi", vnd(totalInt) + " ₫", `${Math.round(totalInt / S.amount * 100)}% số tiền vay`],
+      ["Tổng phải trả", vnd(S.amount + totalInt) + " ₫", `trong ${S.years} năm`],
+    ].map(([k,v,w]) => `<div class="tile"><span class="k">${k}</span><span class="v">${v}</span><span class="w">${w}</span></div>`).join("");
+    $("lChart").innerHTML = chart(rows);
+    const years = [];
+    for (let yv = 1; yv <= S.years; yv++){
+      const ys = rows.filter(r => Math.ceil(r.m / 12) === yv);
+      if (!ys.length) break;
+      years.push(`<tr><th scope="row">Năm ${yv}</th><td class="r">${vnd(ys.reduce((s,r)=>s+r.principal,0))}</td>
+        <td class="r">${vnd(ys.reduce((s,r)=>s+r.interest,0))}</td><td class="r">${vnd(ys.reduce((s,r)=>s+r.pay,0)/ys.length)}</td>
+        <td class="r">${vnd(ys[ys.length-1].bal)}</td></tr>`);
+    }
+    $("lTable").innerHTML = `<thead><tr><th scope="col">Năm</th><th scope="col">Trả gốc</th><th scope="col">Trả lãi</th><th scope="col">Trung bình/tháng</th><th scope="col">Dư nợ cuối năm</th></tr></thead><tbody>${years.join("")}</tbody>`;
+    $("lMethodHint").textContent = S.method === "principal"
+      ? "Trả gốc bằng nhau mỗi tháng, tiền lãi tính trên dư nợ còn lại nên số tiền trả giảm dần. Đây là cách phổ biến nhất ở các ngân hàng Việt Nam."
+      : "Số tiền trả mỗi tháng bằng nhau trong từng giai đoạn lãi suất. Tháng đầu nhẹ hơn nhưng tổng tiền lãi cao hơn.";
+    save();
+  }
+
+  // ----- inputs
+  const press = (id, v) => { for (const el of $(id).children) el.setAttribute("aria-pressed", String(+el.dataset.v === v)); };
+  const amountEl = $("lAmount");
+  function setAmount(n){ S.amount = Math.min(Math.max(n || 0, 10e6), 1e12); amountEl.value = vnd(S.amount); press("lAmountChips", S.amount); }
+  amountEl.addEventListener("input", () => {
+    const n = parseInt(amountEl.value.replace(/\D/g,""), 10) || 0, fromEnd = amountEl.value.length - amountEl.selectionStart;
+    amountEl.value = n ? vnd(n) : ""; const pos = Math.max(0, amountEl.value.length - fromEnd); amountEl.setSelectionRange(pos, pos);
+    press("lAmountChips", n); if (n >= 10e6){ S.amount = n; render(); }
+  });
+  amountEl.addEventListener("blur", () => { setAmount(S.amount); render(); });
+  $("lAmountChips").addEventListener("click", e => { const b = e.target.closest("button"); if (b){ setAmount(+b.dataset.v); render(); } });
+  $("lYears").addEventListener("click", e => { const b = e.target.closest("button"); if (b){ S.years = +b.dataset.v; press("lYears", S.years); render(); } });
+  for (const [id, key, lo, hi] of [["lPromo","promo",0,30],["lPromoMonths","promoMonths",0,600],["lFloat","float",0,30]]){
+    const el = $(id);
+    el.value = String(S[key]).replace(".", ",");
+    el.addEventListener("input", () => { const v = num(el.value); if (v >= lo && v <= hi){ S[key] = key === "promoMonths" ? Math.round(v) : v; render(); } });
+  }
+  $("lMethod").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return; S.method = b.dataset.v;
+    for (const t of $("lMethod").children) t.setAttribute("aria-checked", String(t.dataset.v === S.method));
+    render();
+  });
+  for (const t of $("lMethod").children) t.setAttribute("aria-checked", String(t.dataset.v === S.method));
+  setAmount(S.amount); press("lYears", S.years); render();
+})();
+</script>

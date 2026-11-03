@@ -20,7 +20,7 @@ DIST = ROOT / "dist"
 HISTORY = ROOT / "data" / "history"
 SITE_URL = (os.environ.get("SITE_URL") or "https://tietkiemdau.vn").rstrip("/")
 
-TABLE_TERMS = [1, 3, 6, 12, 24]          # columns of the comparison table
+TABLE_TERMS = [1, 3, 6, 9, 12, 18, 24, 36]  # columns of the comparison table
 DEFAULT_CHANNEL = "online"
 DEFAULT_AMOUNT = 100_000_000
 CHANGE_WINDOW_DAYS = 30                  # arrows show changes made within this window
@@ -79,6 +79,11 @@ def compute_changes(current_rates, history_dir: Path, today: date) -> dict:
 
 
 # ---------------------------------------------------------------- static table
+def logo_img(code: str, size: int = 22) -> str:
+    return (f'<img class="bl" src="/logos/{code}.png" alt="" width="{size}" height="{size}" loading="lazy" '
+            "onerror=\"this.style.visibility='hidden'\">")
+
+
 def table_rows(data, ch, amount):
     """Rows for one channel, sorted by 12-month rate (best first). Same logic as the page's JS."""
     rows = []
@@ -86,7 +91,7 @@ def table_rows(data, ch, amount):
         cells = {t: rate_for(data["rates"], b["code"], ch, t, amount) for t in TABLE_TERMS}
         if any(cells.values()):
             rows.append((b, cells))
-    rows.sort(key=lambda bc: -(bc[1][12]["rate"] if bc[1].get(12) else 0))
+    rows.sort(key=lambda bc: (bc[1][12] is None, -(bc[1][12]["rate"] if bc[1].get(12) else 0), bc[0]["name"]))
     return rows
 
 
@@ -97,7 +102,11 @@ def static_table(data, changes, ch=DEFAULT_CHANNEL, amount=DEFAULT_AMOUNT) -> st
     for t in TABLE_TERMS:  # flag the best only when at most two banks share it (same rule as the page JS)
         top = max((c[t]["rate"] for _, c in rows if c[t]), default=None)
         best[t] = top if sum(1 for _, c in rows if c[t] and c[t]["rate"] == top) <= 2 else None
-    head = "".join(f'<th scope="col"><a href="/ky-han/{t}-thang/">{t} tháng</a></th>' for t in TABLE_TERMS)
+    head = "".join(
+        (f'<th scope="col" aria-sort="descending" class="sorted">' if t == 12 else '<th scope="col">')
+        + f'<button class="sort" type="button" data-t="{t}" aria-label="Sắp xếp theo kỳ hạn {t} tháng">{t} tháng'
+        + f'<span class="ar" aria-hidden="true">{"↓" if t == 12 else "↕"}</span></button></th>'
+        for t in TABLE_TERMS)
     body = []
     for b, cells in rows:
         tds = []
@@ -113,9 +122,8 @@ def static_table(data, changes, ch=DEFAULT_CHANNEL, amount=DEFAULT_AMOUNT) -> st
                 d = r["rate"] - chg["prev"]
                 arrow = (f'<span class="chg {"up" if d > 0 else "down"}" title="Từ {fmt(chg["prev"])}%">'
                          f'{"▲" if d > 0 else "▼"}{fmt(abs(d))}</span>')
-            flag = '<span class="flag">Cao nhất</span>' if cls else ""
-            tds.append(f'<td class="r{cls}"><span class="v">{fmt(r["rate"])}</span>{arrow}{flag}</td>')
-        body.append(f'<tr><th scope="row"><span class="tick">{TICKER.get(b["code"], b["code"].upper())}</span>'
+            tds.append(f'<td class="r{cls}"><span class="v">{fmt(r["rate"])}</span>{arrow}</td>')
+        body.append(f'<tr><th scope="row">{logo_img(b["code"])}'
                     f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{html.escape(b["name"])}</a></th>{"".join(tds)}</tr>')
     return (f'<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>{head}</tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table>')
@@ -133,10 +141,7 @@ def best_sentence(data, term=12) -> str:
 
 # ---------------------------------------------------------------- build
 SITE = ROOT / "site"
-FONT_LINK = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
-             '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:'
-             'wght@400;500;600;700&display=swap&subset=vietnamese">\n')
+FONT_LINK = ""  # system fonts (SF Pro / Segoe UI / Roboto): fast, no third-party request
 CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL") or "lienhe@tietkiemdau.vn"
 CF_BEACON_TOKEN = os.environ.get("CF_BEACON_TOKEN", "").strip()   # Cloudflare Web Analytics, optional
 
@@ -268,9 +273,7 @@ def build() -> None:
         pages.append((f"/{slug}/", generated.date().isoformat()))
 
     # Static files (icons, share image) go to the site root
-    for f in (SITE / "static").glob("*"):
-        if f.is_file():
-            shutil.copy2(f, DIST / f.name)
+    shutil.copytree(SITE / "static", DIST, dirs_exist_ok=True)  # includes logos/
 
     (DIST / "rates.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")

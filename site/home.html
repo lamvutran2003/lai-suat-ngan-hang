@@ -16,7 +16,7 @@
         <div class="card"><div class="scroll" id="tableWrap" role="tabpanel" aria-labelledby="tab-online">__STATIC_TABLE__</div></div>
         <div class="under">
           <span id="tableNote">Mức lãi cho khoản gửi 100.000.000 ₫, xếp theo kỳ hạn 12 tháng. Kỳ hạn dưới 6 tháng bị giới hạn tối đa 4,75%/năm theo quy định của Ngân hàng Nhà nước.</span>
-          <span class="legend"><span><span class="sw" aria-hidden="true"></span>Cao nhất</span><span class="up">▲ Tăng</span><span class="down">▼ Giảm</span><span>trong 30 ngày</span></span>
+          <span class="legend"><span><b class="bestkey">6,80</b> cao nhất kỳ hạn</span><span class="up">▲ Tăng</span><span class="down">▼ Giảm</span><span>trong 30 ngày</span></span>
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
       </div>
       <p class="insight" id="insight" hidden></p>
       <ol class="list" id="list" aria-live="polite"></ol>
-      <p class="sub">Tiền lãi tính theo cách trả lãi cuối kỳ, chưa trừ thuế, có thể chênh vài nghìn đồng so với cách tính theo ngày của ngân hàng.</p>
+      <p class="sub">Tiền lãi tính theo cách trả lãi cuối kỳ, chưa trừ thuế, có thể chênh vài nghìn đồng so với cách tính theo ngày của ngân hàng. Cần vay tiền? <a href="/tinh-lai-vay/">Tính lãi vay mua nhà, mua xe →</a></p>
     </div>
   </section>
 
@@ -64,9 +64,8 @@
   let AFF = {}; try { AFF = JSON.parse(document.getElementById("affiliates-data").textContent) || {}; } catch(e){}
   const CHG = D.changes || {};
   const SLUG = {vcb:"vietcombank",bidv:"bidv",vietin:"vietinbank",agri:"agribank",acb:"acb",tpb:"tpbank",stb:"sacombank",ocb:"ocb"};
-  const TICK = {vcb:"VCB",bidv:"BID",vietin:"CTG",agri:"AGR",acb:"ACB",tpb:"TPB",stb:"STB",ocb:"OCB"};
   const CH = {online:"Online", counter:"Tại quầy"};
-  const TABLE_TERMS = [1,3,6,12,24];
+  const TABLE_TERMS = [1,3,6,9,12,18,24,36];
   const CALC_TERMS = [1,3,6,12,24,36];
   const vnd = n => new Intl.NumberFormat("vi-VN").format(Math.round(n));
   const pct = n => n.toFixed(2).replace(".", ",");
@@ -74,10 +73,11 @@
   const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const $ = id => document.getElementById(id);
 
-  const state = {ch:"online", amount:100000000, term:12};
+  const state = {ch:"online", amount:100000000, term:12, sortTerm:12, sortDir:"desc"};
   try { const s = JSON.parse(localStorage.getItem("tkdState")||"null"); if (s) Object.assign(state, s); } catch(e){}
   if (!CH[state.ch]) state.ch = "online";
   if (!CALC_TERMS.includes(state.term)) state.term = 12;
+  if (!TABLE_TERMS.includes(state.sortTerm)) { state.sortTerm = 12; state.sortDir = "desc"; }
   const save = () => { try { localStorage.setItem("tkdState", JSON.stringify(state)); } catch(e){} };
 
   function rateFor(bank, ch, term, amount){
@@ -94,6 +94,7 @@
   }
 
   /* ---------- table ---------- */
+  const logo = code => `<img class="bl" src="/logos/${code}.png" alt="" width="22" height="22" loading="lazy" onerror="this.style.visibility='hidden'">`;
   function rows(ch, amount){
     const out = [];
     for (const b of D.banks){
@@ -101,7 +102,14 @@
       for (const t of TABLE_TERMS){ cells[t] = rateFor(b.code, ch, t, amount); any = any || !!cells[t]; }
       if (any) out.push({b, cells});
     }
-    return out.sort((x,y) => (y.cells[12]?.rate||0) - (x.cells[12]?.rate||0));
+    const t = state.sortTerm, dir = state.sortDir === "asc" ? 1 : -1;
+    // Banks that don't offer the sorted term always go last, whichever direction.
+    return out.sort((x,y) => {
+      const a = x.cells[t]?.rate, c = y.cells[t]?.rate;
+      if (a == null && c == null) return x.b.name.localeCompare(y.b.name);
+      if (a == null) return 1; if (c == null) return -1;
+      return (a - c) * dir || x.b.name.localeCompare(y.b.name);
+    });
   }
   function renderTable(){
     const rs = rows(state.ch, state.amount);
@@ -112,13 +120,17 @@
       const top = Math.max(...rs.map(x => x.cells[t]?.rate || 0));
       best[t] = rs.filter(x => x.cells[t]?.rate === top).length <= 2 ? top : null;
     }
-    const body = rs.map(({b, cells}) => `<tr><th scope="row"><span class="tick">${TICK[b.code]||b.code.toUpperCase()}</span><a class="bn" href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a></th>${
+    const head = TABLE_TERMS.map(t => {
+      const on = t === state.sortTerm;
+      return `<th scope="col"${on ? ` aria-sort="${state.sortDir === "asc" ? "ascending" : "descending"}" class="sorted"` : ""}>` +
+        `<button class="sort" type="button" data-t="${t}" aria-label="Sắp xếp theo kỳ hạn ${t} tháng">${t} tháng<span class="ar" aria-hidden="true">${on ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"}</span></button></th>`;
+    }).join("");
+    const body = rs.map(({b, cells}) => `<tr><th scope="row">${logo(b.code)}<a class="bn" href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a></th>${
       TABLE_TERMS.map(t => { const r = cells[t]; if (!r) return `<td class="na">–</td>`;
-        const top = r.rate === best[t];
-        return `<td class="r${top?" best":""}"><span class="v">${pct(r.rate)}</span>${arrow(r)}${top?'<span class="flag">Cao nhất</span>':""}</td>`; }).join("")}</tr>`).join("");
-    $("tableWrap").innerHTML = `<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>${TABLE_TERMS.map(t=>`<th scope="col"><a href="/ky-han/${t}-thang/">${t} tháng</a></th>`).join("")}</tr></thead><tbody>${body}</tbody></table>`;
-    const missing = D.banks.filter(b => !rs.some(x => x.b.code === b.code)).map(b => b.name);
-    $("tableNote").textContent = `Mức lãi cho khoản gửi ${vnd(state.amount)} ₫, xếp theo kỳ hạn 12 tháng. ` +
+        return `<td class="r${r.rate === best[t] ? " best" : ""}"><span class="v">${pct(r.rate)}</span>${arrow(r)}</td>`; }).join("")}</tr>`).join("");
+    $("tableWrap").innerHTML = `<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>${head}</tr></thead><tbody>${body}</tbody></table>`;
+    const missing = D.banks.filter(b => b.count && !rs.some(x => x.b.code === b.code)).map(b => b.name);
+    $("tableNote").textContent = `Mức lãi cho khoản gửi ${vnd(state.amount)} ₫. Bấm vào kỳ hạn để sắp xếp. ` +
       `Kỳ hạn dưới 6 tháng bị giới hạn tối đa 4,75%/năm theo quy định của Ngân hàng Nhà nước.` +
       (missing.length ? ` ${missing.join(", ")} không niêm yết lãi ${state.ch==="online"?"online":"tại quầy"}.` : "");
     $("tableWrap").setAttribute("aria-labelledby", "tab-" + state.ch);
@@ -142,7 +154,7 @@
     $("list").innerHTML = q.map((x, i) => { const aff = AFF[x.b.code];
       return `<li class="item${i===0?" top":""}">
         <span class="rank">${i+1}</span>
-        <div class="who"><span class="tick">${TICK[x.b.code]||""}</span><strong>${esc(x.b.name)}</strong>${(x.r.notes||[]).length?`<span class="meta">${esc(x.r.notes[0])}</span>`:""}</div>
+        <div class="who">${logo(x.b.code)}<strong>${esc(x.b.name)}</strong>${(x.r.notes||[]).length?`<span class="meta">${esc(x.r.notes[0])}</span>`:""}</div>
         <div class="fig"><div class="pay">+${vnd(x.interest)} ₫</div><div class="rate">${pct(x.r.rate)}%/năm · nhận ${vnd(state.amount + x.interest)} ₫</div></div>
         ${aff?`<a class="cta" href="${esc(aff)}" target="_blank" rel="sponsored noopener">Mở tài khoản ${esc(x.b.name)} →</a>`:""}
       </li>`; }).join("");
@@ -178,6 +190,14 @@
   }
   function setAmount(n){ state.amount = Math.min(Math.max(n || 0, 1000000), 1e12); amountEl.value = vnd(state.amount); press("amountChips", state.amount); }
 
+  $("tableWrap").addEventListener("click", e => {
+    const b = e.target.closest("button.sort"); if (!b) return;
+    const t = +b.dataset.t;
+    if (state.sortTerm === t) state.sortDir = state.sortDir === "desc" ? "asc" : "desc";
+    else { state.sortTerm = t; state.sortDir = "desc"; }
+    renderTable(); save();
+    const again = document.querySelector(`button.sort[data-t="${t}"]`); if (again) again.focus();
+  });
   $("termChips").innerHTML = CALC_TERMS.map(t => `<button class="chip" type="button" data-v="${t}">${t} tháng</button>`).join("");
   document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) setChannel(b.dataset.ch); });
   document.querySelector(".tabs").addEventListener("keydown", e => {

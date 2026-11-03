@@ -8,7 +8,7 @@ from __future__ import annotations
 import html
 from datetime import datetime
 
-from .build_site import CH, SLUG, TICKER, fmt, key_of, rate_for
+from .build_site import CH, SLUG, TICKER, fmt, key_of, logo_img, rate_for
 
 E = html.escape
 EXAMPLE = 100_000_000                 # deposit used for worked examples and rankings
@@ -200,7 +200,7 @@ def bank_page(data, changes, b, generated: datetime):
     desc = f"{top_txt} Bảng lãi suất {name} online và tại quầy theo kỳ hạn và số tiền, cập nhật mỗi ngày."
     body = f'''<section class="page gutter"><div class="wrap stack">
 {crumbs(("Ngân hàng", None), (name, None))}
-<div class="bank-head"><span class="tick big">{TICKER.get(code, code.upper())}</span>
+<div class="bank-head">{logo_img(code, 48).replace('class="bl"', 'class="bl big"')}
 <div><h1>Lãi suất {E(name)} hôm nay</h1><p class="lede">{E(top_txt)} Cập nhật ngày {date_vn}.</p></div></div>
 <p class="srcline">{as_of_line(b, generated)}</p>
 <div class="tiles">{tiles_html}</div>
@@ -246,7 +246,7 @@ def term_page(data, changes, term: int, generated: datetime):
         b = x["b"]
         gain = interest(EXAMPLE, x["best"]["rate"], term)
         note = '<span class="tier" title="Lãi suất thay đổi theo số tiền gửi">theo số tiền</span>' if x["tiered"] else ""
-        trs.append(f'<tr><th scope="row"><span class="rk">{i}</span><span class="tick">{TICKER.get(b["code"], "")}</span>'
+        trs.append(f'<tr><th scope="row"><span class="rk">{i}</span>{logo_img(b["code"])}'
                    f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{E(b["name"])}</a>{note}</th>'
                    f'{cell(x["on"], x["on"] and x["on"]["rate"] == best_on)}{cell(x["co"], x["co"] and x["co"]["rate"] == best_co)}'
                    f'<td class="r"><span class="v">{vnd(gain)} ₫</span><span class="chg muted">{CH[x["best"]["channel"]].lower()}</span></td></tr>')
