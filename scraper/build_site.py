@@ -26,9 +26,10 @@ DEFAULT_AMOUNT = 100_000_000
 CHANGE_WINDOW_DAYS = 30                  # arrows show changes made within this window
 CH = {"online": "Online", "counter": "Tại quầy"}
 SLUG = {"vcb": "vietcombank", "bidv": "bidv", "vietin": "vietinbank", "agri": "agribank",
-        "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb"}
+        "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb", "tcb": "techcombank",
+        "vpb": "vpbank", "mb": "mbbank"}
 TICKER = {"vcb": "VCB", "bidv": "BID", "vietin": "CTG", "agri": "AGR", "acb": "ACB",
-          "tpb": "TPB", "stb": "STB", "ocb": "OCB"}
+          "tpb": "TPB", "stb": "STB", "ocb": "OCB", "tcb": "TCB", "vpb": "VPB", "mb": "MBB"}
 
 
 # ---------------------------------------------------------------- rate lookup

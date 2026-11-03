@@ -30,13 +30,15 @@ tests/                parser tests against saved copies of each bank's page
 | TPBank | HTML fragment (flaky server, retried) | ✓ | ✓ | |
 | Sacombank | PDF at a fixed address | ✓ | ✓ | ✓ |
 | OCB | PDF linked from the rate page | ✓ | ✓ | ✓ (online) |
+| Techcombank | PDF found via its document-list API (Phát Lộc, normal customer) | ✓ | ✓ | ✓ |
+| VPBank | **Hand-entered** (`data/manual/vpb.json`); watcher spots new sheets | ✓ | ✓ | ✓ |
 
 Switched off: **VietinBank** (`scraper/banks/vietin.py`) — its site refuses
 GitHub's servers (HTTP 405). Its rates matched Vietcombank and BIDV anyway.
 
-Checked and **not covered**: VPBank (rate sheet is a scanned PDF with no
-text; would need OCR), MB (rates published only as an image), Techcombank,
-LPBank, MSB, MBV, BVBank (rates load in ways not yet worked out).
+Checked and **not covered**: MB (site blocks all automated access; can be hand-entered
+with a 14-day re-check reminder), LPBank, MSB, MBV, BVBank (rates load in ways not yet
+worked out).
 
 ## Run locally
 
@@ -72,6 +74,33 @@ marked "Dữ liệu cũ". To fix:
 - `CF_BEACON_TOKEN`: Cloudflare Web Analytics token. When set, visitor stats are switched on and the
   privacy page gains a paragraph saying so.
 - `CONTACT_EMAIL`: shown on the About, privacy and footer (default `lienhe@tietkiemdau.vn`)
+
+## Hand-entered banks (`data/manual/<code>.json`)
+
+For banks whose rate sheet a script can't read (VPBank publishes a scanned PDF).
+Each run checks whether the bank has published a new sheet. If it has, the run
+**fails and GitHub emails you** "VPBank: rates need a manual update", with the link
+to the new sheet. The site keeps showing the old numbers, marked "Đang cập nhật".
+
+To update (about 5 minutes, all on github.com):
+
+1. Open the new sheet from the email link and note the effective date ("Áp dụng từ ngày …").
+2. In the repository open `data/manual/vpb.json` → pencil icon (Edit).
+3. Change the numbers under `"counter"` and `"online"`. Keys are months (`"12"` = 12 tháng),
+   values are %/năm with a dot (`6.40`). Amount bands use the bank's wording
+   (`"Dưới 10 tỷ"`, `"Từ 10 tỷ"`); drop `"amount"` if a rate applies to every amount.
+4. Update the four header lines:
+   - `"document_url"`: the new sheet's link
+   - `"watch"`: the last part of that link (the file name), e.g. `2.-20261115-Phu-luc-BLS-niem-yet.pdf`
+   - `"as_of"`: the effective date as `YYYY-MM-DD`
+   - `"checked_at"`: today, `YYYY-MM-DD`
+5. Commit, then Actions → Update rates → Run workflow. Green = done.
+
+If a number is mistyped badly (e.g. `67.0` instead of `6.70`), the run rejects the file
+and keeps the previous numbers, so a typo can't reach the site.
+
+A bank with no watcher (e.g. MB, whose site blocks scripts) asks for a re-check after
+14 days instead: open its rate page, compare, and set `"checked_at"` to today.
 
 ## Affiliate links
 

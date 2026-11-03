@@ -18,6 +18,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from .banks import ADAPTERS
+from .manual import manual_banks
 from .common import ParseError, make_session
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -28,7 +29,7 @@ MIN_RECORDS = 4          # fewer than this = the parser probably broke
 RATE_RANGE = (0.1, 15.0)  # % per year; anything outside is a parsing error
 FIXTURE_NAMES = {"vcb": "vcb.json", "bidv": "bidv.json", "vietin": "vietin.html",
                  "agri": "agri.html", "acb": "acb.html", "tpb": "tpb.html",
-                 "stb": "stb.pdf", "ocb": "ocb.pdf"}
+                 "stb": "stb.pdf", "ocb": "ocb.pdf", "tcb": "tcb.pdf"}
 
 
 def read_fixture(folder: Path, code: str):
@@ -60,16 +61,21 @@ def run(fixtures: Path | None = None) -> dict:
     session = None if fixtures else make_session()
 
     banks, rates = [], []
-    for mod in ADAPTERS:
+    for mod in list(ADAPTERS) + manual_banks():
         entry = {"code": mod.CODE, "name": mod.NAME, "source_url": mod.SOURCE_URL}
         try:
-            raw = read_fixture(fixtures, mod.CODE) if fixtures else mod.fetch(session)
+            manual = hasattr(mod, "meta")
+            raw = (mod.fetch(session) if manual else
+                   read_fixture(fixtures, mod.CODE) if fixtures else mod.fetch(session))
             parsed, as_of = mod.parse(raw)
             validate(mod.CODE, parsed)
             entry.update(status="ok", stale=False, as_of=as_of,
                          fetched_at=now.isoformat(timespec="minutes"), count=len(parsed))
+            if manual:
+                entry.update(mod.meta())
             rates.extend(r.to_dict() for r in parsed)
-            print(f"  ok    {mod.NAME:<12} {len(parsed):>3} rates  (as of {as_of or 'n/a'})")
+            flag = "  [manual" + (", NEEDS UPDATE]" if entry.get("update_needed") else "]") if manual else ""
+            print(f"  ok    {mod.NAME:<12} {len(parsed):>3} rates  (as of {as_of or 'n/a'}){flag}")
         except Exception as e:  # noqa: BLE001 - one bank must never take down the rest
             old = [r for r in previous.get("rates", []) if r["bank"] == mod.CODE]
             prev = prev_banks.get(mod.CODE, {})

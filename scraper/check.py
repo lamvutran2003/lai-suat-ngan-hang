@@ -25,4 +25,11 @@ for b in data["banks"]:
         broken = True
     else:
         print(f"::warning title={b['name']} fetch failed (showing data from {last_ok:%d/%m %H:%M})::{b.get('error')}")
+for b in data["banks"]:
+    if b.get("update_needed"):
+        print(f"::error title={b['name']}: rates need a manual update::{b.get('update_reason')} "
+              f"Edit data/manual/{b['code']}.json (see README: Hand-entered banks).")
+        broken = True
+    elif b.get("watch_error"):
+        print(f"::warning title={b['name']} watcher failed::{b['watch_error']}")
 sys.exit(1 if broken else 0)

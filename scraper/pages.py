@@ -94,6 +94,13 @@ def as_of_line(b, generated: datetime) -> str:
     eff = f"Biểu lãi suất hiệu lực từ {b['as_of'][8:10]}/{b['as_of'][5:7]}/{b['as_of'][:4]}" if b.get("as_of") else \
         "Biểu lãi suất không ghi ngày hiệu lực"
     stale = ' · <span class="stale">Dữ liệu cũ, đang chờ ngân hàng cập nhật</span>' if b.get("stale") else ""
+    if b.get("manual"):
+        chk = b.get("checked_at", "")
+        doc = b.get("document_url") or b["source_url"]
+        pending = (' · <span class="stale">Ngân hàng vừa công bố biểu lãi suất mới, chúng tôi đang cập nhật</span>'
+                   if b.get("update_needed") else "")
+        return (f'{eff} · Nhập thủ công từ <a href="{E(doc)}" target="_blank" rel="noopener">biểu lãi suất của {E(b["name"])}</a>, '
+                f'kiểm tra ngày {chk[8:10]}/{chk[5:7]}/{chk[:4]}{pending}')
     return (f'{eff} · Kiểm tra lúc {generated:%H:%M %d/%m/%Y} · '
             f'<a href="{E(b["source_url"])}" target="_blank" rel="noopener">Nguồn: website {E(b["name"])}</a>{stale}')
 
@@ -122,14 +129,17 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
     date_vn = f"{generated:%d/%m/%Y}"
 
     # Headline numbers
-    top = max(rates, key=lambda r: (r["rate"], -r["term_months"]))
+    top = max(rates, key=lambda r: (r["rate"], -r["term_months"], -r["min_amount"]))
+    # Only qualify the headline with an amount band when smaller deposits really get less.
+    top_needs_band = not any(r["rate"] == top["rate"] and r["min_amount"] == 0 and r["channel"] == top["channel"]
+                             and r["term_months"] == top["term_months"] for r in rates)
     r12 = best_any(data, code, 12)
     ranked = sorted((best_any(data, o["code"], 12) or (0, ""))[0] for o in others)[::-1]
     rank12 = ranked.index(r12[0]) + 1 if r12 else None
 
     tiles = [
         ("Cao nhất", f"{fmt(top['rate'])}%", f"{top['term_months']} tháng · {CH[top['channel']].lower()}"
-         + (f" · {band_label(top['min_amount'], top['max_amount']).lower()}" if (top['min_amount'] or top['max_amount']) else "")),
+         + (f" · {band_label(top['min_amount'], top['max_amount']).lower()}" if top_needs_band else "")),
         ("Kỳ hạn 12 tháng", f"{fmt(r12[0])}%" if r12 else "–", f"{CH[r12[1]].lower()}, gửi 100 triệu" if r12 else "chưa niêm yết"),
         ("Xếp hạng 12 tháng", f"#{rank12}" if rank12 else "–", f"trong {len(others)} ngân hàng"),
     ]
@@ -193,7 +203,7 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
                    f"Biểu lãi suất {name} công bố trên website hiện chỉ có mức gửi tại quầy."))
     qa.append((f"Kỳ hạn nào ở {name} có lãi suất cao nhất?",
                f"Cao nhất là {fmt(top['rate'])}%/năm ở kỳ hạn {top['term_months']} tháng ({CH[top['channel']].lower()}"
-               + (f", {band_label(top['min_amount'], top['max_amount']).lower()}" if (top['min_amount'] or top['max_amount']) else "")
+               + (f", {band_label(top['min_amount'], top['max_amount']).lower()}" if top_needs_band else "")
                + ")."))
     if rank12:
         leaders = [o["name"] for o in others if (best_any(data, o["code"], 12) or (0,))[0] == ranked[0]]
@@ -207,8 +217,7 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
                    + '<a href="/ky-han/12-thang/">Xem bảng so sánh 12 tháng</a>.'))
     qa_html = "".join(f"<details class=\"qa\" open><summary>{E(q)}</summary><p>{a}</p></details>" for q, a in qa)
 
-    top_band = (f", {band_label(top['min_amount'], top['max_amount']).lower()}"
-                if (top['min_amount'] or top['max_amount']) else "")
+    top_band = f", {band_label(top['min_amount'], top['max_amount']).lower()}" if top_needs_band else ""
     top_txt = (f"Lãi suất tiết kiệm {name} cao nhất hiện là {fmt(top['rate'])}%/năm, kỳ hạn {top['term_months']} tháng "
                f"({CH[top['channel']].lower()}{top_band}).")
     title = f"Lãi suất {name} hôm nay {date_vn} | Tiết Kiệm Đâu?"

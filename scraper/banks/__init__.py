@@ -6,6 +6,7 @@ VietinBank (vietin.py) is kept but switched off: since 01/11/2026 its website
 refuses GitHub's servers (HTTP 405), and its rates matched Vietcombank and BIDV
 at every term anyway. Add `vietin` back to ADAPTERS to try it again.
 """
-from . import acb, agri, bidv, ocb, stb, tpb, vcb, vietin  # noqa: F401
+from . import acb, agri, bidv, ocb, stb, tcb, tpb, vcb, vietin  # noqa: F401
 
-ADAPTERS = [vcb, bidv, agri, acb, tpb, stb, ocb]
+ADAPTERS = [vcb, bidv, agri, acb, tpb, stb, ocb, tcb]
+# Hand-entered banks (data/manual/*.json) are added by scraper/manual.py.

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper.banks import acb, agri, bidv, ocb, stb, tpb, vcb, vietin
+from scraper.banks import acb, agri, bidv, ocb, stb, tcb, tpb, vcb, vietin
 from scraper.common import parse_amount_range, parse_rate, parse_term_months, soup, table_grid
 
 FX = Path(__file__).parent / "fixtures"
@@ -107,3 +107,12 @@ def test_ocb_counter_and_online_bands():
     assert as_of == "2026-10-20"
     assert r[("counter", 6, 0)] == 5.9 and r[("counter", 12, 0)] == 6.2 and r[("counter", 36, 0)] == 6.5
     assert r[("online", 12, 0)] == 6.3 and r[("online", 12, 100 * M)] == 6.4 and r[("online", 12, 500 * M + 1)] == 6.5
+
+
+def test_techcombank_phat_loc_normal_customer_bands():
+    r, as_of = rates_of(tcb, "tcb.pdf")
+    assert as_of == "2026-10-24"
+    B = 1_000_000_000
+    assert r[("counter", 12, 0)] == 5.75 and r[("counter", 12, 3 * B)] == 5.85      # <1 tỷ / ≥3 tỷ
+    assert r[("online", 6, 0)] == 6.05 and r[("online", 12, 1 * B)] == 6.25
+    assert r[("counter", 1, 0)] == 4.05 and ("counter", 0, 0) not in r
