@@ -1,0 +1,553 @@
+<!-- _Layout.cshtml -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bảng Giá Vàng</title>
+    <link rel="stylesheet" href="/Content/gold_price/library/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/gold_price/style.css" />
+    <link rel="stylesheet" href="/Content/gold_price/btn.css" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="og:description" content="Cập nhật ngay Giá Vàng Tại Phú Quý!" />
+    <meta name="author" content="Phu Quy IT Department" />
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cập nhật ngay Giá Vàng Tại Phú Quý!">
+    <meta property="og:image" content="/publics/images/thumbnail.jpg" />
+    <meta property="og:image:secure_url" content="/publics/images/thumbnail.jpg" />
+
+    <meta property="og:url" content="https://phuquygroup.vn/">
+    <meta property="og:site_name" content="Phú Quý Group">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.3/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+</head>
+
+<style>
+    .core-title {
+        max-width: 100%;
+        margin: 0 auto 12px;
+        line-height: 1.6;
+        text-align: center;
+    }
+
+    .core-list {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+        .core-list div {
+            display: flex;
+            gap: 10px;
+            padding: 6px 0;
+        }
+
+        .core-list b {
+            color: #c9a227;
+            min-width: 30px;
+        }
+
+    /* mặc định mobile: 1 cột */
+    .core-desktop {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .core-desktop .item {
+        display: flex;
+        gap: 10px;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .core-desktop .item b {
+            color: #c9a227;
+            min-width: 28px;
+        }
+
+    .core-desktop .item span {
+        flex: 1;
+    }
+
+    /* tablet: 2 cột */
+    @media (min-width: 768px) {
+        .core-desktop {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 40px;
+        }
+
+            .core-desktop .item {
+                border-bottom: none;
+            }
+    }
+
+    /* desktop lớn: 3 cột → hết xấu */
+    @media (min-width: 1200px) {
+        .core-desktop {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+    }
+</style>
+
+<body>
+
+    <div>
+        <img src="/publics/images/float_button.png"
+             class="floating-button visible"
+             onclick="toggleExpandedButtons()" />
+        <!-- Floating Contact Wrapper -->
+        <div class="floating-wrapper">
+
+            <!-- Main FAB -->
+            <button type="button"
+                    class="floating-button visible"
+                    onclick="toggleExpandedButtons()">
+                <img src="/publics/images/float_button.png" alt="Liên hệ" />
+            </button>
+
+            <!-- Expanded list -->
+            <div class="expanded-buttons">
+
+                <!-- Call pills -->
+                <a href="tel:" class="call-pill">
+                    <span class="call-text">329 Cầu Giấy</span>
+                    <span class="call-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                </a>
+
+                <a href="tel:" class="call-pill">
+                    <span class="call-text">30 Trần Nhân Tông</span>
+                    <span class="call-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                </a>
+
+                <a href="tel:" class="call-pill">
+                    <span class="call-text">51–53 Quang Trung</span>
+                    <span class="call-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                </a>
+
+                <a href="tel:" class="call-pill">
+                    <span class="call-text">193B Nam Kỳ Khởi Nghĩa</span>
+                    <span class="call-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                </a>
+
+                <a href="https://zalo.me/vangphuquy" class="social-btn">
+                    <img src="/publics/images/zola.png" alt="Zalo" />
+                </a>
+
+                <a class="social-btn">
+                    <img src="/publics/images/messenger.png" alt="Messenger" />
+                </a>
+
+                <!-- Close -->
+                <button class="social-btn" onclick="closeExpandedButtons()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="header position-relative" onclick="toPhuQuy()">
+        <img src="/publics/images/nền logo đỏ.png" alt="" />
+        <img class="position-absolute start-50 translate-middle z-3"
+             src="/publics/images/logo-07.png"
+             alt="" />
+    </div>
+    <div class="header-l">
+        <div class="d-flex justify-content-between align-items-center header-l-items">
+            <div class="header-logo">
+                <img src="/publics/images/logo-07.png" alt="" onclick="toPhuQuy()" />
+            </div>
+
+
+        </div>
+        <img class="position-absolute top-0 header-l-bg"
+             src="/publics/images/back-04.png"
+             alt="" />
+    </div>
+
+    <div class="content-section">
+        <div class="table-area">
+    <div id="lastupdate" class="mb-3">
+        <p class="update-time">Giá vàng cập nhật lần cuối lúc 18:22 03/11/2026</p>
+        <div class="d-flex align-items-center mt-2 update-time">
+            <input type="date" id="datePicker" class="form-control me-2" style="max-width:200px;" />
+            <button class="custom-btn" onclick="openGoldPriceLast()">Xem</button>
+        </div>
+    </div>
+    <div id="priceList">
+        <table class="m-auto text-center">
+            <thead>
+                <tr>
+                    <th class="table-price-cell beautique">Loại vàng</th>
+                    <th class="py-3">
+                        <p class="m-0 table-price-cell beautique">Mua vào</p>
+                        <p class="m-0 fw-light">(VNĐ/Chỉ)</p>
+                    </th>
+                    <th class="py-3">
+                        <p class="m-0 table-price-cell beautique">
+                            Bán ra
+                        </p>
+                        <p class="m-0 fw-light">(VNĐ/Chỉ)</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                        <tr>
+                            <td class="text-center">Vàng miếng SJC</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,600,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">14,060,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Nhẫn tròn Phú Quý 999.9</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,600,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,900,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Phú Quý 1 Lượng 999.9</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,600,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,900,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Phú quý 1 lượng 99.9</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,590,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,890,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng trang sức 999.9</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,350,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,800,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng trang sức 999</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,340,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,790,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng trang sức 99</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,216,500</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,662,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng trang sức 98</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">13,083,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">13,524,000</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng 999.9 phi SJC</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">12,700,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Vàng 999.0  phi SJC</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">12,650,000</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price"></td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Bạc thỏi Phú Quý 999 (1Kilo, 10 lượng, 5 lượng, 1 lượng)</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">152,700</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">157,400</td>
+                        </tr>
+                        <tr>
+                            <td class="text-center">Đồng bạc mỹ nghệ 999</td>
+                            <td class="text-center table-price-cell another-price-cell buy-price">152,700</td>
+                            <td class="text-center table-price-cell another-price-cell sell-price">179,600</td>
+                        </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="mb-0 mt-3 table-note">
+        - Đơn giá trên đã bao gồm thuế GTGT.
+    </p>
+    <p class="mb-0 mt-3 table-note" style="margin-top:0px !important">
+        - Thần tài Phú Quý 999.9 có định lượng 0,5 chỉ - 1 chỉ - 1 lượng
+    </p>
+    <p class="mb-3 table-note">
+        - Nhẫn tròn trơn Phú Quý có định lượng 0,5 chỉ - 1 chỉ - 2 chỉ - 3 chỉ
+        - 5 chỉ
+    </p>
+</div>
+
+    </div>
+    <div class="container-fluid p-0 main-small">
+        <div class="store_system text-center mb-3">
+            <h3>Hệ thống cửa hàng</h3>
+            <div class="shop-list">
+            </div>
+            <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+            <div class="d-flex justify-content-center">
+                <img src="/publics/images/5365678_fb_facebook_facebook logo_icon.png"
+                     class="me-2 bg-light"
+                     onclick="onClickConnect(1)" />
+                <img class="bg-light"
+                     style="border-radius: 5px"
+                     src="/publics/images/7044033_zalo_icon.png"
+                     onclick="onClickConnect(3)" />
+            </div>
+        </div>
+        <div class="confirm-section text-center mb-3">
+            <img src="/publics/images/banner-08.png" alt="" />
+        </div>
+        <div class="tks-section position-relative" style="line-height: normal">
+            <a href="#show" class="show" id="show"><b>Xem thêm</b></a>
+
+            <div class="panel">
+                <h3 class="text-center pt-1">TẬP ĐOÀN VÀNG BẠC ĐÁ QUÝ PHÚ QUÝ</h3>
+
+                <p>
+                    Được thành lập từ năm 2003, Phú Quý đã trải qua hơn hai thập kỷ hình thành và phát triển mạnh mẽ để trở thành một trong những thương hiệu uy tín trên thị trường vàng bạc đá quý Việt Nam.
+                    Với nền tảng vững chắc, định hướng phát triển bền vững và sự tin tưởng của nhiều thế hệ khách hàng, Phú Quý từng bước khẳng định vị thế của mình bằng chất lượng sản phẩm, uy tín thương hiệu và tinh thần không ngừng đổi mới.
+                </p>
+
+                <p>
+                    Phú Quý tự hào là Trung tâm giao dịch Vàng miếng được Ngân hàng Nhà nước cấp phép, đồng thời là điểm đến đáng tin cậy của đông đảo khách hàng, đối tác trong và ngoài nước.
+                    Những lĩnh vực hoạt động chủ lực đã làm nên tên tuổi của Phú Quý gồm kinh doanh vàng miếng, kim cương; sản xuất, phân phối và kinh doanh các sản phẩm vàng tích trữ 999,9, vàng mỹ nghệ 999,9, trang sức vàng 24K, 18K; cùng các sản phẩm bạc tích trữ 999, bạc mỹ nghệ 999 và nhiều dòng sản phẩm giá trị khác.
+                </p>
+
+                <p>
+                    Tại Phú Quý, mỗi sản phẩm đến tay khách hàng không chỉ là một món hàng giá trị, mà còn là sự kết tinh của tay nghề chế tác điêu luyện, tâm huyết nghề nghiệp và niềm tự hào của đội ngũ kim hoàn giàu kinh nghiệm.
+                    Bên cạnh thế mạnh trong chế tác, Phú Quý luôn chú trọng đầu tư công nghệ hiện đại, không ngừng cải tiến quy trình sản xuất để tạo nên những sản phẩm có giá trị thẩm mỹ cao, chất lượng vượt trội và mang lại sự hài lòng, an tâm cho khách hàng.
+                </p>
+
+                <p>
+                    Trong suốt chặng đường phát triển, Phú Quý vinh dự ghi dấu bằng nhiều thành tích và danh hiệu tiêu biểu, góp phần khẳng định uy tín thương hiệu trên thị trường.
+                    Nhưng trên hết, giá trị lớn nhất mà Phú Quý luôn trân trọng chính là niềm tin của khách hàng và đối tác - nền tảng để thương hiệu không ngừng tiến xa hơn trong hành trình phát triển.
+                </p>
+
+                <p class="core-title">
+                    Ngay từ những ngày đầu khởi nghiệp, Phú Quý đã xác lập và kiên định theo đuổi
+                    <strong>5 giá trị cốt lõi</strong> làm nền tảng cho mọi hoạt động:
+                </p>
+
+                <div class="core-list">
+                    <div><b>01</b> Sản phẩm tuyệt hảo</div>
+                    <div><b>02</b> Trải nghiệm mua sắm tuyệt hảo</div>
+                    <div><b>03</b> Công nghệ là xương sống của sự phát triển</div>
+                    <div><b>04</b> Kỷ luật và sự công bằng</div>
+                    <div><b>05</b> Trách nhiệm với cộng đồng và xã hội</div>
+                </div>
+
+                <p>
+                    <br>
+                    Năm giá trị ấy không chỉ hiện diện trong chiến lược phát triển, mà còn được thể hiện trong từng sản phẩm, từng dịch vụ, từng cam kết.
+                    Đó là kim chỉ nam để Phú Quý phát triển một cách chính trực, bền vững và ngày càng xứng đáng hơn với sự tin yêu của Quý khách hàng và Đối tác.
+                </p>
+
+                <p>
+                    Với sứ mệnh “Vì ngày hạnh phúc”, Phú Quý luôn mong muốn hiện diện trong những khoảnh khắc ý nghĩa của mỗi khách hàng.
+                    Đó có thể là ngày cưới, ngày kỷ niệm, ngày thành công, ngày đoàn viên hay bất kỳ ngày đặc biệt nào trong cuộc sống - khi khách hàng tìm đến Phú Quý để lựa chọn và mang về cho mình một sản phẩm xứng đáng, lưu giữ giá trị và cảm xúc.
+                    Chúng tôi tin rằng mỗi sản phẩm không chỉ mang giá trị vật chất, mà còn là biểu tượng của niềm vui, sự trân trọng và hạnh phúc trong cuộc sống.
+                </p>
+
+                <p class="mb-3">
+                    Hướng tới tương lai, Phú Quý sẽ tiếp tục nâng cao chất lượng sản phẩm, hoàn thiện dịch vụ, đẩy mạnh đầu tư công nghệ và phát triển hệ thống một cách chuyên nghiệp, hiện đại.
+                    Với khát vọng lớn và định hướng rõ ràng, Phú Quý bền bỉ trên hành trình hiện thực hóa mục tiêu trở thành Tập đoàn Vàng bạc Đá quý tốt nhất Việt Nam.
+                </p>
+            </div>
+
+            <div class="fade"></div>
+        </div>
+    </div>
+    <div class="container-fluid main-large">
+        <div class="confirm-section position-relative text-center">
+            <img class="position-absolute top-50 start-50 translate-middle"
+                 src="/publics/images/banner-12.png"
+                 alt="" />
+        </div>
+        <div class="tks-section">
+            <h3 class="text-center">TẬP ĐOÀN VÀNG BẠC ĐÁ QUÝ PHÚ QUÝ</h3>
+
+            <p>
+                Được thành lập từ năm 2003, Phú Quý đã trải qua hơn hai thập kỷ hình thành và phát triển mạnh mẽ để trở thành một trong những thương hiệu uy tín trên thị trường vàng bạc đá quý Việt Nam.
+                Với nền tảng vững chắc, định hướng phát triển bền vững và sự tin tưởng của nhiều thế hệ khách hàng, Phú Quý từng bước khẳng định vị thế của mình bằng chất lượng sản phẩm, uy tín thương hiệu và tinh thần không ngừng đổi mới.
+            </p>
+
+            <p>
+                Phú Quý tự hào là Trung tâm giao dịch Vàng miếng được Ngân hàng Nhà nước cấp phép, đồng thời là điểm đến đáng tin cậy của đông đảo khách hàng, đối tác trong và ngoài nước.
+                Những lĩnh vực hoạt động chủ lực đã làm nên tên tuổi của Phú Quý gồm kinh doanh vàng miếng, kim cương; sản xuất, phân phối và kinh doanh các sản phẩm vàng tích trữ 999,9, vàng mỹ nghệ 999,9, trang sức vàng 24K, 18K; cùng các sản phẩm bạc tích trữ 999, bạc mỹ nghệ 999 và nhiều dòng sản phẩm giá trị khác.
+            </p>
+
+            <p>
+                Tại Phú Quý, mỗi sản phẩm đến tay khách hàng không chỉ là một món hàng giá trị, mà còn là sự kết tinh của tay nghề chế tác điêu luyện, tâm huyết nghề nghiệp và niềm tự hào của đội ngũ kim hoàn giàu kinh nghiệm.
+                Bên cạnh thế mạnh trong chế tác, Phú Quý luôn chú trọng đầu tư công nghệ hiện đại, không ngừng cải tiến quy trình sản xuất để tạo nên những sản phẩm có giá trị thẩm mỹ cao, chất lượng vượt trội và mang lại sự hài lòng, an tâm cho khách hàng.
+            </p>
+
+            <p>
+                Trong suốt chặng đường phát triển, Phú Quý vinh dự ghi dấu bằng nhiều thành tích và danh hiệu tiêu biểu, góp phần khẳng định uy tín thương hiệu trên thị trường.
+                Nhưng trên hết, giá trị lớn nhất mà Phú Quý luôn trân trọng chính là niềm tin của khách hàng và đối tác - nền tảng để thương hiệu không ngừng tiến xa hơn trong hành trình phát triển.
+            </p>
+
+            <p class="core-title">
+                Ngay từ những ngày đầu khởi nghiệp, Phú Quý đã xác lập và kiên định theo đuổi
+                <strong>5 giá trị cốt lõi</strong> làm nền tảng cho mọi hoạt động:
+            </p>
+
+            <div class="core-desktop">
+                <div class="item"><b>01</b><span>Sản phẩm tuyệt hảo</span></div>
+                <div class="item"><b>02</b><span>Trải nghiệm mua sắm tuyệt hảo</span></div>
+                <div class="item"><b>03</b><span>Công nghệ là xương sống của sự phát triển</span></div>
+                <div class="item"><b>04</b><span>Kỷ luật và sự công bằng</span></div>
+                <div class="item"><b>05</b><span>Trách nhiệm với cộng đồng và xã hội</span></div>
+            </div>
+
+            <p>
+                Năm giá trị ấy không chỉ hiện diện trong chiến lược phát triển, mà còn được thể hiện trong từng sản phẩm, từng dịch vụ, từng cam kết.
+                Đó là kim chỉ nam để Phú Quý phát triển một cách chính trực, bền vững và ngày càng xứng đáng hơn với sự tin yêu của Quý khách hàng và Đối tác.
+            </p>
+
+            <p>
+                Với sứ mệnh “Vì ngày hạnh phúc”, Phú Quý luôn mong muốn hiện diện trong những khoảnh khắc ý nghĩa của mỗi khách hàng.
+                Đó có thể là ngày cưới, ngày kỷ niệm, ngày thành công, ngày đoàn viên hay bất kỳ ngày đặc biệt nào trong cuộc sống - khi khách hàng tìm đến Phú Quý để lựa chọn và mang về cho mình một sản phẩm xứng đáng, lưu giữ giá trị và cảm xúc.
+                Chúng tôi tin rằng mỗi sản phẩm không chỉ mang giá trị vật chất, mà còn là biểu tượng của niềm vui, sự trân trọng và hạnh phúc trong cuộc sống.
+            </p>
+
+            <p class="mb-3">
+                Hướng tới tương lai, Phú Quý sẽ tiếp tục nâng cao chất lượng sản phẩm, hoàn thiện dịch vụ, đẩy mạnh đầu tư công nghệ và phát triển hệ thống một cách chuyên nghiệp, hiện đại.
+                Với khát vọng lớn và định hướng rõ ràng, Phú Quý bền bỉ trên hành trình hiện thực hóa mục tiêu trở thành Tập đoàn Vàng bạc Đá quý tốt nhất Việt Nam.
+            </p>
+        </div>
+        <div class="connect-section">
+            <p class="text-center"><b>Kết nối với chúng tôi:</b></p>
+            <div class="d-flex justify-content-center align-content-center">
+                <div class="d-flex align-items-center me-4"
+                     onclick="onClickConnect(2)">
+                    <img src="/publics/images/5365678_fb_facebook_facebook logo_icon.png"
+                         class="me-1" />
+                    <a class="m-0 text-decoration-underline">Phú Quý Jewelry</a>
+                </div>
+                <div class="d-flex align-items-center me-4"
+                     onclick="onClickConnect(1)">
+                    <img src="/publics/images/5365678_fb_facebook_facebook logo_icon.png"
+                         class="me-1" />
+                    <a class="m-0 text-decoration-underline">Tập đoàn Vàng bạc Phú Quý</a>
+                </div>
+                <div class="d-flex align-items-center me-4"
+                     onclick="onClickConnect(3)">
+                    <img src="/publics/images/7044033_zalo_icon.png" class="me-1" />
+                    <a class="m-0 text-decoration-underline">Zalo official</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer text-center">
+        <img src="/publics/images/phu_quy.png" alt="" />
+        <p class="hotline">
+            HOTLINE: <a href="tel:1800599995"><b>1800 599 995</b></a>
+        </p>
+        <p>Công ty Cổ phần Đầu tư Vàng Phú Quý</p>
+        <p>MST : 0102617088</p>
+        <p>
+            Trụ sở chính: Số 30 Trần Nhân Tông, Phường Hai Bà Trưng,
+            Thành phố Hà Nội, Việt Nam.
+        </p>
+    </div>
+    <div class="footer-l container-fluid">
+        <div class="row">
+            <div class="col-6 footer-left">
+                <img class="mb-3" src="/publics/images/phu_quy.png" alt="" />
+                <p>MST : 0102617088</p>
+                <p>
+                    Trụ sở chính: Số 30 Trần Nhân Tông, Phường Hai Bà
+                    Trưng, Thành phố Hà Nội, Việt Nam.
+                </p>
+            </div>
+            <div class="col-6 footer-right">
+                <p class="hotline">
+                    HOTLINE:
+                    <a class="m-0" href="tel:1800599995"><b>1800 599 995</b></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="quality" style="display:none">
+        <img src="/publics/images/hltv_confirm.png" alt="" />
+    </div>
+    <script src="/Content/gold_price/library/jquery.min.js"></script>
+    <script src="/Content/gold_price/library/bootstrap.min.js"></script>
+    <script src="/Content/gold_price/library/fontawesome.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.15.3/dist/sweetalert2.all.min.js"></script>
+    <script src="/Content/gold_price/app.js" defer></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZL9NJ1Z6Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LZL9NJ1Z6Z');
+    </script>
+
+    
+    <script>
+        $(document).ready(function () {
+
+            var auto_refresh = setInterval(function () {
+                console.log("refresh");
+                $('div#priceList').load(window.location.href + ' #priceList').fadeIn(3000);
+                $('div#lastupdate').load(window.location.href + ' #lastupdate').fadeIn(3000);
+            }, 20000);
+            $.ajaxSetup({ cache: false });
+
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".quality img").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/Gold/GoldPriceTodayAsync",
+                type: "GET",
+                success: function(response) {
+                    alert("Gold prices updated successfully!");
+                },
+                error: function(xhr, status, error) {
+                    alert("An error occurred while updating gold prices.");
+                    console.error(error);
+                }
+            });
+        });
+    });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZL9NJ1Z6Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LZL9NJ1Z6Z');
+    </script>
+    <script>
+    function openGoldPriceLast() {
+        var selectedDate = document.getElementById("datePicker").value;
+        if (!selectedDate) {
+            showSwal("Lỗi!", "Vui lòng chọn ngày", "error");
+            return;
+        }
+
+        var url = '/XemLai' + '?date=' + selectedDate;
+
+        // Mở tab mới với URL đã chứa tham số ngày
+        window.open(url, '_blank');
+        }
+        function showSwal(title, text, icon) {
+            return Swal.fire({
+                title: title,
+                text: text,
+                icon: icon,
+                allowOutsideClick: false,
+                timer: 2000,
+                showConfirmButton: true,
+                timerProgressBar: true,
+                didOpen: () => Swal.showLoading()
+            });
+        }
+    </script>
+    
+</body>
+</html>

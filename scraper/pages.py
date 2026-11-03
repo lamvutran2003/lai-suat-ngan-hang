@@ -15,6 +15,7 @@ EXAMPLE = 100_000_000                 # deposit used for worked examples and ran
 TERM_PAGES = [1, 3, 6, 9, 12, 18, 24, 36]
 MIN_BANKS_FOR_TERM_PAGE = 3
 GUIDE_LINKS: list[tuple[str, str]] = []   # (slug, title) of guides; set by build_site
+GOLD_LINE: list[str] = []                 # one-line gold summary for the browse block; set by build_site
 
 
 def vnd(n: float) -> str:
@@ -86,7 +87,9 @@ def browse_links(data, current_bank=None, current_term=None) -> str:
     guides = (f'<h2>Hướng dẫn gửi tiết kiệm</h2><ul class="guide-list compact">{guides}</ul>'
               f'<p class="sub"><a href="/huong-dan/">Xem tất cả hướng dẫn →</a></p>') if guides else ""
     return (f'<div class="browse"><h2>Xem theo ngân hàng</h2><div class="chips">{banks}</div>'
-            f'<h2>Xem theo kỳ hạn</h2><div class="chips">{terms}</div>{guides}</div>')
+            f'<h2>Xem theo kỳ hạn</h2><div class="chips">{terms}</div>{guides}'
+            + (f'<h2>Giá vàng hôm nay</h2><p class="sub">{GOLD_LINE[0]} <a href="/gia-vang/">Xem bảng giá vàng →</a></p>' if GOLD_LINE else "")
+            + '</div>')
 
 
 def term_pages(data):

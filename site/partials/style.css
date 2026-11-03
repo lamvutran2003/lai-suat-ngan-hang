@@ -293,3 +293,24 @@ h2{font-size:20px;font-weight:700}
 @media (max-width:400px){#shareTop{display:none}}
 .guide>p,.guide>ul,.guide>.formula{margin:0}
 .guide>h2{margin:16px 0 0}
+/* Phones: links move to a second, swipeable row under the logo */
+@media (max-width:640px){
+  .top .wrap{flex-wrap:wrap;row-gap:6px;padding-block:10px 0}
+  .top .nav{order:2;width:100%;gap:20px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+  .top .nav::-webkit-scrollbar{display:none}
+  .top .nav .nav-calc{display:inline}
+  .top .nav a:not(.btn){font-size:14.5px}
+  #shareTop{display:none}
+}
+/* Gold tables */
+.rates.gold{min-width:0}
+.rates.gold th[scope="row"]{white-space:normal;min-width:130px}
+.rates.gold .pn{display:block;font-size:12.5px;color:var(--muted);font-weight:400;margin-top:2px;line-height:1.35}
+.rates.gold td .chg{display:block}
+.rates.guide-tbl th[scope="row"]{white-space:normal}
+.rates.guide-tbl td.r{white-space:nowrap}
+@media (max-width:480px){.rates.gold th,.rates.gold td{padding:10px 7px}.rates.gold td .v{font-size:14px}}
+@media (max-width:360px){.top .nav{gap:14px}}
+@media (max-width:480px){.rates.gold th[scope="row"]{min-width:92px}.rates.gold th,.rates.gold td{padding:10px 6px}
+  .rates.gold td .v{font-size:13.5px}.rates.gold thead th{font-size:12px;white-space:normal}}
+.rates.kv td.r{white-space:normal;text-align:right}.rates.kv th[scope="row"]{width:55%}

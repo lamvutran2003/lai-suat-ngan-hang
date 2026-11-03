@@ -18,6 +18,8 @@ Tokens (amounts in đồng, terms in months):
   {{early_example:12:6}}          100 triệu for 12 months, withdrawn after 6
   {{rollover_table}}              1 năm theo cách: 12 lần 1 tháng / 2 lần 6 tháng / 1 lần 12 tháng
   {{need_monthly:10000000}}       deposit needed for that much interest per month at the best 12-month rate
+  {{gold_compare}}                100 triệu: savings vs buying gold and selling back (data/gold.json)
+  {{gold_spread:sjc}}             cheapest buy-in vs best sell-back gap for SJC bars or rings (ring)
 """
 from __future__ import annotations
 
@@ -208,6 +210,52 @@ def t_need_monthly(data, today, monthly="10000000"):
     return f"{millions(int(round(amount, -7)))} đồng (lãi {fmt(rate)}%/năm)"
 
 
+def _gold():
+    path = GUIDES_DIR.parent.parent / "data" / "gold.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def gold_best(kind):
+    """(lowest sell, its shop, highest buy, its shop) for SJC bars / rings across shops."""
+    g = _gold()
+    if not g:
+        return None
+    qs = [(s["name"], i) for s in g["shops"] for i in s.get("items", []) if i["kind"] == kind and i["buy"]]
+    if not qs:
+        return None
+    sell = min(qs, key=lambda x: x[1]["sell"])
+    buy = max(qs, key=lambda x: x[1]["buy"])
+    return sell[1]["sell"], sell[0], buy[1]["buy"], buy[0]
+
+
+def t_gold_compare(data, today):
+    """100 triệu for a year: savings at the best 12-month rate vs gold that must rise enough to match it."""
+    rate, who = best(data, 12)
+    gain = interest(EXAMPLE, rate, 12)
+    rows = [f'<tr><th scope="row">Gửi tiết kiệm 12 tháng ({fmt(rate)}%/năm)</th><td class="r"><span class="v">+{vnd(gain)} ₫</span></td>'
+            f'<td>Biết trước, không phụ thuộc giá cả</td></tr>']
+    for kind, label in (("sjc", "Vàng miếng SJC"), ("ring", "Nhẫn trơn 999.9")):
+        g = gold_best(kind)
+        if not g:
+            continue
+        sell, shop_s, buy, shop_b = g
+        loss = EXAMPLE * (1 - buy / sell)                       # buy at the lowest sell, sell back at the best buy
+        need = (sell * (1 + rate / 100) / buy - 1) * 100        # rise in the shop's buying price to match savings
+        rows.append(f'<tr><th scope="row">{label}: mua rồi bán lại ngay</th><td class="r"><span class="v">−{vnd(loss)} ₫</span></td>'
+                    f'<td>Giá vàng phải tăng khoảng {fmt(need)}% trong 1 năm mới bằng lãi tiết kiệm</td></tr>')
+    return ('<div class="card"><div class="scroll"><table class="rates guide-tbl"><thead><tr><th scope="col">Với 100 triệu đồng</th>'
+            '<th scope="col">Lời/lỗ</th><th scope="col">Ghi chú</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div></div>')
+
+
+def t_gold_spread(data, today, kind="sjc"):
+    g = gold_best(kind)
+    if not g:
+        return "vài triệu đồng/lượng"
+    sell, _, buy, _ = g
+    return f"{fmt((sell - buy) / 1e6).rstrip('0').rstrip(',')} triệu đồng/lượng (khoảng {fmt((1 - buy / sell) * 100)}% số tiền bỏ ra)"
+
+
 def render_tokens(src: str, data, today: date) -> str:
     def simple(name, *args):
         if name == "updated":
@@ -231,7 +279,8 @@ def render_tokens(src: str, data, today: date) -> str:
 
 TOKENS = {"amount_table": t_amount_table, "term_table": t_term_table, "channel_table": t_channel_table,
           "online_higher": t_online_higher, "days_example": t_days_example, "early_example": t_early_example,
-          "rollover_table": t_rollover_table, "need_monthly": t_need_monthly}
+          "rollover_table": t_rollover_table, "need_monthly": t_need_monthly,
+          "gold_compare": t_gold_compare, "gold_spread": t_gold_spread}
 
 
 # ---------------------------------------------------------------- pages

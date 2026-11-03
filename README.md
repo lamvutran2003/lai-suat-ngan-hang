@@ -16,9 +16,11 @@ scraper/pages.py      generated pages: /ngan-hang/<bank>/ for each bank with dat
                       terms 1–36 months that at least 3 banks publish; all text computed from the data
 site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
 site/static/          favicon, share image (og.png), logos/<bank>.png (official icons): copied to the site root
-scraper/check.py      exit 1 if any bank failed (triggers GitHub's failure email)
+scraper/gold.py       gold prices (PNJ, Phú Quý, Bảo Tín Mạnh Hải + world price) -> data/gold.json, data/gold-history/
+scraper/gold_page.py  /gia-vang/ page from that data
+scraper/check.py      exit 1 if a bank or gold shop has had no fresh data for too long (GitHub emails you)
 tests/                parser tests against saved copies of each bank's page
-.github/workflows/    the schedule (09:17 and 16:17 Vietnam time)
+.github/workflows/    the schedule: banks + gold 09:17 and 16:17; gold only every hour 09:47–21:47 (Vietnam time)
 ```
 
 ## Banks covered (03/11/2026)
@@ -76,6 +78,17 @@ marked "Dữ liệu cũ". To fix:
 - `CF_BEACON_TOKEN`: Cloudflare Web Analytics token. When set, visitor stats are switched on and the
   privacy page gains a paragraph saying so.
 - `CONTACT_EMAIL`: shown on the About, privacy and footer (default `lienhe@tietkiemdau.vn`)
+
+## Gold prices (`/gia-vang/`)
+
+Sources that answer GitHub's servers (checked 11/2026): PNJ's JSON feed, Phú Quý's price board and
+Bảo Tín Mạnh Hải's homepage. SJC, DOJI and Bảo Tín Minh Châu block automated access, so SJC bars are
+shown at the prices PNJ and Phú Quý sell them. World price: gold-api.com (USD/ounce) × Vietcombank's
+USD selling rate, × 37,5 ÷ 31,1035 for one lượng.
+
+All prices are stored as đồng per lượng. A shop that fails keeps its last prices marked "dữ liệu cũ";
+the run fails (email) only after 24 hours without fresh prices. Fix a broken shop the same way as a
+bank: save its page over `tests/fixtures/gold/<file>`, adjust its class in `scraper/gold.py`, run pytest.
 
 ## Hand-entered banks (`data/manual/<code>.json`)
 

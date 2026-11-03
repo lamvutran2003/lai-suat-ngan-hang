@@ -235,6 +235,11 @@ def build() -> None:
     from . import guides as gd, pages as gp
     guide_pages, guides = gd.guide_pages(data, generated, SITE_URL)
     gp.GUIDE_LINKS[:] = [(g["slug"], g["h1"]) for g in guides]
+    gold_path = ROOT / "data" / "gold.json"
+    gold = json.loads(gold_path.read_text(encoding="utf-8")) if gold_path.exists() else None
+    if gold:
+        from .gold_page import gold_summary
+        gp.GOLD_LINE[:] = [html.escape(gold_summary(gold))]
 
     # Homepage
     updated_vn = generated.strftime("%d/%m/%Y")
@@ -272,6 +277,10 @@ def build() -> None:
                        for b in gp.banks_with_data(data)]
     generated_pages += [gp.term_page(data, data["changes"], t, generated) for t in gp.term_pages(data)]
     generated_pages += guide_pages
+    if gold:
+        from .gold_page import gold_page
+        generated_pages.append(gold_page(gold, datetime.fromisoformat(gold["generated_at"])))
+        shutil.copyfile(gold_path, DIST / "gold.json")
     for slug, title, desc, gbody in generated_pages:
         url = f"{SITE_URL}/{slug}/"
         out = DIST / slug
