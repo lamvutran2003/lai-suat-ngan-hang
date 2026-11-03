@@ -25,6 +25,8 @@ DEFAULT_CHANNEL = "online"
 DEFAULT_AMOUNT = 100_000_000
 CHANGE_WINDOW_DAYS = 30                  # arrows show changes made within this window
 CH = {"online": "Online", "counter": "Tại quầy"}
+SLUG = {"vcb": "vietcombank", "bidv": "bidv", "vietin": "vietinbank", "agri": "agribank",
+        "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb"}
 TICKER = {"vcb": "VCB", "bidv": "BID", "vietin": "CTG", "agri": "AGR", "acb": "ACB",
           "tpb": "TPB", "stb": "STB", "ocb": "OCB"}
 
@@ -95,7 +97,7 @@ def static_table(data, changes, ch=DEFAULT_CHANNEL, amount=DEFAULT_AMOUNT) -> st
     for t in TABLE_TERMS:  # flag the best only when at most two banks share it (same rule as the page JS)
         top = max((c[t]["rate"] for _, c in rows if c[t]), default=None)
         best[t] = top if sum(1 for _, c in rows if c[t] and c[t]["rate"] == top) <= 2 else None
-    head = "".join(f'<th scope="col">{t} tháng</th>' for t in TABLE_TERMS)
+    head = "".join(f'<th scope="col"><a href="/ky-han/{t}-thang/">{t} tháng</a></th>' for t in TABLE_TERMS)
     body = []
     for b, cells in rows:
         tds = []
@@ -114,7 +116,7 @@ def static_table(data, changes, ch=DEFAULT_CHANNEL, amount=DEFAULT_AMOUNT) -> st
             flag = '<span class="flag">Cao nhất</span>' if cls else ""
             tds.append(f'<td class="r{cls}"><span class="v">{fmt(r["rate"])}</span>{arrow}{flag}</td>')
         body.append(f'<tr><th scope="row"><span class="tick">{TICKER.get(b["code"], b["code"].upper())}</span>'
-                    f'<span class="bn">{html.escape(b["name"])}</span></th>{"".join(tds)}</tr>')
+                    f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{html.escape(b["name"])}</a></th>{"".join(tds)}</tr>')
     return (f'<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>{head}</tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table>')
 
@@ -230,6 +232,7 @@ def build() -> None:
         **common, "__PAGE_URL__": SITE_URL + "/",
         "__RATES_JSON__": safe_json(data), "__AFFILIATES_JSON__": safe_json(affiliates),
         "__STATIC_TABLE__": static_table(data, data["changes"]),
+        "__BROWSE__": __import__("scraper.pages", fromlist=["x"]).browse_links(data),
     })
     home_title = f"Lãi suất tiết kiệm hôm nay {updated_vn} | Tiết Kiệm Đâu?"
     (DIST / "index.html").write_text(full_page(home_title, home_desc, SITE_URL + "/", home_body, css), encoding="utf-8")
@@ -250,6 +253,19 @@ def build() -> None:
         (out / "index.html").write_text(full_page(meta.get("title", slug), meta.get("description", ""), url, body, css),
                                         encoding="utf-8")
         pages.append((f"/{slug}/", None))
+
+    # Generated pages: one per bank with data, one per common term
+    from . import pages as gp
+    browse = gp.browse_links(data)
+    generated_pages = [gp.bank_page(data, data["changes"], b, generated) for b in gp.banks_with_data(data)]
+    generated_pages += [gp.term_page(data, data["changes"], t, generated) for t in gp.term_pages(data)]
+    for slug, title, desc, gbody in generated_pages:
+        url = f"{SITE_URL}/{slug}/"
+        out = DIST / slug
+        out.mkdir(parents=True, exist_ok=True)
+        page_html = full_page(title, desc, url, fill(header + gbody + "\n" + footer, {**common, "__PAGE_URL__": url}), css)
+        (out / "index.html").write_text(page_html, encoding="utf-8")
+        pages.append((f"/{slug}/", generated.date().isoformat()))
 
     # Static files (icons, share image) go to the site root
     for f in (SITE / "static").glob("*"):

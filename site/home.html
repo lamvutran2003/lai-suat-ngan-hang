@@ -43,6 +43,10 @@
     </div>
   </section>
 
+  <section class="calc gutter" aria-label="Xem chi tiết">
+    <div class="wrap">__BROWSE__</div>
+  </section>
+
   <section class="sources-sec gutter" aria-labelledby="srcH">
     <div class="wrap" style="display:grid;gap:12px">
       <h2 id="srcH">Nguồn dữ liệu</h2>
@@ -59,6 +63,7 @@
   const D = JSON.parse(document.getElementById("rates-data").textContent);
   let AFF = {}; try { AFF = JSON.parse(document.getElementById("affiliates-data").textContent) || {}; } catch(e){}
   const CHG = D.changes || {};
+  const SLUG = {vcb:"vietcombank",bidv:"bidv",vietin:"vietinbank",agri:"agribank",acb:"acb",tpb:"tpbank",stb:"sacombank",ocb:"ocb"};
   const TICK = {vcb:"VCB",bidv:"BID",vietin:"CTG",agri:"AGR",acb:"ACB",tpb:"TPB",stb:"STB",ocb:"OCB"};
   const CH = {online:"Online", counter:"Tại quầy"};
   const TABLE_TERMS = [1,3,6,12,24];
@@ -107,11 +112,11 @@
       const top = Math.max(...rs.map(x => x.cells[t]?.rate || 0));
       best[t] = rs.filter(x => x.cells[t]?.rate === top).length <= 2 ? top : null;
     }
-    const body = rs.map(({b, cells}) => `<tr><th scope="row"><span class="tick">${TICK[b.code]||b.code.toUpperCase()}</span><span class="bn">${esc(b.name)}</span></th>${
+    const body = rs.map(({b, cells}) => `<tr><th scope="row"><span class="tick">${TICK[b.code]||b.code.toUpperCase()}</span><a class="bn" href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a></th>${
       TABLE_TERMS.map(t => { const r = cells[t]; if (!r) return `<td class="na">–</td>`;
         const top = r.rate === best[t];
         return `<td class="r${top?" best":""}"><span class="v">${pct(r.rate)}</span>${arrow(r)}${top?'<span class="flag">Cao nhất</span>':""}</td>`; }).join("")}</tr>`).join("");
-    $("tableWrap").innerHTML = `<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>${TABLE_TERMS.map(t=>`<th scope="col">${t} tháng</th>`).join("")}</tr></thead><tbody>${body}</tbody></table>`;
+    $("tableWrap").innerHTML = `<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>${TABLE_TERMS.map(t=>`<th scope="col"><a href="/ky-han/${t}-thang/">${t} tháng</a></th>`).join("")}</tr></thead><tbody>${body}</tbody></table>`;
     const missing = D.banks.filter(b => !rs.some(x => x.b.code === b.code)).map(b => b.name);
     $("tableNote").textContent = `Mức lãi cho khoản gửi ${vnd(state.amount)} ₫, xếp theo kỳ hạn 12 tháng. ` +
       `Kỳ hạn dưới 6 tháng bị giới hạn tối đa 4,75%/năm theo quy định của Ngân hàng Nhà nước.` +

@@ -9,6 +9,8 @@ scraper/run.py        fetch all banks, validate, write data/rates.json + data/hi
 scraper/build_site.py assemble site/ -> dist/ (all pages, rates.json, sitemap, robots, icons)
 site/home.html        homepage (rate table + calculator)
 site/pages/*.html     text pages; each becomes /<file-name>/ (title/description in the top comment)
+scraper/pages.py      generated pages: /ngan-hang/<bank>/ for each bank with data, /ky-han/<n>-thang/ for
+                      terms 1–36 months that at least 3 banks publish; all text computed from the data
 site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
 site/static/          favicon, share image (og.png): copied to the site root
 scraper/check.py      exit 1 if any bank failed (triggers GitHub's failure email)
