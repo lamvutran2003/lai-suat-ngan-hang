@@ -36,5 +36,12 @@
   $("shareBottom").addEventListener("click", share);
   $("copyLink").addEventListener("click", copyLink);
   $("fbShare").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(URL_);
+  // Copy buttons (referral codes): copy, confirm, or select the text if the browser refuses.
+  document.addEventListener("click", async e => {
+    const b = e.target.closest("button[data-copy]"); if (!b) return;
+    const code = b.dataset.copy;
+    try { await navigator.clipboard.writeText(code); toast(`Đã sao chép mã ${code}`); }
+    catch(err){ const r = document.createRange(); r.selectNodeContents(b.querySelector("b") || b); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast(`Mã giới thiệu: ${code}`); }
+  });
 })();
 </script>

@@ -211,6 +211,9 @@ def build() -> None:
     data = json.loads((ROOT / "data" / "rates.json").read_text(encoding="utf-8"))
     aff_path = ROOT / "data" / "affiliates.json"
     affiliates = json.loads(aff_path.read_text(encoding="utf-8")) if aff_path.exists() else {}
+    # Accept the old form {"tpb": "https://..."} as well as full objects.
+    affiliates = {k: ({"url": v, "label": "Mở tài khoản online"} if isinstance(v, str) else v)
+                  for k, v in affiliates.items() if v}
     generated = datetime.fromisoformat(data["generated_at"])
     data["changes"] = compute_changes(data["rates"], HISTORY, generated.date())
     data["site_url"] = SITE_URL + "/"
@@ -262,7 +265,8 @@ def build() -> None:
     # Generated pages: one per bank with data, one per common term
     from . import pages as gp
     browse = gp.browse_links(data)
-    generated_pages = [gp.bank_page(data, data["changes"], b, generated) for b in gp.banks_with_data(data)]
+    generated_pages = [gp.bank_page(data, data["changes"], b, generated, affiliates.get(b["code"]))
+                       for b in gp.banks_with_data(data)]
     generated_pages += [gp.term_page(data, data["changes"], t, generated) for t in gp.term_pages(data)]
     for slug, title, desc, gbody in generated_pages:
         url = f"{SITE_URL}/{slug}/"

@@ -1,0 +1,14 @@
+{
+  "tpb": {
+    "network": "AccessTrade",
+    "url": "https://go.isclix.com/deep_link/v6/7105208598048534451/6185948314413521231?sub4=oneatweb&url_enc=aHR0cHM6Ly9scC5jYWlhcHAub25saW5lL2Rhbmcta3k%3D",
+    "label": "Mở tài khoản TPBank online",
+    "code": "AT",
+    "steps": [
+      "Sao chép mã giới thiệu ở trên.",
+      "Tải app TPBank, đăng ký tài khoản và dán mã vào ô \"Mã giới thiệu\".",
+      "Quay lại trang đăng ký vừa mở để điền họ tên, số điện thoại, số tài khoản và hoàn tất."
+    ],
+    "note": "Dùng trên điện thoại. Mã này không ảnh hưởng quyền lợi của bạn và giúp Tiết Kiệm Đâu? duy trì miễn phí."
+  }
+}

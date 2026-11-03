@@ -1,4 +1,11 @@
 {
-  "bidv": "https://your-affiliate-link-for-bidv-online-savings",
-  "tpb": "https://your-affiliate-link-for-tpbank"
+  "tpb": {
+    "network": "AccessTrade",
+    "url": "https://go.isclix.com/...your tracking link...",
+    "label": "Mở tài khoản TPBank online",
+    "code": "AT",
+    "steps": ["Step 1", "Step 2", "Step 3"],
+    "note": "Short note shown under the steps"
+  },
+  "vcb": "https://a-plain-link-also-works.example"
 }

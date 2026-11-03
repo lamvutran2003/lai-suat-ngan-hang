@@ -98,8 +98,23 @@ def as_of_line(b, generated: datetime) -> str:
             f'<a href="{E(b["source_url"])}" target="_blank" rel="noopener">Nguồn: website {E(b["name"])}</a>{stale}')
 
 
+def aff_box(aff: dict | None) -> str:
+    """Sponsored sign-up box (affiliate). Labelled, never affects ranking; shows the referral code to copy."""
+    if not aff:
+        return ""
+    steps = "".join(f"<li>{E(s)}</li>" for s in aff.get("steps", []))
+    code = aff.get("code")
+    code_btn = (f'<div class="aff-code"><span>Mã giới thiệu</span><button class="code" type="button" data-copy="{E(code)}">'
+                f'<b>{E(code)}</b><span>Sao chép</span></button></div>') if code else ""
+    note = f'<p class="aff-note">{E(aff["note"])}</p>' if aff.get("note") else ""
+    return (f'<aside class="aff" aria-label="Liên kết tài trợ"><div class="aff-top">'
+            f'<a class="aff-btn" href="{E(aff["url"])}" target="_blank" rel="sponsored noopener">{E(aff["label"])} →</a>'
+            f'<span class="aff-tag">Liên kết tài trợ</span></div>'
+            f'{code_btn}{f"<ol class=aff-steps>{steps}</ol>" if steps else ""}{note}</aside>')
+
+
 # ---------------------------------------------------------------- bank page
-def bank_page(data, changes, b, generated: datetime):
+def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
     code, name = b["code"], b["name"]
     rates = [r for r in data["rates"] if r["bank"] == code]
     terms = sorted({r["term_months"] for r in rates})
@@ -204,6 +219,7 @@ def bank_page(data, changes, b, generated: datetime):
 <div><h1>Lãi suất {E(name)} hôm nay</h1><p class="lede">{E(top_txt)} Cập nhật ngày {date_vn}.</p></div></div>
 <p class="srcline">{as_of_line(b, generated)}</p>
 <div class="tiles">{tiles_html}</div>
+{aff_box(aff)}
 {"".join(sections)}
 <section class="block"><h2>Câu hỏi thường gặp</h2>{qa_html}</section>
 <p class="sub">Lãi suất dành cho khách hàng cá nhân thông thường, chưa gồm ưu đãi riêng. Mũi tên ▲ ▼ cho biết mức lãi đã thay đổi trong 30 ngày gần nhất.

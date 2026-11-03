@@ -156,7 +156,9 @@
         <span class="rank">${i+1}</span>
         <div class="who">${logo(x.b.code)}<strong>${esc(x.b.name)}</strong>${(x.r.notes||[]).length?`<span class="meta">${esc(x.r.notes[0])}</span>`:""}</div>
         <div class="fig"><div class="pay">+${vnd(x.interest)} ₫</div><div class="rate">${pct(x.r.rate)}%/năm · nhận ${vnd(state.amount + x.interest)} ₫</div></div>
-        ${aff?`<a class="cta" href="${esc(aff)}" target="_blank" rel="sponsored noopener">Mở tài khoản ${esc(x.b.name)} →</a>`:""}
+        ${aff?`<div class="cta aff-mini"><a href="${esc(aff.url)}" target="_blank" rel="sponsored noopener">${esc(aff.label || "Mở tài khoản online")} →</a>`+
+          (aff.code?` <span>nhập mã</span> <button class="code sm" type="button" data-copy="${esc(aff.code)}"><b>${esc(aff.code)}</b><span>Sao chép</span></button>`:"")+
+          ` <span class="aff-tag">Liên kết tài trợ</span></div>`:""}
       </li>`; }).join("");
     // Insight: biggest online-vs-counter gap at this term, else best vs worst spread.
     let gap = null;
