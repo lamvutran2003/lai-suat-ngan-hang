@@ -232,6 +232,9 @@ def build() -> None:
     }
     DIST.mkdir(exist_ok=True)
     pages = []  # (path, lastmod)
+    from . import guides as gd, pages as gp
+    guide_pages, guides = gd.guide_pages(data, generated, SITE_URL)
+    gp.GUIDE_LINKS[:] = [(g["slug"], g["h1"]) for g in guides]
 
     # Homepage
     updated_vn = generated.strftime("%d/%m/%Y")
@@ -263,12 +266,12 @@ def build() -> None:
                                         encoding="utf-8")
         pages.append((f"/{slug}/", None))
 
-    # Generated pages: one per bank with data, one per common term
-    from . import pages as gp
+    # Generated pages: one per bank with data, one per common term, the guides
     browse = gp.browse_links(data)
     generated_pages = [gp.bank_page(data, data["changes"], b, generated, affiliates.get(b["code"]))
                        for b in gp.banks_with_data(data)]
     generated_pages += [gp.term_page(data, data["changes"], t, generated) for t in gp.term_pages(data)]
+    generated_pages += guide_pages
     for slug, title, desc, gbody in generated_pages:
         url = f"{SITE_URL}/{slug}/"
         out = DIST / slug

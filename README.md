@@ -10,6 +10,8 @@ scraper/build_site.py assemble site/ -> dist/ (all pages, rates.json, sitemap, r
 site/home.html        homepage (rate table + calculator)
 site/pages/*.html     text pages; each becomes /<file-name>/ (title/description in the top comment)
 site/pages/tinh-lai-vay.html  mortgage/loan calculator (promo rate then floating; reducing balance or equal instalments)
+site/guides/*.html    guides -> /huong-dan/<file-name>/ ; {{tokens}} in the text are filled with today's
+                      figures by scraper/guides.py (token list at the top of that file)
 scraper/pages.py      generated pages: /ngan-hang/<bank>/ for each bank with data, /ky-han/<n>-thang/ for
                       terms 1–36 months that at least 3 banks publish; all text computed from the data
 site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
@@ -101,6 +103,13 @@ and keeps the previous numbers, so a typo can't reach the site.
 
 A bank with no watcher (e.g. MB, whose site blocks scripts) asks for a re-check after
 14 days instead: open its rate page, compare, and set `"checked_at"` to today.
+
+## Guides (`site/guides/`)
+
+Each guide is an HTML fragment with a top comment (`title`, `h1`, `description`, `summary`, `order`).
+Figures that depend on rates are written as tokens, e.g. `{{best_rate:12}}` or `{{amount_table}}`,
+so they stay current without editing. Laws and limits in the text (deposit insurance 350 triệu,
+the 4,75% cap, early-withdrawal rules) are written by hand: re-check them when the rules change.
 
 ## Affiliate links
 

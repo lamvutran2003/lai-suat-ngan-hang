@@ -14,6 +14,7 @@ E = html.escape
 EXAMPLE = 100_000_000                 # deposit used for worked examples and rankings
 TERM_PAGES = [1, 3, 6, 9, 12, 18, 24, 36]
 MIN_BANKS_FOR_TERM_PAGE = 3
+GUIDE_LINKS: list[tuple[str, str]] = []   # (slug, title) of guides; set by build_site
 
 
 def vnd(n: float) -> str:
@@ -81,8 +82,11 @@ def browse_links(data, current_bank=None, current_term=None) -> str:
     terms = "".join(
         f'<a class="chip{" on" if t == current_term else ""}" href="/ky-han/{t}-thang/">{t} tháng</a>'
         for t in term_pages(data))
+    guides = "".join(f'<li><a href="/huong-dan/{slug}/">{E(h1)}</a></li>' for slug, h1 in GUIDE_LINKS)
+    guides = (f'<h2>Hướng dẫn gửi tiết kiệm</h2><ul class="guide-list compact">{guides}</ul>'
+              f'<p class="sub"><a href="/huong-dan/">Xem tất cả hướng dẫn →</a></p>') if guides else ""
     return (f'<div class="browse"><h2>Xem theo ngân hàng</h2><div class="chips">{banks}</div>'
-            f'<h2>Xem theo kỳ hạn</h2><div class="chips">{terms}</div></div>')
+            f'<h2>Xem theo kỳ hạn</h2><div class="chips">{terms}</div>{guides}</div>')
 
 
 def term_pages(data):
@@ -180,7 +184,7 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
         q_int = interest(EXAMPLE, r12[0], 12)
         qa.append((f"Gửi 100 triệu ở {name} kỳ hạn 12 tháng được bao nhiêu tiền lãi?",
                    f"Với mức {fmt(r12[0])}%/năm ({CH[r12[1]].lower()}), 100.000.000 ₫ gửi 12 tháng nhận khoảng "
-                   f"<b>{vnd(q_int)} ₫</b> tiền lãi, tổng cộng {vnd(EXAMPLE + q_int)} ₫ khi đáo hạn (lãi trả cuối kỳ, chưa trừ thuế)."))
+                   f"<b>{vnd(q_int)} ₫</b> tiền lãi, tổng cộng {vnd(EXAMPLE + q_int)} ₫ khi đáo hạn (lãi trả cuối kỳ, được miễn thuế thu nhập cá nhân)."))
     on = [r for r in rates if r["channel"] == "online"]
     co = [r for r in rates if r["channel"] == "counter"]
     if on and co:

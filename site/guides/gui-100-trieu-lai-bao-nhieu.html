@@ -1,0 +1,32 @@
+<!--
+title: Gửi 100 triệu, 500 triệu, 1 tỷ tiết kiệm lãi bao nhiêu một tháng?
+h1: Gửi 100 triệu, 500 triệu, 1 tỷ lãi bao nhiêu?
+description: Bảng tiền lãi khi gửi tiết kiệm 50 triệu, 100 triệu, 200 triệu, 500 triệu, 1 tỷ theo lãi suất cao nhất hôm nay, kỳ hạn 1, 6 và 12 tháng, cập nhật mỗi ngày.
+summary: Bảng tiền lãi theo số tiền và kỳ hạn, tính bằng lãi suất cao nhất hôm nay.
+order: 2
+-->
+<p>Câu hỏi "gửi 100 triệu lãi bao nhiêu" có hai cách hiểu: gửi kỳ hạn 1 tháng thì cuối tháng nhận bao nhiêu, hoặc gửi cả năm thì bình quân mỗi tháng được bao nhiêu. Bảng dưới đây trả lời cả hai, dùng mức lãi suất cao nhất hôm nay trong {{bank_count}} ngân hàng chúng tôi theo dõi.</p>
+
+<h2>Bảng tiền lãi theo số tiền gửi</h2>
+{{amount_table}}
+<p class="sub">Mỗi ô là tiền lãi nhận được khi đáo hạn, tính theo mức lãi cao nhất cho đúng số tiền đó (số nhỏ bên dưới là lãi suất %/năm), lãi trả cuối kỳ. Cột cuối là tiền lãi 12 tháng chia đều cho 12. Số liệu ngày {{updated}}.</p>
+
+<h2>Gửi 100 triệu kỳ hạn 1 tháng được bao nhiêu?</h2>
+<p>Khoảng {{best_interest:100000000:1}}. Kỳ hạn dưới 6 tháng bị Ngân hàng Nhà nước giới hạn lãi suất tối đa 4,75%/năm, nên số tiền lãi ở kỳ hạn này gần như giống nhau giữa các ngân hàng. Muốn nhận lãi cao hơn rõ rệt, bạn cần gửi từ 6 tháng trở lên.</p>
+
+<h2>Gửi 100 triệu trong 1 năm được bao nhiêu?</h2>
+<p>Với mức cao nhất hôm nay là {{best_rate:12}}/năm tại {{best_where:12}}, 100 triệu gửi 12 tháng nhận khoảng {{best_interest:100000000:12}} tiền lãi. Gửi 1 tỷ trong 12 tháng nhận khoảng {{best_interest:1000000000:12}}.</p>
+<p>Đừng chia số tiền thành nhiều sổ 1 tháng rồi gửi quay vòng nếu bạn không cần dùng tiền trong năm: tổng tiền lãi thấp hơn hẳn so với một sổ 12 tháng. Xem bảng so sánh trong bài <a href="/huong-dan/nen-gui-ky-han-nao/">nên gửi kỳ hạn nào</a>.</p>
+
+<h2>Muốn có 10 triệu tiền lãi mỗi tháng cần gửi bao nhiêu?</h2>
+<p>Theo lãi suất 12 tháng cao nhất hôm nay, bạn cần gửi khoảng {{need_monthly:10000000}} để có trung bình 10 triệu đồng tiền lãi mỗi tháng. Với 5 triệu mỗi tháng, con số là khoảng {{need_monthly:5000000}}.</p>
+<p>Nếu muốn tiền lãi về tài khoản đều đặn hằng tháng thay vì chờ cuối kỳ, hãy chọn hình thức lĩnh lãi hàng tháng. Lãi suất của hình thức này thường thấp hơn một chút; xem <a href="/huong-dan/linh-lai-cuoi-ky-hay-hang-thang/">so sánh các cách lĩnh lãi</a>.</p>
+
+<h2>Gửi số tiền lớn cần lưu ý gì?</h2>
+<ul>
+  <li><b>Một số ngân hàng trả lãi cao hơn cho khoản gửi lớn.</b> Vì vậy mức lãi cao nhất cho 1 tỷ có thể khác mức cho 100 triệu. Hãy nhập đúng số tiền của bạn trong <a href="/#tinh-lai">công cụ tính lãi</a>.</li>
+  <li><b>Bảo hiểm tiền gửi chỉ chi trả tối đa 350 triệu đồng</b> cho mỗi người tại mỗi ngân hàng, gồm cả gốc và lãi. Với số tiền lớn hơn, bạn có thể chia ra nhiều ngân hàng. Xem <a href="/huong-dan/bao-hiem-tien-gui/">bảo hiểm tiền gửi hoạt động thế nào</a>.</li>
+  <li><b>Chia thành nhiều sổ.</b> Nếu có thể cần một phần tiền trước hạn, chia thành vài sổ nhỏ giúp bạn chỉ phải rút một sổ thay vì mất lãi cả khoản.</li>
+</ul>
+
+<p>Lãi tiền gửi tiết kiệm được miễn thuế thu nhập cá nhân, nên các con số trên là số tiền bạn thực nhận. Cách tính chi tiết theo ngày có trong bài <a href="/huong-dan/cach-tinh-lai-tiet-kiem/">cách tính lãi tiết kiệm</a>.</p>

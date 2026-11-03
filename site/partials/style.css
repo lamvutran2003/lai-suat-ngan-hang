@@ -272,3 +272,24 @@ h2{font-size:20px;font-weight:700}
 .who{flex-wrap:nowrap}
 .who strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .who .meta{display:none}
+
+/* Guides */
+.guide{gap:12px}
+.guide .formula{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;font-weight:600;font-variant-numeric:tabular-nums}
+.guide .example{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:4px 16px 12px}
+.guide .example p,.guide .example li{font-variant-numeric:tabular-nums}
+.guide .card{margin:2px 0}
+.guide .sub{margin:0}
+.guide .refs{font-size:14px}
+.rates.guide-tbl{min-width:0}
+.rates.guide-tbl td:not(.r){font-size:14px;color:var(--muted)}
+.guide-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+.guide-list li{border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:4px;background:var(--bg)}
+.guide-list li a{font-weight:600;text-decoration:none;color:var(--ink)}
+.guide-list li a:hover{color:var(--primary);text-decoration:underline}
+.guide-list li span{font-size:14px;color:var(--muted);line-height:1.5}
+.guide-list.compact li{padding:10px 14px}
+/* very narrow phones: the header share button gives way (sharing stays in the footer) */
+@media (max-width:400px){#shareTop{display:none}}
+.guide>p,.guide>ul,.guide>.formula{margin:0}
+.guide>h2{margin:16px 0 0}
