@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T16:11+07:00",
+ "generated_at": "2026-11-04T16:53+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-04T15:27+07:00",
-   "fetched_at": "2026-11-04T16:11+07:00",
+   "fetched_at": "2026-11-04T16:53+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -126,8 +126,8 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-04T16:08+07:00",
-   "fetched_at": "2026-11-04T16:11+07:00",
+   "updated": "2026-11-04T16:47+07:00",
+   "fetched_at": "2026-11-04T16:53+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -186,7 +186,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-04T14:30+07:00",
-   "fetched_at": "2026-11-04T16:11+07:00",
+   "fetched_at": "2026-11-04T16:53+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
@@ -216,11 +216,11 @@
   }
  ],
  "world": {
-  "usd_oz": 4046.1,
-  "usd_vnd": 25930.0,
-  "vnd_luong": 126491537,
-  "updated": "2026-11-04T09:11:29Z",
-  "fx_updated": "2026-11-04T08:53:36+07:00",
+  "usd_oz": 4045.0,
+  "usd_vnd": 25910.0,
+  "vnd_luong": 126359608,
+  "updated": "2026-11-04T09:53:29Z",
+  "fx_updated": "2026-11-04T16:17:05+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
   "stale": false
