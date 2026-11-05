@@ -5,10 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Eximbank certificate chain
+      - name: BVBank PDF and Eximbank with the missing intermediate
         run: |
-          echo | openssl s_client -connect media.eximbank.com.vn:443 -servername media.eximbank.com.vn -showcerts 2>/dev/null > chain.txt || true
-          grep -E "^ *[0-9] s:|^ *i:" chain.txt | sed 's/^/EIBCHAIN /'
-          openssl x509 -in <(awk '/BEGIN CERT/{f=1} f{print} /END CERT/{exit}' chain.txt) -noout -text | grep -A2 "Authority Information Access" | sed 's/^/EIBAIA /'
+          curl -sS -m 30 -o bvb.pdf -w "BVBPDF %{http_code} %{size_download}\n" "https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf"
+          curl -sS -m 30 http://cacerts.digicert.com/DigiCertG5TLSRSA4096SHA3842021CA1-1.crt -o inter.der && openssl x509 -inform der -in inter.der -out inter.pem && openssl x509 -in inter.pem -noout -subject -issuer -fingerprint -sha256 | sed 's/^/EIBINTER /'
+          cat /etc/ssl/certs/ca-certificates.crt inter.pem > bundle.pem
+          curl -sS -m 40 --cacert bundle.pem -o eib.pdf -w "EIBPDF %{http_code} %{size_download}\n" "https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf" || echo "EIBPDF failed"
+          pip install -q pdfplumber && python -c "
+          import pdfplumber
+          for f in ('bvb.pdf','eib.pdf'):
+              try:
+                  with pdfplumber.open(f) as p: t=p.pages[0].extract_text() or ''; print('PDFTEXT', f, len(p.pages), repr(t[:1500]))
+              except Exception as e: print('PDFTEXT', f, 'ERR', e)"
       - run: pip install -q playwright && python -m playwright install --with-deps chromium >/dev/null 2>&1
-      - run: python .github/probe/sniff.py
+      - run: python .github/probe/direct.py
