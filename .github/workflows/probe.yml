@@ -4,16 +4,12 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          python3 - <<'PY'
-          import json, urllib.request, base64
-          H={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36","Content-Type":"application/json","Referer":"https://lpbank.com.vn/ca-nhan/lai-suat","Origin":"https://lpbank.com.vn"}
-          out={}
-          for cat in ("TK_TTQ_KHCN","TK_ONLINE"):
-              r=urllib.request.Request("https://lpbank.com.vn/api/content-service/public/interest-rate/findAll", data=json.dumps({"category":cat}).encode(), headers=H)
-              out[cat]=json.load(urllib.request.urlopen(r, timeout=30))
-          s=json.dumps(out, ensure_ascii=False)
-          print("LPBFIXTURE", base64.b64encode(s.encode()).decode())
-          for x in out["TK_TTQ_KHCN"]["data"]:
-              print("LPBQ", x["recordType"], x["channel"], x["groupInterest"], x["term"], x["startValue"], x["monthValue"], x["quarterValue"], x["endValue"], x["lsVnd"], x["effectiveDate"][:10], (x["description"] or "")[:100].replace("\n"," "))
-          PY
+      - name: Fetch LPBank
+        run: |
+          H='Content-Type: application/json'
+          for cat in TK_TTQ_KHCN TK_ONLINE; do
+            curl -sS -m 30 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130" -H "$H" -H "Referer: https://lpbank.com.vn/ca-nhan/lai-suat" -H "Origin: https://lpbank.com.vn" \
+              -d "{\"category\":\"$cat\"}" https://lpbank.com.vn/api/content-service/public/interest-rate/findAll -o $cat.json
+            echo "LPBSIZE $cat $(wc -c < $cat.json)"
+          done
+          python3 -c "import json; print('LPBFIX', json.dumps({c: json.load(open(c+'.json')) for c in ('TK_TTQ_KHCN','TK_ONLINE')}, ensure_ascii=True))"
