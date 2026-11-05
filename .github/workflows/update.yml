@@ -5,7 +5,13 @@ on:
     - cron: "17 2 * * *"   # 09:17 Vietnam time
     - cron: "17 9 * * *"   # 16:17 Vietnam time (catches afternoon rate changes)
     - cron: "47 2-14 * * *" # gold only: hourly 09:47–21:47 Vietnam time
-  workflow_dispatch:        # "Run workflow" button for a manual refresh
+  workflow_dispatch:        # "Run workflow" button, or an outside timer (cron-job.org) calling the API
+    inputs:
+      mode:
+        description: "all = banks + gold, gold = gold prices only"
+        default: all
+        type: choice
+        options: [all, gold]
 
 permissions:
   contents: write   # commit the day's data/ (builds the rate history)
@@ -15,6 +21,9 @@ permissions:
 concurrency:
   group: update-rates
   cancel-in-progress: false
+
+env:
+  GOLD_ONLY: ${{ github.event.schedule == '47 2-14 * * *' || inputs.mode == 'gold' }}
 
 jobs:
   update:
@@ -36,7 +45,7 @@ jobs:
         run: python -m pytest -q tests
 
       - name: Scrape banks
-        if: github.event.schedule != '47 2-14 * * *'
+        if: env.GOLD_ONLY != 'true'
         run: python -m scraper.run
 
       - name: Scrape gold prices
@@ -68,4 +77,4 @@ jobs:
       # Runs last on purpose: the site still deploys with yesterday's numbers for
       # a broken bank, and this step fails the run so GitHub emails you.
       - name: Alert if any bank or gold scraper broke
-        run: python -m scraper.check ${{ github.event.schedule == '47 2-14 * * *' && '--gold-only' || '' }}
+        run: python -m scraper.check ${{ env.GOLD_ONLY == 'true' && '--gold-only' || '' }}
