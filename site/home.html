@@ -195,18 +195,23 @@
           (aff.code?` <span>nhập mã</span> <button class="code sm" type="button" data-copy="${esc(aff.code)}"><b>${esc(aff.code)}</b><span>Sao chép</span></button>`:"")+
           ` <span class="aff-tag">Liên kết tài trợ</span></div>`:""}
       </li>`; }).join("");
-    // Insight: biggest online-vs-counter gap at this term, else best vs worst spread.
-    let gap = null;
-    for (const b of D.banks){
-      const on = rateFor(b.code,"online",state.term,state.amount), co = rateFor(b.code,"counter",state.term,state.amount);
-      if (on && co && on.rate - co.rate > 0.05 && (!gap || on.rate - co.rate > gap.d)) gap = {b, d: on.rate - co.rate, on: on.rate, co: co.rate};
-    }
-    const ins = $("insight");
-    if (gap){
-      ins.innerHTML = `Ở ${esc(gap.b.name)}, gửi online được <b>${pct(gap.on)}%</b>, cao hơn tại quầy (${pct(gap.co)}%): thêm khoảng <b>${vnd(state.amount*gap.d/100*state.term/12)} ₫</b> cho khoản gửi này.`;
+    // Insight: what choosing the top bank is worth, against a familiar reference. Most people already
+    // keep savings at Vietcombank, so compare with it; otherwise with the lowest bank in this list.
+    const ins = $("insight"), top = q[0];
+    const ref = q.find(x => x.b.code === "vcb" && x.r.rate < top.r.rate) || (q.length > 1 && q[q.length-1].r.rate < top.r.rate ? q[q.length-1] : null);
+    // Counter view: say so when the best online rate for this amount and term beats every counter rate.
+    let online = null;
+    if (state.ch === "counter") for (const b of D.banks){ const r = rateFor(b.code, "online", state.term, state.amount);
+      if (r && r.rate > top.r.rate && (!online || r.rate > online.r.rate)) online = {b, r}; }
+    if (online){
+      ins.innerHTML = `Gửi online, mức cao nhất là <b>${pct(online.r.rate)}%</b> tại ${esc(online.b.name)}: thêm khoảng ` +
+        `<b>${vnd(state.amount*(online.r.rate-top.r.rate)/100*state.term/12)} ₫</b> so với mức tại quầy cao nhất (${esc(top.b.name)}, ${pct(top.r.rate)}%).`;
       ins.hidden = false;
-    } else if (q.length > 1 && q[0].r.rate > q[q.length-1].r.rate){
-      ins.innerHTML = `Chọn ngân hàng cao nhất thay vì thấp nhất giúp bạn nhận thêm <b>${vnd(q[0].interest - q[q.length-1].interest)} ₫</b>.`;
+    } else if (ref){
+      const ties = q.filter(x => x.r.rate === top.r.rate).length;
+      const who = ties > 2 ? `một trong ${ties} ngân hàng trả ${pct(top.r.rate)}%` : `${esc(top.b.name)} (${pct(top.r.rate)}%)`;
+      ins.innerHTML = `Chọn ${who} thay vì ${esc(ref.b.name)} (${pct(ref.r.rate)}%), ` +
+        `bạn nhận thêm khoảng <b>${vnd(top.interest - ref.interest)} ₫</b> tiền lãi sau ${state.term} tháng.`;
       ins.hidden = false;
     } else ins.hidden = true;
   }
