@@ -5,19 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/ca-nhan/lai-suat -o p.html
+          for js in $(grep -oE 'src="[^"]+\.js"' p.html | sed 's/src="//;s/"$//'); do curl -sS -m 25 -A "$UA" "https://lpbank.com.vn/$js" >> all.js; done
+          echo "LPBJS size $(wc -c < all.js)"; grep -oE '"(BD_)?(TK|TG|CCTG|LS)_[A-Z0-9_]{2,40}"' all.js | sort | uniq -c | sort -rn | head -60 | sed 's/^/LPBJS /'
           python3 - <<'PY'
           import json, urllib.request
-          H={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36","Content-Type":"application/json","Referer":"https://lpbank.com.vn/ca-nhan/lai-suat","Origin":"https://lpbank.com.vn"}
-          def post(path, body):
-              r=urllib.request.Request("https://lpbank.com.vn/api/content-service/public/"+path, data=json.dumps(body).encode(), headers=H)
-              return json.load(urllib.request.urlopen(r, timeout=30))
-          for code in (["KHCN_INTEREST_RATE"], ["INTEREST_RATE"], ["KHDN_INTEREST_RATE"]):
-              try:
-                  d=post("common/findAllCommonCategory", {"code": code}); print("LPBCAT", code, json.dumps(d, ensure_ascii=False)[:1500])
-              except Exception as e: print("LPBCAT", code, "ERR", e)
-          for cat in ["TK_CKH_VND","TK_CKH_LLCK","TK_TT_TK_CKH","TK_ONLINE","TK_CKH","TG_CKH_VND","TK_CKH_LLCK_VND"]:
-              try:
-                  d=post("interest-rate/findAll", {"category": cat}); rows=d.get("data") or []
-                  print("LPBDATA", cat, len(rows), json.dumps(rows[:3], ensure_ascii=False)[:900])
-              except Exception as e: print("LPBDATA", cat, "ERR", e)
+          H={"User-Agent":"Mozilla/5.0","Content-Type":"application/json","Referer":"https://lpbank.com.vn/ca-nhan/lai-suat","Origin":"https://lpbank.com.vn"}
+          r=urllib.request.Request("https://lpbank.com.vn/api/content-service/public/interest-rate/findAll", data=b'{"category":"TK_ONLINE"}', headers=H)
+          for x in json.load(urllib.request.urlopen(r, timeout=30))["data"]:
+              print("LPBROW", x["recordType"], x["channel"], x["groupInterest"], x["term"], x["startValue"], x["monthValue"], x["quarterValue"], x["endValue"], x["receivedEndTerm"], x["receivedFirst"], x["withdrawOneTime"], x["lsVnd"], x["effectiveDate"][:10], (x["description"] or "")[:80].replace("\n"," "))
           PY
