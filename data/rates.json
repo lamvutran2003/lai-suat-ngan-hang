@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-05T16:29+07:00",
+ "generated_at": "2026-11-05T16:52+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-05",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 102
   },
   {
@@ -68,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 72
   },
   {
@@ -78,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-24",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 171
   },
   {
@@ -88,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 42
   },
   {
@@ -98,7 +98,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 14
   },
   {
@@ -108,7 +108,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 17
   },
   {
@@ -118,7 +118,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 54
   },
   {
@@ -128,8 +128,42 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 34
+  },
+  {
+   "code": "abb",
+   "name": "ABBank",
+   "source_url": "https://www.abbank.vn/thong-tin/lai-suat",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-21",
+   "fetched_at": "2026-11-05T16:52+07:00",
+   "count": 37
+  },
+  {
+   "code": "vbb",
+   "name": "VietBank",
+   "source_url": "https://www.vietbank.com.vn/lai-suat",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-19",
+   "fetched_at": "2026-11-05T16:52+07:00",
+   "count": 48
+  },
+  {
+   "code": "bvb",
+   "name": "BVBank",
+   "source_url": "https://bvbank.net.vn/",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-19",
+   "fetched_at": "2026-11-05T16:52+07:00",
+   "count": 33,
+   "manual": true,
+   "checked_at": "2026-11-05",
+   "document_url": "https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf",
+   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ."
   },
   {
    "code": "cake",
@@ -138,12 +172,26 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-05",
    "document_url": "https://cake.vn/cong-cu-tien-ich/ty-gia-lai-suat",
    "product": "Tiết kiệm tiêu chuẩn, lĩnh lãi cuối kỳ (ngân hàng số, chỉ gửi online)"
+  },
+  {
+   "code": "eib",
+   "name": "Eximbank",
+   "source_url": "https://eximbank.com.vn/lai-suat-tiet-kiem",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-31",
+   "fetched_at": "2026-11-05T16:52+07:00",
+   "count": 29,
+   "manual": true,
+   "checked_at": "2026-11-05",
+   "document_url": "https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf",
+   "product": "Tại quầy: Tiết kiệm, tiền gửi cá nhân (mục A.1). Online: Tiền gửi Online trên EDigi, ngày thường thứ 2–6, khách hàng chưa phân hạng (mục A.6; cuối tuần lãi cao hơn)."
   },
   {
    "code": "hdb",
@@ -152,12 +200,26 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-05",
    "document_url": "https://cdn.hdbank.com.vn/hdbank-file/document/20261910BIEULAISUATTIENGUIKHACHHANGCANHANKHCNWEBSITEF2TD_1792402278333.pdf",
    "product": "Tiết kiệm có kỳ hạn thông thường (tại quầy) và Tiết kiệm Online VNĐ, lĩnh lãi cuối kỳ. Không gồm mức 7,20% (12 tháng) và 7,10% (13 tháng) chỉ áp dụng cho khoản từ 500 tỷ đồng."
+  },
+  {
+   "code": "ncb",
+   "name": "NCB",
+   "source_url": "https://www.ncb-bank.vn/vi/lai-suat-tien-gui",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-19",
+   "fetched_at": "2026-11-05T16:52+07:00",
+   "count": 38,
+   "manual": true,
+   "checked_at": "2026-11-05",
+   "document_url": "https://www.ncb-bank.vn/InterestRates/2026/10/Bieu%20lai%20suat%20niem%20yet%20-%20hieu%20luc%2019.10.2026%20update.pdf",
+   "product": "Tiết kiệm truyền thống, lĩnh lãi cuối kỳ (tại quầy: Tiết kiệm truyền thống và Tiền gửi có kỳ hạn An Khang; online: Tiết kiệm truyền thống trên Mobile/Internet Banking)."
   },
   {
    "code": "vietin",
@@ -166,7 +228,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -180,7 +242,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-02",
-   "fetched_at": "2026-11-05T16:29+07:00",
+   "fetched_at": "2026-11-05T16:52+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-03",
@@ -6352,6 +6414,1186 @@
    "notes": []
   },
   {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 48,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "counter",
+   "term_months": 60,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 3.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 3.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 5.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 48,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "abb",
+   "channel": "online",
+   "term_months": 60,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 14,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 16,
+   "rate": 5.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 17,
+   "rate": 5.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 19,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 20,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 21,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 22,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 23,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 5.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 14,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 16,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 17,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 19,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 20,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 21,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 22,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 23,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "vbb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.55,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.55,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.55,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 6.05,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 48,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "counter",
+   "term_months": 60,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "bvb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 6.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
    "bank": "cake",
    "channel": "online",
    "term_months": 1,
@@ -6516,6 +7758,296 @@
    "channel": "online",
    "term_months": 36,
    "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "counter",
+   "term_months": 60,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 4.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 4.4,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 4.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 5.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 5.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 5.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "eib",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.2,
    "product": "",
    "min_amount": 0,
    "max_amount": null,
@@ -6856,6 +8388,386 @@
    "channel": "online",
    "term_months": 36,
    "rate": 5.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 5.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 6.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 30,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "counter",
+   "term_months": 60,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.7,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 5.9,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 6.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 6.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 30,
+   "rate": 6.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 6.2,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ncb",
+   "channel": "online",
+   "term_months": 60,
+   "rate": 6.2,
    "product": "",
    "min_amount": 0,
    "max_amount": null,
