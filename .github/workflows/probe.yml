@@ -4,12 +4,11 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch LPBank
-        run: |
-          H='Content-Type: application/json'
-          for cat in TK_TTQ_KHCN TK_ONLINE; do
-            curl -sS -m 30 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130" -H "$H" -H "Referer: https://lpbank.com.vn/ca-nhan/lai-suat" -H "Origin: https://lpbank.com.vn" \
-              -d "{\"category\":\"$cat\"}" https://lpbank.com.vn/api/content-service/public/interest-rate/findAll -o $cat.json
-            echo "LPBSIZE $cat $(wc -c < $cat.json)"
+      - run: |
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/130"
+          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/ca-nhan/lai-suat -o p.html
+          grep -oiE '<link[^>]+(icon)[^>]*>' p.html | sed 's/^/LPBICON /'
+          for u in $(grep -oiE '<link[^>]+icon[^>]*>' p.html | grep -oE 'href="[^"]+"' | sed 's/href="//;s/"$//'); do
+            case "$u" in http*) f="$u";; /*) f="https://lpbank.com.vn$u";; *) f="https://lpbank.com.vn/$u";; esac
+            curl -sS -m 25 -A "$UA" "$f" -o ic.bin && echo "LPBIMG $f $(wc -c < ic.bin) $(base64 -w0 ic.bin)"
           done
-          python3 -c "import json; print('LPBFIX', json.dumps({c: json.load(open(c+'.json')) for c in ('TK_TTQ_KHCN','TK_ONLINE')}, ensure_ascii=True))"
