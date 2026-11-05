@@ -5,27 +5,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/api/content-service/public/category -o cat.json
           python3 - <<'PY'
-          import json,re
-          t=open('cat.json').read(); print("LPBCATLEN", len(t))
-          for code in sorted(set(re.findall(r'"code":"([A-Z0-9_\.]+)"', t))): 
-              if re.search(r'TK|TG|LAI|KKH|CKH|ONLINE|INTEREST', code): print("LPBCODE", code)
-          PY
-          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/runtime.3657c853197766db.js -o rt.js
-          python3 - <<'PY'
-          import re,urllib.request
-          t=open('rt.js').read()
-          names=re.findall(r'(\d+):"([0-9a-f]{16})"', t); print("LPBCHUNKS", len(names))
-          hits=set()
-          for cid,h in names:
-              u=f"https://lpbank.com.vn/{cid}.{h}.js"
-              try: js=urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"Mozilla/5.0"}),timeout=20).read().decode('utf-8','replace')
-              except Exception: continue
-              if 'TK_ONLINE' in js:
-                  for m in re.findall(r'["\']([A-Z]{2}_[A-Z0-9_]{3,40})["\']', js):
-                      if re.search(r'TK|TG|KKH|CKH|ONLINE', m): hits.add(m)
-                  i=js.find('TK_ONLINE'); print("LPBCTX", cid, js[max(0,i-600):i+600].replace('\n',' ')[:1200])
-          print("LPBHITS", sorted(hits))
+          import json, urllib.request, base64
+          H={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36","Content-Type":"application/json","Referer":"https://lpbank.com.vn/ca-nhan/lai-suat","Origin":"https://lpbank.com.vn"}
+          out={}
+          for cat in ("TK_TTQ_KHCN","TK_ONLINE"):
+              r=urllib.request.Request("https://lpbank.com.vn/api/content-service/public/interest-rate/findAll", data=json.dumps({"category":cat}).encode(), headers=H)
+              out[cat]=json.load(urllib.request.urlopen(r, timeout=30))
+          s=json.dumps(out, ensure_ascii=False)
+          print("LPBFIXTURE", base64.b64encode(s.encode()).decode())
+          for x in out["TK_TTQ_KHCN"]["data"]:
+              print("LPBQ", x["recordType"], x["channel"], x["groupInterest"], x["term"], x["startValue"], x["monthValue"], x["quarterValue"], x["endValue"], x["lsVnd"], x["effectiveDate"][:10], (x["description"] or "")[:100].replace("\n"," "))
           PY
