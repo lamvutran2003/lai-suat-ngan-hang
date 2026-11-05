@@ -27,9 +27,11 @@ CHANGE_WINDOW_DAYS = 30                  # arrows show changes made within this 
 CH = {"online": "Online", "counter": "Tại quầy"}
 SLUG = {"vcb": "vietcombank", "bidv": "bidv", "vietin": "vietinbank", "agri": "agribank",
         "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb", "tcb": "techcombank",
-        "vpb": "vpbank", "mb": "mbbank"}
+        "vpb": "vpbank", "mb": "mbbank", "lpb": "lpbank", "mbv": "mbv", "bab": "bac-a-bank", "nab": "nam-a-bank",
+        "vikki": "vikki-bank", "cake": "cake", "hdb": "hdbank"}
 TICKER = {"vcb": "VCB", "bidv": "BID", "vietin": "CTG", "agri": "AGR", "acb": "ACB",
-          "tpb": "TPB", "stb": "STB", "ocb": "OCB", "tcb": "TCB", "vpb": "VPB", "mb": "MBB"}
+          "tpb": "TPB", "stb": "STB", "ocb": "OCB", "tcb": "TCB", "vpb": "VPB", "mb": "MBB", "lpb": "LPB",
+          "mbv": "MBV", "bab": "BAB", "nab": "NAB", "vikki": "VKB", "cake": "CAKE", "hdb": "HDB"}
 
 
 # ---------------------------------------------------------------- rate lookup
@@ -250,7 +252,7 @@ def build() -> None:
                  f"{best_sentence(data)} Tính tiền lãi theo số tiền và kỳ hạn.")
     home_body = fill(header + read("home.html") + "\n" + footer, {
         **common, "__PAGE_URL__": SITE_URL + "/",
-        "__RATES_JSON__": safe_json(data), "__AFFILIATES_JSON__": safe_json(affiliates),
+        "__RATES_JSON__": safe_json(data), "__AFFILIATES_JSON__": safe_json(affiliates), "__SLUG_JSON__": safe_json(SLUG),
         "__STATIC_TABLE__": static_table(data, data["changes"]),
         "__BROWSE__": __import__("scraper.pages", fromlist=["x"]).browse_links(data),
     })

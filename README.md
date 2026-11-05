@@ -24,7 +24,7 @@ tests/                parser tests against saved copies of each bank's page
 .github/workflows/    the schedule: banks + gold 09:17 and 16:17; gold only every hour 09:47–21:47 (Vietnam time)
 ```
 
-## Banks covered (03/11/2026)
+## Banks covered (05/11/2026)
 
 | Bank | Source type | Counter | Online | Amount tiers |
 |---|---|---|---|---|
@@ -37,13 +37,22 @@ tests/                parser tests against saved copies of each bank's page
 | OCB | PDF linked from the rate page | ✓ | ✓ | ✓ (online) |
 | Techcombank | PDF found via its document-list API (Phát Lộc, normal customer) | ✓ | ✓ | ✓ |
 | VPBank | **Hand-entered** (`data/manual/vpb.json`); watcher spots new sheets | ✓ | ✓ | ✓ |
+| LPBank | JSON API (`TK_TTQ_KHCN` counter, `TK_ONLINE` online) | ✓ | ✓ | |
+| MBV | rate post linked from the site menu; table inside the Next.js page data | ✓ | ✓ | |
+| Bac A Bank | ASP.NET page, VND table after a postback | ✓ | | |
+| Nam A Bank | index page → current online and counter pages | ✓ | ✓ | |
+| Vikki Bank | two HTML pages (HDBank's digital bank) | ✓ | ✓ | |
+| Cake by VPBank | **Hand-entered** (`data/manual/cake.json`), site blocks GitHub; 14-day re-check | | ✓ | |
+| HDBank | **Hand-entered** (`data/manual/hdb.json`), PDF list loads encrypted; 14-day re-check | ✓ | ✓ | |
 
 Switched off: **VietinBank** (`scraper/banks/vietin.py`) — its site refuses
 GitHub's servers (HTTP 405). Its rates matched Vietcombank and BIDV anyway.
 
-Checked and **not covered**: MB (site blocks all automated access; can be hand-entered
-with a 14-day re-check reminder), LPBank, MSB, MBV, BVBank (rates load in ways not yet
-worked out).
+Checked and **not covered** (11/2026): MB (blocks all automated access; hand-enter from screenshots),
+Eximbank (its PDF server has a broken certificate chain), VIB (rate feed uses internal product
+codes), MSB, PGBank, BVBank, SaigonBank, VCBNeo (not yet worked out or block GitHub).
+Wallet "savings" (MoMo Túi Thần Tài, Finhay, Tikop…) are left out on purpose: they are fund
+investments, not bank deposits, so they are not insured and their return is not fixed.
 
 ## Run locally
 

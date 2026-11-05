@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper.banks import acb, agri, bidv, ocb, stb, tcb, tpb, vcb, vietin
+from scraper.banks import acb, agri, bab, bidv, lpb, mbv, nab, ocb, stb, tcb, tpb, vcb, vietin, vikki
 from scraper.common import parse_amount_range, parse_rate, parse_term_months, soup, table_grid
 
 FX = Path(__file__).parent / "fixtures"
@@ -116,3 +116,41 @@ def test_techcombank_phat_loc_normal_customer_bands():
     assert r[("counter", 12, 0)] == 5.75 and r[("counter", 12, 3 * B)] == 5.85      # <1 tỷ / ≥3 tỷ
     assert r[("online", 6, 0)] == 6.05 and r[("online", 12, 1 * B)] == 6.25
     assert r[("counter", 1, 0)] == 4.05 and ("counter", 0, 0) not in r
+
+
+# ---- added 05/11/2026 (pages captured that day)
+
+def test_lpbank_counter_and_online_from_api():
+    r, as_of = rates_of(lpb, "lpb.json")
+    assert as_of == "2026-10-19"                          # effectiveDate 2026-10-18T17:00Z = 19/10 in Vietnam
+    assert r[("counter", 12, 0)] == 6.1 and r[("online", 12, 0)] == 6.7
+    assert r[("online", 6, 0)] == 6.5 and r[("counter", 36, 0)] == 5.6
+    assert not any(k[1] == 0 for k in r)                   # weeks / no-term rows are skipped
+
+
+def test_mbv_takes_the_newest_personal_table():
+    r, as_of = rates_of(mbv, "mbv.html")
+    assert as_of == "2026-10-20"                          # the page also carries older posts (12/11/2025 ...)
+    assert r[("counter", 12, 0)] == 7.0 and r[("online", 6, 0)] == 6.5 and r[("counter", 1, 0)] == 4.5
+
+
+def test_bac_a_vnd_counter_after_postback():
+    r, as_of = rates_of(bab, "bab.html")
+    assert as_of == "2026-10-19"
+    assert r[("counter", 12, 0)] == 6.6 and r[("counter", 6, 0)] == 6.55 and r[("counter", 1, 0)] == 4.75
+    assert not any(ch == "online" for ch, _, _ in r)
+
+
+def test_nam_a_online_and_counter_pages():
+    r, as_of = rates_of(nab, "nab.json")
+    assert as_of == "2026-10-20"
+    assert r[("online", 12, 0)] == 6.1 and r[("online", 24, 0)] == 6.4
+    assert r[("counter", 12, 0)] == 5.7 and r[("counter", 1, 0)] == 4.5
+    assert ("counter", 24, 0) not in r                    # "24 tháng (**)" has no end-of-term rate
+
+
+def test_vikki_skips_special_condition_rows():
+    r, as_of = rates_of(vikki, "vikki.json")
+    assert r[("online", 12, 0)] == 6.1 and r[("counter", 12, 0)] == 6.0   # counter: 365-day column
+    assert r[("counter", 13, 0)] == 6.1                   # not the "13 tháng *" special rate (7,4)
+    assert as_of == "2026-11-03"

@@ -1,0 +1,54 @@
+{
+  "name": "HDBank",
+  "source_url": "https://hdbank.com.vn/vi/personal/cong-cu/interest-rate",
+  "document_url": "https://cdn.hdbank.com.vn/hdbank-file/document/20261910BIEULAISUATTIENGUIKHACHHANGCANHANKHCNWEBSITEF2TD_1792402278333.pdf",
+  "as_of": "2026-10-19",
+  "checked_at": "2026-11-05",
+  "product": "Tiết kiệm có kỳ hạn thông thường (tại quầy) và Tiết kiệm Online VNĐ, lĩnh lãi cuối kỳ. Không gồm mức 7,20% (12 tháng) và 7,10% (13 tháng) chỉ áp dụng cho khoản từ 500 tỷ đồng.",
+  "counter": [
+    {
+      "rates": {
+        "1": 3.5,
+        "2": 3.5,
+        "3": 3.6,
+        "4": 3.6,
+        "5": 3.6,
+        "6": 4.9,
+        "7": 4.7,
+        "8": 4.7,
+        "9": 4.7,
+        "10": 4.7,
+        "11": 4.7,
+        "12": 5.2,
+        "13": 5.4,
+        "15": 5.4,
+        "18": 5.5,
+        "24": 4.9,
+        "36": 4.9
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.2,
+        "2": 4.2,
+        "3": 4.3,
+        "4": 4.3,
+        "5": 4.3,
+        "6": 5.0,
+        "7": 4.8,
+        "8": 4.8,
+        "9": 4.8,
+        "10": 4.8,
+        "11": 4.8,
+        "12": 5.3,
+        "13": 5.5,
+        "15": 5.5,
+        "18": 5.6,
+        "24": 5.0,
+        "36": 5.0
+      }
+    }
+  ]
+}

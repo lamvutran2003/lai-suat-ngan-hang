@@ -29,7 +29,8 @@ MIN_RECORDS = 4          # fewer than this = the parser probably broke
 RATE_RANGE = (0.1, 15.0)  # % per year; anything outside is a parsing error
 FIXTURE_NAMES = {"vcb": "vcb.json", "bidv": "bidv.json", "vietin": "vietin.html",
                  "agri": "agri.html", "acb": "acb.html", "tpb": "tpb.html",
-                 "stb": "stb.pdf", "ocb": "ocb.pdf", "tcb": "tcb.pdf"}
+                 "stb": "stb.pdf", "ocb": "ocb.pdf", "tcb": "tcb.pdf",
+                 "lpb": "lpb.json", "mbv": "mbv.html", "bab": "bab.html", "nab": "nab.json", "vikki": "vikki.json"}
 
 
 def read_fixture(folder: Path, code: str):

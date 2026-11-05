@@ -136,7 +136,7 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
     date_vn = f"{generated:%d/%m/%Y}"
 
     # Headline numbers
-    top = max(rates, key=lambda r: (r["rate"], -r["term_months"], -r["min_amount"]))
+    top = max(rates, key=lambda r: (r["rate"], -r["term_months"], -r["min_amount"], r["channel"] == "online"))
     # Only qualify the headline with an amount band when smaller deposits really get less.
     top_needs_band = not any(r["rate"] == top["rate"] and r["min_amount"] == 0 and r["channel"] == top["channel"]
                              and r["term_months"] == top["term_months"] for r in rates)

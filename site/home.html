@@ -63,7 +63,7 @@
   const D = JSON.parse(document.getElementById("rates-data").textContent);
   let AFF = {}; try { AFF = JSON.parse(document.getElementById("affiliates-data").textContent) || {}; } catch(e){}
   const CHG = D.changes || {};
-  const SLUG = {vcb:"vietcombank",bidv:"bidv",vietin:"vietinbank",agri:"agribank",acb:"acb",tpb:"tpbank",stb:"sacombank",ocb:"ocb",tcb:"techcombank",vpb:"vpbank",mb:"mbbank"};
+  const SLUG = __SLUG_JSON__;   // filled from SLUG in scraper/build_site.py
   const CH = {online:"Online", counter:"Tại quầy"};
   const TABLE_TERMS = [1,3,6,9,12,18,24,36];
   const CALC_TERMS = [1,3,6,12,24,36];
