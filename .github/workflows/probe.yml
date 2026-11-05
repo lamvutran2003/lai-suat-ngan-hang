@@ -6,19 +6,12 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
-          curl -sS -m 25 -L -A "$UA" https://lpbank.com.vn/ -o lpb.html
+          curl -sS -m 25 -L -A "$UA" https://lpbank.com.vn/ca-nhan/lai-suat -o lpb.html
           python3 - <<'PY'
           import re
           t=open('lpb.html',encoding='utf-8',errors='replace').read()
-          links=sorted(set(re.findall(r'href="([^"]*(?:lai-suat|lai_suat|laisuat|interest|bieu)[^"]*)"', t, re.I)))
-          print("LPB links:", links[:40])
-          print("LPB api-ish:", sorted(set(re.findall(r'https?://[^"\' ]*(?:api|json)[^"\' ]*', t)))[:20])
+          print("LPB tables:", t.count('<table'), "next_f:", t.count('self.__next_f'), "NEXT_DATA:", t.count('__NEXT_DATA__'))
+          for k in ['12 tháng','Áp dụng','hiệu lực','Online','cuối kỳ','.pdf','/api/']:
+              idx=[m.start() for m in re.finditer(re.escape(k), t)][:3]
+              for i in idx: print("LPB", repr(k), '|', re.sub(r'\s+',' ',t[max(0,i-150):i+250]).replace('\\"','"')[:400])
           PY
-          for u in https://lpbank.com.vn/lai-suat-tiet-kiem https://lpbank.com.vn/ca-nhan/lai-suat https://lpbank.com.vn/khach-hang-ca-nhan/lai-suat-tien-gui; do
-            printf "%s " $u; curl -sS -m 25 -L -A "$UA" "$u" -o x.html -w "%{http_code} %{size_download}\n"; done
-          curl -sS -m 40 -A "$UA" "https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf" -o eib.pdf -w "eximbank pdf %{http_code} %{size_download}\n" || echo "eximbank curl failed"
-          python3 -c "
-          import ssl,urllib.request
-          try:
-              urllib.request.urlopen('https://media.eximbank.com.vn/exim/files/KHCN-LaisuathuydongUSD.pdf',timeout=30); print('python urllib ok')
-          except Exception as e: print('python urllib', type(e).__name__, str(e)[:120])"
