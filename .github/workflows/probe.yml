@@ -6,10 +6,26 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/ca-nhan/lai-suat -o p.html
-          grep -oE '(src|href)="[^"]+\.js"' p.html | head -20 | sed 's/^/LPBSRC /'
-          for js in $(grep -oE '(src|href)="[^"]+\.js"' p.html | sed -E 's/(src|href)="//;s/"$//'); do case "$js" in http*) u="$js";; /*) u="https://lpbank.com.vn$js";; *) u="https://lpbank.com.vn/$js";; esac; curl -sS -m 25 -A "$UA" "$u" >> all.js; done
-          echo "LPBJS size $(wc -c < all.js)"
-          grep -oE '.{120}TK_ONLINE.{300}' all.js | head -3 | sed 's/^/LPBCTX /'
-          grep -oE '"[A-Z]{2,4}_[A-Z0-9_]{2,40}"' all.js | grep -E 'TK|TG|KKH|CKH|ONLINE' | sort -u | head -80 | tr '\n' ' ' | sed 's/^/LPBCODES /'; echo
-          grep -oE "'[A-Z]{2,4}_[A-Z0-9_]{2,40}'" all.js | grep -E 'TK|TG|KKH|CKH|ONLINE' | sort -u | head -80 | tr '\n' ' ' | sed 's/^/LPBCODES2 /'; echo
+          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/api/content-service/public/category -o cat.json
+          python3 - <<'PY'
+          import json,re
+          t=open('cat.json').read(); print("LPBCATLEN", len(t))
+          for code in sorted(set(re.findall(r'"code":"([A-Z0-9_\.]+)"', t))): 
+              if re.search(r'TK|TG|LAI|KKH|CKH|ONLINE|INTEREST', code): print("LPBCODE", code)
+          PY
+          curl -sS -m 25 -A "$UA" https://lpbank.com.vn/runtime.3657c853197766db.js -o rt.js
+          python3 - <<'PY'
+          import re,urllib.request
+          t=open('rt.js').read()
+          names=re.findall(r'(\d+):"([0-9a-f]{16})"', t); print("LPBCHUNKS", len(names))
+          hits=set()
+          for cid,h in names:
+              u=f"https://lpbank.com.vn/{cid}.{h}.js"
+              try: js=urllib.request.urlopen(urllib.request.Request(u,headers={"User-Agent":"Mozilla/5.0"}),timeout=20).read().decode('utf-8','replace')
+              except Exception: continue
+              if 'TK_ONLINE' in js:
+                  for m in re.findall(r'["\']([A-Z]{2}_[A-Z0-9_]{3,40})["\']', js):
+                      if re.search(r'TK|TG|KKH|CKH|ONLINE', m): hits.add(m)
+                  i=js.find('TK_ONLINE'); print("LPBCTX", cid, js[max(0,i-600):i+600].replace('\n',' ')[:1200])
+          print("LPBHITS", sorted(hits))
+          PY
