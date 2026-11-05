@@ -10,10 +10,12 @@ from datetime import date, datetime
 from pathlib import Path
 
 from .gold import KINDS
+from .gold_chart import chart_block, world_vnd
 from .pages import crumbs
 
 E = html.escape
 HISTORY = Path(__file__).resolve().parent.parent / "data" / "gold-history"
+DAILY = Path(__file__).resolve().parent.parent / "data" / "gold-daily.json"
 HISTORY_DAYS = 10
 
 
@@ -128,24 +130,23 @@ def _iso_vn(utc_iso):
     return datetime.fromisoformat(utc_iso.replace("Z", "+00:00")).astimezone(timezone(timedelta(hours=7))).isoformat()
 
 
-def history_block(gold, history, today):
-    """Last few days: lowest SJC and ring selling price, and the world price in đồng."""
-    days = [(today, gold)] + history[:HISTORY_DAYS - 1]
-    if len(days) < 2:
+def history_block(daily):
+    """Table view of the chart: the last HISTORY_DAYS days, newest first."""
+    rows = [r for r in daily if r.get("sjc")][-HISTORY_DAYS:][::-1]
+    if len(rows) < 2:
         return ""
-    rows = []
-    for d, snap in days:
-        sjc = [i["sell"] for _, i in quotes(snap, "sjc")]
-        ring = [i["sell"] for _, i in quotes(snap, "ring")]
-        w = (snap.get("world") or {}).get("vnd_luong")
-        rows.append(f'<tr><th scope="row">{d:%d/%m}</th><td class="r"><span class="v">{k(min(sjc)) if sjc else "–"}</span></td>'
-                    f'<td class="r"><span class="v">{k(min(ring)) if ring else "–"}</span></td>'
+    body = []
+    for r in rows:
+        d = date.fromisoformat(r["d"])
+        w = world_vnd(r)
+        body.append(f'<tr><th scope="row">{d:%d/%m}</th><td class="r"><span class="v">{k(r["sjc"][1])}</span></td>'
+                    f'<td class="r"><span class="v">{k((r.get("ring") or [None, None])[1])}</span></td>'
                     f'<td class="r"><span class="v">{k(w)}</span></td></tr>')
     return ('<section class="block"><h2>Giá vàng những ngày gần đây</h2>'
             '<div class="card"><div class="scroll"><table class="rates guide-tbl"><thead><tr><th scope="col">Ngày</th>'
             '<th scope="col">SJC bán ra</th><th scope="col">Nhẫn 999.9 bán ra</th><th scope="col">Thế giới quy đổi</th></tr></thead>'
-            f'<tbody>{"".join(rows)}</tbody></table></div></div>'
-            '<p class="sub">Giá bán ra thấp nhất trong các cửa hàng, lần kiểm tra cuối mỗi ngày, nghìn đồng/lượng.</p></section>')
+            f'<tbody>{"".join(body)}</tbody></table></div></div>'
+            '<p class="sub">Giá bán ra của PNJ lúc đóng cửa mỗi ngày, nghìn đồng/lượng. Giá trong ngày hôm nay có thể còn thay đổi.</p></section>')
 
 
 def boards(gold):
@@ -176,6 +177,7 @@ def gold_summary(gold) -> str:
 def gold_page(gold: dict, generated: datetime):
     today = generated.date()
     history = load_history(today)
+    daily = json.loads(DAILY.read_text(encoding="utf-8")) if DAILY.exists() else []
     sjc, ring = quotes(gold, "sjc"), quotes(gold, "ring")
     sjc_low = min((i["sell"] for _, i in sjc), default=None)
     ring_low = min((i["sell"] for _, i in ring), default=None)
@@ -235,8 +237,9 @@ def gold_page(gold: dict, generated: datetime):
 {tables}
 <p class="sub">Đơn vị nghìn đồng/lượng (1 lượng = 10 chỉ). Chữ xanh: giá bán ra thấp nhất và giá mua vào cao nhất. Mũi tên so với giá bán ra
 ngày hôm trước. Giá có thể khác theo chi nhánh và thay đổi nhiều lần trong ngày; hãy xác nhận với cửa hàng trước khi giao dịch.</p>
+{chart_block(daily)}
 {world_block(gold, sjc_low, ring_low)}
-{history_block(gold, history, today)}
+{history_block(daily)}
 <section class="block"><h2>Bảng giá từng cửa hàng</h2>{boards(gold)}</section>
 <section class="block"><h2>Câu hỏi thường gặp</h2>{qa_html}</section>
 <p class="sub">Đang cân nhắc giữa vàng và tiết kiệm? Xem <a href="/huong-dan/gui-tiet-kiem-hay-mua-vang/">gửi tiết kiệm hay mua vàng</a>

@@ -17,7 +17,8 @@ scraper/pages.py      generated pages: /ngan-hang/<bank>/ for each bank with dat
 site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
 site/static/          favicon, share image (og.png), logos/<bank>.png (official icons): copied to the site root
 scraper/gold.py       gold prices (PNJ, Phú Quý, Bảo Tín Mạnh Hải + world price) -> data/gold.json, data/gold-history/
-scraper/gold_page.py  /gia-vang/ page from that data
+scraper/gold_page.py  /gia-vang/ page from that data; scraper/gold_chart.py draws its price chart
+scraper/gold_daily.py daily series for the chart (data/gold-daily.json), with a one-off backfill
 scraper/check.py      exit 1 if a bank or gold shop has had no fresh data for too long (GitHub emails you)
 tests/                parser tests against saved copies of each bank's page
 .github/workflows/    the schedule: banks + gold 09:17 and 16:17; gold only every hour 09:47–21:47 (Vietnam time)
@@ -85,6 +86,12 @@ Sources that answer GitHub's servers (checked 11/2026): PNJ's JSON feed, Phú Qu
 Bảo Tín Mạnh Hải's homepage. SJC, DOJI and Bảo Tín Minh Châu block automated access, so SJC bars are
 shown at the prices PNJ and Phú Quý sell them. World price: gold-api.com (USD/ounce) × Vietcombank's
 USD selling rate, × 37,5 ÷ 31,1035 for one lượng.
+
+The chart uses `data/gold-daily.json`: one row per day with PNJ's closing SJC and ring prices,
+COMEX gold (Yahoo Finance) and Vietcombank's USD rate. Every gold run rewrites today's row, so the
+last run of the day is the close. The first year was filled with
+`python -m scraper.gold_daily --backfill 2025-11-01` (PNJ's history feed keeps about a year;
+running it again only fills missing days).
 
 All prices are stored as đồng per lượng. A shop that fails keeps its last prices marked "dữ liệu cũ";
 the run fails (email) only after 24 hours without fresh prices. Fix a broken shop the same way as a

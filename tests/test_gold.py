@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper import gold, gold_page
+from scraper import gold, gold_chart, gold_page
 from scraper.common import ParseError
 
 F = Path(__file__).parent / "fixtures" / "gold"
@@ -54,6 +54,7 @@ def test_validate_rejects_buy_above_sell_and_wrong_units():
 
 def test_page_picks_cheapest_and_compares_with_world(tmp_path, monkeypatch):
     monkeypatch.setattr(gold_page, "HISTORY", tmp_path)
+    monkeypatch.setattr(gold_page, "DAILY", tmp_path / "none.json")
     shops = []
     for mod in gold.SHOPS:
         items, updated = mod.parse((F / mod.FIXTURE).read_text(encoding="utf-8"))
@@ -65,3 +66,33 @@ def test_page_picks_cheapest_and_compares_with_world(tmp_path, monkeypatch):
     assert "Nhẫn trơn 999.9 bán ra thấp nhất 138,9 triệu đồng/lượng tại PNJ" in desc
     assert "thấp hơn vàng miếng SJC 17,6 triệu" in desc
     assert "Giá vàng những ngày gần đây" not in body     # needs at least two days of history
+
+
+def daily_rows():
+    from datetime import date, timedelta
+    start = date(2025, 11, 5)
+    rows = []
+    for n in range(366):
+        d = start + timedelta(days=n)
+        sjc = 147_500_000 if n == 0 else 140_000_000 + n * 10_000
+        rows.append({"d": d.isoformat(), "sjc": [sjc - 3_000_000, sjc], "ring": [sjc - 5_000_000, sjc - 2_000_000],
+                     "usd_oz": 4000.0, "usd_vnd": 26000.0})
+    return rows
+
+
+def test_chart_series_in_trieu_per_luong():
+    s = gold_chart.series(daily_rows()[:2])
+    assert s["sjc"] == [147.5, 140.01] and s["ring"] == [145.5, 138.01]
+    assert s["world"][0] == round(4000 * 37.5 / 31.1034768 * 26000 / 1e6, 2)
+
+
+def test_chart_summary_compares_year_and_month():
+    text = gold_chart.summary(daily_rows())
+    assert text.startswith("Ngày 05/11/2026, vàng miếng SJC tại PNJ bán ra 143,7 triệu đồng/lượng, "
+                           "giảm 2,6% so với một năm trước (147,5 triệu ngày 05/11/2025) và tăng 0,2% so với một tháng trước")
+    assert "SJC và giá thế giới quy đổi là 18,3 triệu đồng/lượng, so với 22,1 triệu ngày 05/11/2025" in text
+
+
+def test_chart_needs_a_week_of_data():
+    assert gold_chart.chart_block(daily_rows()[:5]) == ""
+    assert 'id="goldChart"' in gold_chart.chart_block(daily_rows())

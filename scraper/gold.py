@@ -209,6 +209,12 @@ def run(fixtures: Path | None = None) -> dict:
         print(f"  FAIL  world             {w['error']}", file=sys.stderr)
 
     out = {"generated_at": now.isoformat(timespec="minutes"), "shops": shops, "world": w}
+    if not fixtures:
+        from .gold_daily import update_today
+        try:
+            update_today(shops, w, session)
+        except Exception as e:  # noqa: BLE001 - the chart can miss a point; the prices must still publish
+            print(f"  WARN  daily series not updated: {e}", file=sys.stderr)
     DATA.mkdir(exist_ok=True)
     path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     hist = DATA / "gold-history"
