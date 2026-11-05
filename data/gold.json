@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T00:28+07:00",
+ "generated_at": "2026-11-06T01:17+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-05T15:24+07:00",
-   "fetched_at": "2026-11-06T00:28+07:00",
+   "fetched_at": "2026-11-06T01:17+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -127,7 +127,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-05T18:27+07:00",
-   "fetched_at": "2026-11-06T00:28+07:00",
+   "fetched_at": "2026-11-06T01:17+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -183,11 +183,10 @@
    "code": "btmh",
    "name": "Bảo Tín Mạnh Hải",
    "source_url": "https://baotinmanhhai.vn/",
-   "status": "error",
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='baotinmanhhai.vn', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='baotinmanhhai.vn', port=443) at 0x7f3f50bd1b50>, 'Connection to baotinmanhhai.vn timed out. (connect timeout=30)'))",
-   "stale": true,
+   "status": "ok",
+   "stale": false,
    "updated": "2026-11-05T15:03+07:00",
-   "fetched_at": "2026-11-06T00:17+07:00",
+   "fetched_at": "2026-11-06T01:17+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
@@ -217,10 +216,10 @@
   }
  ],
  "world": {
-  "usd_oz": 4112.9,
+  "usd_oz": 4101.8,
   "usd_vnd": 25800.0,
-  "vnd_luong": 127935236,
-  "updated": "2026-11-05T17:31:02Z",
+  "vnd_luong": 127589958,
+  "updated": "2026-11-05T18:17:32Z",
   "fx_updated": "2026-11-05T23:00:00+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
