@@ -52,3 +52,22 @@ def test_typo_in_rate_is_rejected(tmp_path):
     m, d = bank(tmp_path, online=[{"rates": {"12": 67.0}}])
     with pytest.raises(ParseError):
         m.parse(raw(d))
+
+
+class FakeSession:
+    def __init__(self, html): self.html = html
+    def get(self, url, timeout=None):
+        return type("R", (), {"text": self.html})()
+
+
+def test_pdf_watchers_read_the_file_name():
+    from scraper import manual
+    eib = 'x <a href="https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf">'
+    assert manual.watch_eib(FakeSession(eib)) == (
+        "TB LSHD VND KHBL hieu luc tu ngay 31102026.pdf",
+        "https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf")
+    ncb = '<a href="/InterestRates/2026/10/Bieu lai suat niem yet - hieu luc 19.10.2026 update.pdf">'
+    name, url = manual.watch_ncb(FakeSession(ncb))
+    assert name == "Bieu lai suat niem yet - hieu luc 19.10.2026 update.pdf" and url.startswith("https://www.ncb-bank.vn/InterestRates/2026/10/Bieu%20lai")
+    bvb = '<a href="https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf">Lãi suất</a>'
+    assert manual.watch_bvb(FakeSession(bvb))[0] == "Bieu-LSNY_Web_19.10.2026.pdf"

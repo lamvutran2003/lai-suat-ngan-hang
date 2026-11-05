@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper.banks import acb, agri, bab, bidv, lpb, mbv, nab, ocb, stb, tcb, tpb, vcb, vietin, vikki
+from scraper.banks import abb, acb, agri, bab, bidv, lpb, mbv, nab, ocb, stb, tcb, tpb, vbb, vcb, vietin, vikki
 from scraper.common import parse_amount_range, parse_rate, parse_term_months, soup, table_grid
 
 FX = Path(__file__).parent / "fixtures"
@@ -154,3 +154,18 @@ def test_vikki_skips_special_condition_rows():
     assert r[("online", 12, 0)] == 6.1 and r[("counter", 12, 0)] == 6.0   # counter: 365-day column
     assert r[("counter", 13, 0)] == 6.1                   # not the "13 tháng *" special rate (7,4)
     assert as_of == "2026-11-03"
+
+
+def test_abbank_counter_and_online_with_merged_unit_cells():
+    r, as_of = rates_of(abb, "abb.json")
+    assert as_of == "2026-10-21"
+    assert r[("counter", 1, 0)] == 3.6 and r[("online", 1, 0)] == 3.8
+    assert r[("counter", 12, 0)] == 5.75 and r[("online", 24, 0)] == 5.3
+    assert ("counter", 13, 0) not in r                    # "5,75 (*)": footnoted, skipped like other banks
+
+
+def test_vietbank_standard_and_online_tables():
+    r, as_of = rates_of(vbb, "vbb.html")
+    assert as_of == "2026-10-19"
+    assert r[("counter", 12, 0)] == 5.5 and r[("online", 12, 0)] == 5.6
+    assert ("counter", 13, 0) not in r                    # "13 tháng (*)": discontinued

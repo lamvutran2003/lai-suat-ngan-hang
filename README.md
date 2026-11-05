@@ -44,14 +44,23 @@ tests/                parser tests against saved copies of each bank's page
 | Vikki Bank | two HTML pages (HDBank's digital bank) | ✓ | ✓ | |
 | Cake by VPBank | **Hand-entered** (`data/manual/cake.json`), site blocks GitHub; 14-day re-check | | ✓ | |
 | HDBank | **Hand-entered** (`data/manual/hdb.json`), PDF list loads encrypted; 14-day re-check | ✓ | ✓ | |
+| ABBank | rate index → current dated page (counter + online tables) | ✓ | ✓ | |
+| VietBank | one HTML page (standard savings + "Tiền gửi Online") | ✓ | ✓ | |
+| Eximbank | **Hand-entered**; watcher reads the PDF name on its rate page | ✓ | ✓ (weekday) | |
+| BVBank | **Hand-entered**; watcher reads the PDF linked from the homepage | ✓ | ✓ | |
+| NCB | **Hand-entered**; watcher reads the PDF list on its rate page | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
 (HTTP 405), but `scraper/banks/vietin.py` still works from other machines, so refresh the file by
 running it locally: `python -c "from scraper.banks import vietin; from scraper.common import make_session as m; print(vietin.parse(vietin.fetch(m())))"`.
 
 Checked and **not covered** (11/2026): MB (blocks all automated access; hand-enter from screenshots),
-Eximbank (its PDF server has a broken certificate chain), VIB (rate feed uses internal product
-codes), MSB, PGBank, BVBank, SaigonBank, VCBNeo (not yet worked out or block GitHub).
+VIB (rate feed uses internal product codes), VCBNeo (publishes only "maximum" rates that vary by region),
+SaigonBank and BaoViet Bank (tables drawn by scripts; need a browser), MSB, SHB, SeABank, PVcomBank,
+PGBank, Kienlongbank (block GitHub or time out).
+
+Eximbank's PDF server sends an incomplete certificate chain (the DigiCert G5 intermediate is missing),
+so scripts can't download the PDF with normal verification. The watcher only reads the main site.
 Wallet "savings" (MoMo Túi Thần Tài, Finhay, Tikop…) are left out on purpose: they are fund
 investments, not bank deposits, so they are not insured and their return is not fixed.
 

@@ -1,0 +1,59 @@
+{
+  "name": "NCB",
+  "source_url": "https://www.ncb-bank.vn/vi/lai-suat-tien-gui",
+  "document_url": "https://www.ncb-bank.vn/InterestRates/2026/10/Bieu%20lai%20suat%20niem%20yet%20-%20hieu%20luc%2019.10.2026%20update.pdf",
+  "watch": "Bieu lai suat niem yet - hieu luc 19.10.2026 update.pdf",
+  "as_of": "2026-10-19",
+  "checked_at": "2026-11-05",
+  "product": "Tiết kiệm truyền thống, lĩnh lãi cuối kỳ (tại quầy: Tiết kiệm truyền thống và Tiền gửi có kỳ hạn An Khang; online: Tiết kiệm truyền thống trên Mobile/Internet Banking).",
+  "counter": [
+    {
+      "rates": {
+        "1": 4.5,
+        "2": 4.6,
+        "3": 4.7,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 5.5,
+        "7": 5.5,
+        "8": 5.5,
+        "9": 5.5,
+        "10": 5.5,
+        "11": 5.5,
+        "12": 5.7,
+        "13": 5.8,
+        "15": 5.9,
+        "18": 6.0,
+        "24": 6.1,
+        "30": 6.1,
+        "36": 6.1,
+        "60": 6.1
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.6,
+        "2": 4.7,
+        "3": 4.75,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 5.6,
+        "7": 5.6,
+        "8": 5.6,
+        "9": 5.6,
+        "10": 5.6,
+        "11": 5.6,
+        "12": 5.8,
+        "13": 5.9,
+        "15": 6.0,
+        "18": 6.1,
+        "24": 6.2,
+        "30": 6.2,
+        "36": 6.2,
+        "60": 6.2
+      }
+    }
+  ]
+}

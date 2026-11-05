@@ -28,10 +28,12 @@ CH = {"online": "Online", "counter": "Tại quầy"}
 SLUG = {"vcb": "vietcombank", "bidv": "bidv", "vietin": "vietinbank", "agri": "agribank",
         "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb", "tcb": "techcombank",
         "vpb": "vpbank", "mb": "mbbank", "lpb": "lpbank", "mbv": "mbv", "bab": "bac-a-bank", "nab": "nam-a-bank",
-        "vikki": "vikki-bank", "cake": "cake", "hdb": "hdbank"}
+        "vikki": "vikki-bank", "cake": "cake", "hdb": "hdbank", "abb": "abbank", "vbb": "vietbank", "eib": "eximbank",
+        "bvb": "bvbank", "ncb": "ncb"}
 TICKER = {"vcb": "VCB", "bidv": "BID", "vietin": "CTG", "agri": "AGR", "acb": "ACB",
           "tpb": "TPB", "stb": "STB", "ocb": "OCB", "tcb": "TCB", "vpb": "VPB", "mb": "MBB", "lpb": "LPB",
-          "mbv": "MBV", "bab": "BAB", "nab": "NAB", "vikki": "VKB", "cake": "CAKE", "hdb": "HDB"}
+          "mbv": "MBV", "bab": "BAB", "nab": "NAB", "vikki": "VKB", "cake": "CAKE", "hdb": "HDB", "abb": "ABB",
+          "vbb": "VBB", "eib": "EIB", "bvb": "BVB", "ncb": "NVB"}
 
 
 # ---------------------------------------------------------------- rate lookup

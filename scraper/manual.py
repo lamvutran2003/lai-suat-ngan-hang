@@ -51,7 +51,39 @@ def watch_vpb(session) -> tuple[str, str]:
     return url.rsplit("/", 1)[-1], base + url
 
 
-WATCHERS = {"vpb": watch_vpb}
+def _pdf_link(session, page_url: str, pattern: str, base: str = "") -> tuple[str, str]:
+    """Find the newest rate-sheet PDF linked from a bank page -> (file name, full URL)."""
+    from urllib.parse import quote, unquote, urljoin
+    html = session.get(page_url, timeout=30).text.replace("\\u002F", "/")
+    found = re.findall(pattern, html)
+    if not found:
+        raise ParseError(f"no rate-sheet PDF matching {pattern!r} on {page_url}")
+    link = unquote(found[0])
+    name = link.rsplit("/", 1)[-1]
+    url = urljoin(base or page_url, quote(link, safe="/:"))
+    return name, url
+
+
+def watch_eib(session):
+    """Eximbank: 'TB LSHD VND KHBL hieu luc tu ngay DDMMYYYY.pdf' linked from the savings-rate page."""
+    return _pdf_link(session, "https://eximbank.com.vn/lai-suat-tiet-kiem",
+                     r"media\.eximbank\.com\.vn/exim/files/(TB[ %20]+LSHD[ %20]+VND[ %20]+KHBL[^\"\\<]*?\.pdf)",
+                     "https://media.eximbank.com.vn/exim/files/")
+
+
+def watch_bvb(session):
+    """BVBank: 'Bieu-LSNY_Web_DD.MM.YYYY.pdf' linked from the homepage."""
+    return _pdf_link(session, "https://bvbank.net.vn/",
+                     r"(https://bvbank\.net\.vn/wp-content/uploads/\d{4}/\d{2}/Bieu-LSNY[^\"']*?\.pdf)")
+
+
+def watch_ncb(session):
+    """NCB: 'Bieu lai suat niem yet - hieu luc DD.MM.YYYY ….pdf' on the deposit-rate page."""
+    return _pdf_link(session, "https://www.ncb-bank.vn/vi/lai-suat-tien-gui",
+                     r"(/InterestRates/\d{4}/\d{2}/Bieu lai suat niem yet[^\"']*?\.pdf)", "https://www.ncb-bank.vn/")
+
+
+WATCHERS = {"vpb": watch_vpb, "eib": watch_eib, "bvb": watch_bvb, "ncb": watch_ncb}
 
 
 # ---------------------------------------------------------------- loading
