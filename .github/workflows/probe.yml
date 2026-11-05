@@ -1,0 +1,14 @@
+name: Probe bank sources (temporary)
+on: workflow_dispatch
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Eximbank certificate chain
+        run: |
+          echo | openssl s_client -connect media.eximbank.com.vn:443 -servername media.eximbank.com.vn -showcerts 2>/dev/null > chain.txt || true
+          grep -E "^ *[0-9] s:|^ *i:" chain.txt | sed 's/^/EIBCHAIN /'
+          openssl x509 -in <(awk '/BEGIN CERT/{f=1} f{print} /END CERT/{exit}' chain.txt) -noout -text | grep -A2 "Authority Information Access" | sed 's/^/EIBAIA /'
+      - run: pip install -q playwright && python -m playwright install --with-deps chromium >/dev/null 2>&1
+      - run: python .github/probe/sniff.py
