@@ -341,3 +341,50 @@ h2{font-size:20px;font-weight:700}
 .gc-tip-r span{color:var(--muted)}
 .gc-tip-x{margin-top:4px;padding-top:4px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
 #goldRange .tab{padding:6px 14px;min-height:34px;font-size:14px}
+
+/* ---- Phone homepage: term buttons + bank cards instead of the wide table ---- */
+.mterms,.mlist{display:none}
+@media (max-width:640px){
+  .js .tablecard{display:none}
+  .js .mterms{display:flex;gap:8px;overflow-x:auto;position:relative;scrollbar-width:none;padding:2px 2px 10px;margin:0 -2px;-webkit-overflow-scrolling:touch}
+  .js .mterms::-webkit-scrollbar{display:none}
+  .js .mterms .chip{flex:none}
+  .js .mterms .chip[aria-pressed="true"]{background:var(--primary);border-color:var(--primary);color:var(--primary-ink)}
+  .js .mlist{display:grid;gap:0;list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--bg)}
+  .mcard{display:grid;grid-template-columns:22px 26px minmax(0,1fr) auto;align-items:center;gap:0 10px;padding:12px 14px;border-top:1px solid var(--line)}
+  .mcard:first-child{border-top:0}
+  .mcard.none{grid-template-columns:26px minmax(0,1fr) auto;padding-left:46px;opacity:.6}
+  .mcard .rk{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums;text-align:center}
+  .mcard .bl{margin:0;width:24px;height:24px}
+  .mcard .mn{display:grid;gap:2px;min-width:0}
+  .mcard .mn a{color:var(--ink);font-weight:600;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mcard .mini{display:flex;gap:10px;font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden}
+  .mcard .mini b{color:var(--ink);font-weight:500}
+  .mcard .mr{text-align:right;display:grid;justify-items:end;gap:1px}
+  .mcard .mr .v{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);line-height:1.1}
+  .mcard .mr .v small{font-size:13px;font-weight:600;color:var(--muted);margin-left:1px}
+  .mcard.top{background:var(--green-soft)}
+  .mcard.top .mr .v{color:var(--green)}
+  .mcard .chg{margin:0;font-size:11.5px}
+  .tile .w{white-space:normal;overflow:visible;line-height:1.3}
+}
+.mcard .mini i{font-style:normal}
+.mcard .mini .s{display:none}
+@media (max-width:360px){.mcard .mini .u{display:none}.mcard .mini .s{display:inline}.mcard{gap:0 8px;padding:12px 12px}}
+
+/* Phone: ranking tables become one card per bank, values labelled from data-l */
+@media (max-width:640px){
+  .rates.rank{min-width:0;display:block}
+  .rates.rank thead{display:none}
+  .rates.rank tbody{display:block}
+  .rates.rank tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.5fr);gap:2px 12px;padding:12px 14px;border-top:1px solid var(--line)}
+  .rates.rank th,.rates.rank td{position:static !important;left:auto !important;box-shadow:none !important;width:auto;min-width:0}
+  .guide .rates.rank tr{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:8px}
+  .rates.rank tr:first-child{border-top:0}
+  .rates.rank th[scope="row"]{grid-column:1/-1;padding:0 0 6px;border:0;background:none !important;display:flex;align-items:center;flex-wrap:wrap;gap:4px 0}
+  .rates.rank td{padding:0;border:0;text-align:left;background:none !important;display:grid;gap:1px}
+  .rates.rank td::before{content:attr(data-l);font-size:11.5px;color:var(--muted);font-weight:500}
+  .rates.rank td .chg{margin:0}
+  .rates.rank tbody tr:hover>*{background:none}
+  .rates.term-rows thead th{min-width:64px}
+}

@@ -262,10 +262,10 @@ def term_page(data, changes, term: int, generated: datetime):
     top_rate, low_rate = rows[0]["best"]["rate"], rows[-1]["best"]["rate"]
     leaders = [x for x in rows if x["best"]["rate"] == top_rate]
 
-    def cell(r, is_best):
+    def cell(r, is_best, label):
         if not r:
-            return '<td class="na">–</td>'
-        return f'<td class="r{" best" if is_best else ""}"><span class="v">{fmt(r["rate"])}</span>{arrow(changes, r)}</td>'
+            return f'<td class="na" data-l="{label}">–</td>'
+        return f'<td class="r{" best" if is_best else ""}" data-l="{label}"><span class="v">{fmt(r["rate"])}</span>{arrow(changes, r)}</td>'
 
     def col_best(key):  # highlight a column's best only when at most two banks share it
         vals = [x[key]["rate"] for x in rows if x[key]]
@@ -280,8 +280,8 @@ def term_page(data, changes, term: int, generated: datetime):
         note = '<span class="tier" title="Lãi suất thay đổi theo số tiền gửi">theo số tiền</span>' if x["tiered"] else ""
         trs.append(f'<tr><th scope="row"><span class="rk">{i}</span>{logo_img(b["code"])}'
                    f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{E(b["name"])}</a>{note}</th>'
-                   f'{cell(x["on"], x["on"] and x["on"]["rate"] == best_on)}{cell(x["co"], x["co"] and x["co"]["rate"] == best_co)}'
-                   f'<td class="r"><span class="v">{vnd(gain)} ₫</span><span class="chg muted">{CH[x["best"]["channel"]].lower()}</span></td></tr>')
+                   f'{cell(x["on"], x["on"] and x["on"]["rate"] == best_on, "Online")}{cell(x["co"], x["co"] and x["co"]["rate"] == best_co, "Tại quầy")}'
+                   f'<td class="r" data-l="Lãi trên 100 triệu"><span class="v">{vnd(gain)} ₫</span><span class="chg muted">{CH[x["best"]["channel"]].lower()}</span></td></tr>')
 
     names = " và ".join(f'{x["b"]["name"]} ({CH[x["best"]["channel"]].lower()})' for x in leaders[:3])
     spread = interest(EXAMPLE, top_rate - low_rate, term)

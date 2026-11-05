@@ -143,8 +143,8 @@ def t_channel_table(data, today, term="12"):
         d = on - co
         diff = f'+{fmt(d)}' if d > 0.001 else ("0" if abs(d) <= 0.001 else f'−{fmt(-d)}')
         rows.append(f'<tr><th scope="row">{logo_img(b["code"])}<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{E(b["name"])}</a></th>'
-                    f'<td class="r"><span class="v">{fmt(on)}</span></td><td class="r"><span class="v">{fmt(co)}</span></td>'
-                    f'<td class="r"><span class="v">{diff}</span></td><td class="r"><span class="v">{vnd(interest(EXAMPLE, d, term))} ₫</span></td></tr>')
+                    f'<td class="r" data-l="Online"><span class="v">{fmt(on)}</span></td><td class="r" data-l="Tại quầy"><span class="v">{fmt(co)}</span></td>'
+                    f'<td class="r" data-l="Chênh lệch"><span class="v">{diff}</span></td><td class="r" data-l="Thêm/100 triệu"><span class="v">{vnd(interest(EXAMPLE, d, term))} ₫</span></td></tr>')
     return ('<div class="card"><div class="scroll"><table class="rates rank"><thead><tr><th scope="col">Ngân hàng</th>'
             '<th scope="col">Online</th><th scope="col">Tại quầy</th><th scope="col">Chênh lệch</th>'
             f'<th scope="col">Thêm trên 100 triệu</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div></div>')
