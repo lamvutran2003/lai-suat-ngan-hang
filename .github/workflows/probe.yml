@@ -6,29 +6,19 @@ jobs:
     steps:
       - run: |
           UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
-          p() { printf "%-6s " "$1"; curl -sS -m 25 -L -A "$UA" -H "Accept-Language: vi-VN,vi;q=0.9" "$2" -o out -w "HTTP %{http_code} %{size_download}B " 2>&1 | tr '\n' ' '; python3 - "$3" <<'PY'
-          import sys,re
-          t=open('out','rb').read().decode('utf-8','replace'); k=sys.argv[1]
-          i=t.find(k); print('| has %r:'%k, i>=0, '|', re.sub(r'\s+',' ',re.sub(r'<[^>]+>',' ',t[i:i+160])) if i>=0 else '')
+          curl -sS -m 25 -L -A "$UA" https://lpbank.com.vn/ -o lpb.html
+          python3 - <<'PY'
+          import re
+          t=open('lpb.html',encoding='utf-8',errors='replace').read()
+          links=sorted(set(re.findall(r'href="([^"]*(?:lai-suat|lai_suat|laisuat|interest|bieu)[^"]*)"', t, re.I)))
+          print("LPB links:", links[:40])
+          print("LPB api-ish:", sorted(set(re.findall(r'https?://[^"\' ]*(?:api|json)[^"\' ]*', t)))[:20])
           PY
-          }
-          p vikki https://vikkibank.vn/lai-suat-huy-dong-tiet-kiem-bang-vnd-online/ "TIẾT KIỆM PHÚ QUÝ"
-          p vikk2 https://vikkibank.vn/lai-suat-tiet-kiem-bang-vnd/ "tháng"
-          p cake https://cake.vn/cong-cu-tien-ich/ty-gia-lai-suat "Cuối kỳ"
-          p cakex https://static.cake.vn/homepage/lai_suat_21_10_final_9fe39fff91/lai_suat_21_10_final_9fe39fff91.xls "x"
-          p mbv https://www.mbv.com.vn/tin-tuc/bieu-lai-suat-20102026 "Trả lãi cuối kỳ"
-          p mbvapi "https://www.mbv.com.vn/client-api/primary_menu?language_code=vi" "lai"
-          p nab https://www.namabank.com.vn/lai-suat "Trực tuyến"
-          p eib https://eximbank.com.vn/lai-suat-tiet-kiem "pdf"
-          p hdb https://hdbank.com.vn/vi/personal/cong-cu/interest-rate "BIEULAISUATTIENGUI"
-          p bab "https://www.baca-bank.vn/SitePages/website/lai-xuat.aspx?ac=L%25u00e3i%252520su%25u1ea5t&s=LX" "Lĩnh lãi cuối kỳ"
-          p lpb https://lpbank.com.vn/ "lãi suất"
-          p lpb2 https://lpbank.com.vn/lai-suat "tháng"
-          p neo https://www.vcbneo.com.vn/Pages/InterestRate.aspx "tháng"
-          p pgb https://www.pgbank.com.vn/ "lai-suat"
-          p sgb https://www.saigonbank.com.vn/vi/truy-cap-nhanh/lai-suat "tháng"
-          p bvb https://bvbank.net.vn/ "lai-suat"
-          p msb https://www.msb.com.vn/ "lai-suat"
-          p vib "https://www.vib.com.vn/PwsStaticData/api/saving-rate/core" "VND"
-          p mb https://www.mbbank.com.vn/ho-tro/bieu-lai-suat "tháng"
-          p vietin https://www.vietinbank.vn/ca-nhan/cong-cu-tien-ich/lai-suat-khcn "tháng"
+          for u in https://lpbank.com.vn/lai-suat-tiet-kiem https://lpbank.com.vn/ca-nhan/lai-suat https://lpbank.com.vn/khach-hang-ca-nhan/lai-suat-tien-gui; do
+            printf "%s " $u; curl -sS -m 25 -L -A "$UA" "$u" -o x.html -w "%{http_code} %{size_download}\n"; done
+          curl -sS -m 40 -A "$UA" "https://media.eximbank.com.vn/exim/files/TB%20LSHD%20VND%20KHBL%20hieu%20luc%20tu%20ngay%2031102026.pdf" -o eib.pdf -w "eximbank pdf %{http_code} %{size_download}\n" || echo "eximbank curl failed"
+          python3 -c "
+          import ssl,urllib.request
+          try:
+              urllib.request.urlopen('https://media.eximbank.com.vn/exim/files/KHCN-LaisuathuydongUSD.pdf',timeout=30); print('python urllib ok')
+          except Exception as e: print('python urllib', type(e).__name__, str(e)[:120])"
