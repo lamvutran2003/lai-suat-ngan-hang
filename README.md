@@ -45,8 +45,9 @@ tests/                parser tests against saved copies of each bank's page
 | Cake by VPBank | **Hand-entered** (`data/manual/cake.json`), site blocks GitHub; 14-day re-check | | ✓ | |
 | HDBank | **Hand-entered** (`data/manual/hdb.json`), PDF list loads encrypted; 14-day re-check | ✓ | ✓ | |
 
-Switched off: **VietinBank** (`scraper/banks/vietin.py`) — its site refuses
-GitHub's servers (HTTP 405). Its rates matched Vietcombank and BIDV anyway.
+**VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
+(HTTP 405), but `scraper/banks/vietin.py` still works from other machines, so refresh the file by
+running it locally: `python -c "from scraper.banks import vietin; from scraper.common import make_session as m; print(vietin.parse(vietin.fetch(m())))"`.
 
 Checked and **not covered** (11/2026): MB (blocks all automated access; hand-enter from screenshots),
 Eximbank (its PDF server has a broken certificate chain), VIB (rate feed uses internal product

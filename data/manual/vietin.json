@@ -1,0 +1,29 @@
+{
+  "name": "VietinBank",
+  "source_url": "https://www.vietinbank.vn/ca-nhan/cong-cu-tien-ich/lai-suat-khcn?type=bang-lai-suat",
+  "document_url": "https://www.vietinbank.vn/ca-nhan/cong-cu-tien-ich/lai-suat-khcn?type=bang-lai-suat",
+  "checked_at": "2026-11-05",
+  "product": "Tiết kiệm có kỳ hạn, lĩnh lãi cuối kỳ, khách hàng cá nhân (tại quầy). Biểu lãi suất giảm từ đầu tháng 11/2026.",
+  "counter": [
+    {
+      "rates": {
+        "1": 2.1,
+        "2": 2.1,
+        "3": 2.4,
+        "4": 2.4,
+        "5": 2.4,
+        "6": 3.0,
+        "7": 3.0,
+        "8": 3.0,
+        "9": 3.0,
+        "10": 3.0,
+        "11": 3.0,
+        "12": 5.4,
+        "13": 5.4,
+        "18": 5.4,
+        "24": 5.5,
+        "36": 5.5
+      }
+    }
+  ]
+}
