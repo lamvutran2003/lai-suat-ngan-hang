@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T13:47+07:00",
+ "generated_at": "2026-11-06T14:47+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-06T12:02+07:00",
-   "fetched_at": "2026-11-06T13:47+07:00",
+   "fetched_at": "2026-11-06T14:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -126,8 +126,8 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-06T13:45+07:00",
-   "fetched_at": "2026-11-06T13:47+07:00",
+   "updated": "2026-11-06T14:45+07:00",
+   "fetched_at": "2026-11-06T14:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -185,41 +185,41 @@
    "source_url": "https://baotinmanhhai.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-06T13:06+07:00",
-   "fetched_at": "2026-11-06T13:47+07:00",
+   "updated": "2026-11-06T14:40+07:00",
+   "fetched_at": "2026-11-06T14:47+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
-     "buy": 141700000,
-     "sell": 145700000,
+     "buy": 141500000,
+     "sell": 145500000,
      "kind": null
     },
     {
      "name": "Kim Gia Bảo 24K",
-     "buy": 136700000,
-     "sell": 140700000,
+     "buy": 136500000,
+     "sell": 140500000,
      "kind": "ring"
     },
     {
      "name": "Vàng trang sức 24K (999.9)",
-     "buy": 134700000,
-     "sell": 139700000,
+     "buy": 134500000,
+     "sell": 139500000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng trang sức 24K 999",
-     "buy": 134600000,
-     "sell": 139600000,
+     "buy": 134400000,
+     "sell": 139400000,
      "kind": null
     }
    ]
   }
  ],
  "world": {
-  "usd_oz": 4048.0,
+  "usd_oz": 4046.4,
   "usd_vnd": 25780.0,
-  "vnd_luong": 125818860,
-  "updated": "2026-11-06T06:47:34Z",
+  "vnd_luong": 125769126,
+  "updated": "2026-11-06T07:47:04Z",
   "fx_updated": "2026-11-06T10:31:37+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
