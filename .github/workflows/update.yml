@@ -57,6 +57,7 @@ jobs:
         env:
           SITE_URL: ${{ vars.SITE_URL }}
           CF_BEACON_TOKEN: ${{ vars.CF_BEACON_TOKEN }}   # optional: Cloudflare Web Analytics
+          COUNTER_URL: ${{ vars.COUNTER_URL }}           # optional: public view counter (https://luot-xem.<name>.workers.dev)
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}       # optional: defaults to lienhe@tietkiemdau.vn
 
       - name: Save today's data

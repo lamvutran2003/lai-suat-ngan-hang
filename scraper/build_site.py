@@ -149,6 +149,7 @@ SITE = ROOT / "site"
 FONT_LINK = ""  # system fonts (SF Pro / Segoe UI / Roboto): fast, no third-party request
 CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL") or "lienhe@tietkiemdau.vn"
 CF_BEACON_TOKEN = os.environ.get("CF_BEACON_TOKEN", "").strip()   # Cloudflare Web Analytics, optional
+COUNTER_URL = os.environ.get("COUNTER_URL", "").strip().rstrip("/")  # public view counter (khoicai repo, counter/), optional
 
 
 def read(rel: str) -> str:
@@ -233,6 +234,7 @@ def build() -> None:
         "__BANK_COUNT__": str(len(banks_with_data)),
         "__BANK_LIST__": ", ".join(banks_with_data),
         "__CONTACT_EMAIL__": html.escape(CONTACT_EMAIL),
+        "__COUNTER_URL__": html.escape(COUNTER_URL),
         "__UPDATED_TIME__": generated.strftime("%H:%M"),
         "__UPDATED_DATE__": generated.strftime("%d/%m/%Y"),
         "__SITE_URL__": html.escape(SITE_URL + "/"),

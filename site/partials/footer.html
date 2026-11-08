@@ -15,11 +15,13 @@
       <span>Liên hệ: <span class="sel">__CONTACT_EMAIL__</span></span>
     </nav>
     <p>Lãi suất chỉ mang tính tham khảo, không phải lời khuyên tài chính. Mức lãi thực tế có thể khác theo chi nhánh, số tiền, hạng khách hàng và chương trình ưu đãi; vui lòng xác nhận với ngân hàng trước khi gửi tiền.</p>
+    <p id="views" data-api="__COUNTER_URL__" data-site="tietkiemdau" hidden>Lượt xem trang này: <b class="vp"></b> · Tổng lượt xem tietkiemdau.vn: <b class="vt"></b></p>
     <p>© 2026 tietkiemdau.vn</p>
   </div>
 </footer>
 <div class="toast" id="toast" role="status" hidden></div>
 <script>window.TKD_URL = "__PAGE_URL__";</script>
+<script src="/views.js" defer></script>
 <script>
 (function(){
   const URL_ = window.TKD_URL || location.href;
