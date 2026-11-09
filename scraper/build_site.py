@@ -260,6 +260,12 @@ def build() -> None:
         "__STATIC_TABLE__": static_table(data, data["changes"]),
         "__BROWSE__": __import__("scraper.pages", fromlist=["x"]).browse_links(data),
     })
+    # Tên trang web trên Google (site name) lấy từ WebSite trên trang chủ
+    site_ld = safe_json([{"@context": "https://schema.org", "@type": "WebSite", "name": "Tiết Kiệm Đâu?",
+                          "alternateName": ["Tiết Kiệm Đâu", "Tiet Kiem Dau", "tietkiemdau.vn"], "url": SITE_URL + "/", "inLanguage": "vi"},
+                         {"@context": "https://schema.org", "@type": "Organization", "name": "Tiết Kiệm Đâu?", "url": SITE_URL + "/",
+                          "logo": SITE_URL + "/favicon-192.png"}])
+    home_body += f'\n<script type="application/ld+json">{site_ld}</script>'
     home_title = f"Lãi suất tiết kiệm hôm nay {updated_vn} | Tiết Kiệm Đâu?"
     (DIST / "index.html").write_text(full_page(home_title, home_desc, SITE_URL + "/", home_body, css), encoding="utf-8")
     pages.append(("/", generated.date().isoformat()))
