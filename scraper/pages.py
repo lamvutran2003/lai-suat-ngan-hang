@@ -128,6 +128,44 @@ def aff_box(aff: dict | None) -> str:
 
 
 # ---------------------------------------------------------------- bank page
+# How people search for the bank: "lãi suất ngân hàng agribank", "ngân hàng số cake"
+def bank_title_name(code: str, name: str) -> str:
+    return f"ngân hàng số {name}" if code == "cake" else f"ngân hàng {name}"
+
+
+# Short factual background for banks people look up by name (digital / renamed banks)
+BANK_NOTES = {
+    "cake": ("Cake by VPBank là ngân hàng gì?",
+             "Cake by VPBank là ngân hàng số do VPBank hợp tác với Be Group ra mắt năm 2021. Mở tài khoản, gửi tiết kiệm và "
+             "rút tiền đều làm trên ứng dụng, không cần ra quầy. Cake hoạt động dựa trên giấy phép của VPBank."),
+    "vikki": ("Vikki Bank là ngân hàng gì?",
+              "Vikki Bank (Ngân hàng TNHH MTV Số Vikki) là tên mới của Ngân hàng Đông Á (DongA Bank) sau khi được chuyển giao "
+              "bắt buộc cho HDBank năm 2025, hoạt động theo mô hình ngân hàng số."),
+}
+DEPOSIT_INSURANCE = ("Tiền gửi tiết kiệm bằng đồng Việt Nam của cá nhân được Bảo hiểm tiền gửi Việt Nam bảo hiểm. Từ 13/07/2026, "
+                     "mức chi trả tối đa là <b>350 triệu đồng</b> (cả gốc và lãi) cho mỗi người tại mỗi ngân hàng "
+                     "(Thông tư 05/2026/TT-NHNN). Nếu gửi nhiều hơn mức này, có thể chia ra nhiều ngân hàng.")
+
+
+def recent_changes(rates, changes) -> str:
+    """Changes in the last 30 days for the bank's base quotes (smallest deposit band), newest first."""
+    items = []
+    for r in rates:
+        c = changes.get(key_of(r))
+        if not c or r["min_amount"] != min(x["min_amount"] for x in rates if x["channel"] == r["channel"]):
+            continue
+        d = r["rate"] - c["prev"]
+        items.append((c["since"], r["term_months"], r["channel"], c["prev"], r["rate"], d))
+    if not items:
+        return "<p>Chưa ghi nhận thay đổi lãi suất trong 30 ngày gần nhất.</p>"
+    items.sort(key=lambda x: (x[0], -x[1]), reverse=True)
+    lis = "".join(f'<li>Kỳ hạn {t} tháng ({CH[ch].lower()}): <b>{"tăng" if d > 0 else "giảm"}</b> từ {fmt(prev)}% '
+                  f'lên {fmt(now)}%, áp dụng từ {since[8:10]}/{since[5:7]}/{since[:4]}</li>'.replace(" lên ", " xuống " if d < 0 else " lên ")
+                  for since, t, ch, prev, now, d in items[:8])
+    more = f'<p class="sub">Và {len(items) - 8} thay đổi khác, xem mũi tên ▲ ▼ trong bảng.</p>' if len(items) > 8 else ""
+    return f"<ul>{lis}</ul>{more}"
+
+
 def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
     code, name = b["code"], b["name"]
     rates = [r for r in data["rates"] if r["bank"] == code]
@@ -222,21 +260,30 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
         qa.append((f"Lãi suất {name} so với các ngân hàng khác thế nào?",
                    f"Ở kỳ hạn 12 tháng, {name} đứng thứ {rank12}/{len(others)} ngân hàng chúng tôi theo dõi. " + verdict
                    + '<a href="/ky-han/12-thang/">Xem bảng so sánh 12 tháng</a>.'))
+    if code == "cake":
+        qa.append((f"Gửi tiết kiệm ở {name} có an toàn không?", DEPOSIT_INSURANCE.replace("mỗi ngân hàng", "mỗi ngân hàng")
+                   + " Vì Cake hoạt động dựa trên giấy phép của VPBank, hạn mức này tính chung cho tiền gửi tại Cake và VPBank."))
+    else:
+        qa.append((f"Gửi tiết kiệm ở {name} có an toàn không?", DEPOSIT_INSURANCE))
+    if code in BANK_NOTES:
+        qa.insert(0, BANK_NOTES[code])
     qa_html = "".join(f"<details class=\"qa\" open><summary>{E(q)}</summary><p>{a}</p></details>" for q, a in qa)
 
     top_band = f", {band_label(top['min_amount'], top['max_amount']).lower()}" if top_needs_band else ""
     top_txt = (f"Lãi suất tiết kiệm {name} cao nhất hiện là {fmt(top['rate'])}%/năm, kỳ hạn {top['term_months']} tháng "
                f"({CH[top['channel']].lower()}{top_band}).")
-    title = f"Lãi suất {name} hôm nay {date_vn} | Tiết Kiệm Đâu?"
+    tname = bank_title_name(code, name)
+    title = f"Lãi suất {tname} hôm nay {date_vn} | Tiết Kiệm Đâu?"
     desc = f"{top_txt} Bảng lãi suất {name} online và tại quầy theo kỳ hạn và số tiền, cập nhật mỗi ngày."
     body = f'''<section class="page gutter"><div class="wrap stack">
 {crumbs(("Ngân hàng", None), (name, None))}
 <div class="bank-head">{logo_img(code, 48).replace('class="bl"', 'class="bl big"')}
-<div><h1>Lãi suất {E(name)} hôm nay</h1><p class="lede">{E(top_txt)} Cập nhật ngày {date_vn}.</p></div></div>
+<div><h1>Lãi suất {E(tname)} hôm nay</h1><p class="lede">{E(top_txt)} Cập nhật ngày {date_vn}.</p></div></div>
 <p class="srcline">{as_of_line(b, generated)}</p>
 <div class="tiles">{tiles_html}</div>
 {aff_box(aff)}
 {"".join(sections)}
+<section class="block"><h2>Thay đổi lãi suất {E(name)} gần đây</h2>{recent_changes(rates, changes)}</section>
 <section class="block"><h2>Câu hỏi thường gặp</h2>{qa_html}</section>
 <p class="sub">Lãi suất dành cho khách hàng cá nhân thông thường, chưa gồm ưu đãi riêng. Mũi tên ▲ ▼ cho biết mức lãi đã thay đổi trong 30 ngày gần nhất.
 Hãy xác nhận với {E(name)} trước khi gửi tiền. <a href="/#tinh-lai">Tính tiền lãi cho số tiền của bạn</a>.</p>
