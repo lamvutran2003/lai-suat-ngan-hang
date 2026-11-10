@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T09:47+07:00",
+ "generated_at": "2026-11-10T10:47+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -7,37 +7,37 @@
    "source_url": "https://www.pnj.com.vn/site/gia-vang",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-10T09:14+07:00",
-   "fetched_at": "2026-11-10T09:47+07:00",
+   "updated": "2026-11-10T10:31+07:00",
+   "fetched_at": "2026-11-10T10:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
-     "buy": 138500000,
-     "sell": 141500000,
+     "buy": 137900000,
+     "sell": 140900000,
      "kind": "sjc"
     },
     {
      "name": "Nhẫn Trơn PNJ 999.9",
-     "buy": 136700000,
-     "sell": 140900000,
+     "buy": 136100000,
+     "sell": 140300000,
      "kind": "ring"
     },
     {
      "name": "Vàng Kim Bảo 999.9",
-     "buy": 136700000,
-     "sell": 140900000,
+     "buy": 136100000,
+     "sell": 140300000,
      "kind": null
     },
     {
      "name": "Vàng Phúc Lộc Tài 999.9",
-     "buy": 136700000,
-     "sell": 140900000,
+     "buy": 136100000,
+     "sell": 140300000,
      "kind": null
     },
     {
      "name": "Vàng PNJ - Phượng Hoàng",
-     "buy": 136700000,
-     "sell": 140900000,
+     "buy": 136100000,
+     "sell": 140300000,
      "kind": null
     },
     {
@@ -126,55 +126,55 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-10T09:46+07:00",
-   "fetched_at": "2026-11-10T09:47+07:00",
+   "updated": "2026-11-10T10:44+07:00",
+   "fetched_at": "2026-11-10T10:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
-     "buy": 138000000,
-     "sell": 141500000,
+     "buy": 137400000,
+     "sell": 140900000,
      "kind": "sjc"
     },
     {
      "name": "Nhẫn tròn Phú Quý 999.9",
-     "buy": 138000000,
-     "sell": 141000000,
+     "buy": 137400000,
+     "sell": 140400000,
      "kind": "ring"
     },
     {
      "name": "Phú Quý 1 Lượng 999.9",
-     "buy": 138000000,
-     "sell": 141000000,
+     "buy": 137400000,
+     "sell": 140400000,
      "kind": null
     },
     {
      "name": "Phú quý 1 lượng 99.9",
-     "buy": 137900000,
-     "sell": 140900000,
+     "buy": 137300000,
+     "sell": 140300000,
      "kind": null
     },
     {
      "name": "Vàng trang sức 999.9",
-     "buy": 135500000,
-     "sell": 140000000,
+     "buy": 135000000,
+     "sell": 139500000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng trang sức 999",
-     "buy": 135400000,
-     "sell": 139900000,
+     "buy": 134900000,
+     "sell": 139400000,
      "kind": null
     },
     {
      "name": "Vàng trang sức 99",
-     "buy": 134145000,
-     "sell": 138600000,
+     "buy": 133650000,
+     "sell": 138105000,
      "kind": null
     },
     {
      "name": "Vàng trang sức 98",
-     "buy": 132790000,
-     "sell": 137200000,
+     "buy": 132300000,
+     "sell": 136710000,
      "kind": null
     }
    ]
@@ -185,8 +185,8 @@
    "source_url": "https://baotinmanhhai.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-10T09:08+07:00",
-   "fetched_at": "2026-11-10T09:47+07:00",
+   "updated": "2026-11-10T10:15+07:00",
+   "fetched_at": "2026-11-10T10:47+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
@@ -216,10 +216,10 @@
   }
  ],
  "world": {
-  "usd_oz": 4115.1,
+  "usd_oz": 4111.2,
   "usd_vnd": 25760.0,
-  "vnd_luong": 127805220,
-  "updated": "2026-11-10T02:47:29Z",
+  "vnd_luong": 127684098,
+  "updated": "2026-11-10T03:47:29Z",
   "fx_updated": "2026-11-10T08:37:16+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
