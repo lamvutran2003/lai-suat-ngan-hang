@@ -182,7 +182,6 @@ def head_tags(title: str, desc: str, url: str) -> str:
             f'<meta name="description" content="{e(desc)}">\n'
             f'<link rel="canonical" href="{url}">\n'
             '<link rel="icon" href="/favicon.svg" type="image/svg+xml">\n'
-            '<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">\n'
             '<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">\n'
             '<link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png">\n'
             '<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">\n'
