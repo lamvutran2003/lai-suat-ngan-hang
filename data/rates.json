@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-12T16:49+07:00",
+ "generated_at": "2026-11-13T00:38+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-12",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 102
   },
   {
@@ -68,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-06",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 72
   },
   {
@@ -78,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-01",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 171
   },
   {
@@ -88,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 42
   },
   {
@@ -98,7 +98,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 14
   },
   {
@@ -108,7 +108,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 17
   },
   {
@@ -118,7 +118,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 54
   },
   {
@@ -128,7 +128,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 34
   },
   {
@@ -138,7 +138,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 37
   },
   {
@@ -148,7 +148,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 48
   },
   {
@@ -158,13 +158,12 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 33,
    "manual": true,
    "checked_at": "2026-11-05",
    "document_url": "https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf",
-   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ.",
-   "watch_error": "ParseError: no rate-sheet PDF matching '(https://bvbank\\\\.net\\\\.vn/wp-content/uploads/\\\\d{4}/\\\\d{2}/Bieu-LSNY[^\\\\\"\\']*?\\\\.pdf)' on https://bvbank.net.vn/"
+   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ."
   },
   {
    "code": "cake",
@@ -173,7 +172,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -187,7 +186,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-31",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 29,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -201,7 +200,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -215,7 +214,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 38,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -229,7 +228,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -243,7 +242,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-02",
-   "fetched_at": "2026-11-12T16:49+07:00",
+   "fetched_at": "2026-11-13T00:38+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-03",
