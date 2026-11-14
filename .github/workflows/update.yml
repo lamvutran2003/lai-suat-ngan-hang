@@ -60,6 +60,13 @@ jobs:
           COUNTER_URL: ${{ vars.COUNTER_URL }}           # optional: public view counter (https://luot-xem.<name>.workers.dev)
           CONTACT_EMAIL: ${{ vars.CONTACT_EMAIL }}       # optional: defaults to lienhe@tietkiemdau.vn
 
+      - name: IndexNow (find changed pages)
+        id: indexnow
+        continue-on-error: true
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://tietkiemdau.vn' }}
+        run: echo "urls=$(python -m scraper.indexnow prepare dist "$SITE_URL")" >> "$GITHUB_OUTPUT"
+
       - name: Save today's data
         run: |
           git config user.name "rate-bot"
@@ -74,6 +81,14 @@ jobs:
           path: dist
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      # Tell Bing (and other IndexNow search engines) which pages changed, now that they are live
+      - name: IndexNow (submit)
+        continue-on-error: true
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://tietkiemdau.vn' }}
+          URLS: ${{ steps.indexnow.outputs.urls }}
+        run: python -m scraper.indexnow submit "$SITE_URL" "$URLS" dist
 
       # Runs last on purpose: the site still deploys with yesterday's numbers for
       # a broken bank, and this step fails the run so GitHub emails you.
