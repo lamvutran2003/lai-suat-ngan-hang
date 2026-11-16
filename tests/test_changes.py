@@ -33,5 +33,11 @@ def test_uses_bank_effective_date_when_it_fits(tmp_path):
     # VPBank 11/2026: sheet effective 14/11, first seen by the scraper on 16/11 (old rate last seen 13/11)
     write(tmp_path, "2026-11-13", 6.5); write(tmp_path, "2026-11-16", 6.8)
     assert compute_changes(CUR, tmp_path, date(2026, 11, 16), {"stb": "2026-11-14"})[KEY]["since"] == "2026-11-14"
-    # an effective date that predates the last day the old rate was seen can't be right: keep the seen date
+    # an effective date from before the old rate even appeared is the old sheet's date: keep the seen date
     assert compute_changes(CUR, tmp_path, date(2026, 11, 16), {"stb": "2026-11-01"})[KEY]["since"] == "2026-11-16"
+
+
+def test_effective_date_with_hand_entry_lag(tmp_path):
+    # the old rate is still "seen" on 15/11 because the hand-entered file was updated only on 16/11
+    write(tmp_path, "2026-11-02", 6.5); write(tmp_path, "2026-11-15", 6.5); write(tmp_path, "2026-11-16", 6.8)
+    assert compute_changes(CUR, tmp_path, date(2026, 11, 16), {"stb": "2026-11-14"})[KEY] == {"prev": 6.5, "since": "2026-11-14"}

@@ -73,17 +73,24 @@ def compute_changes(current_rates, history_dir: Path, today: date, as_of: dict |
     out = {}
     for r in current_rates:
         k, now = key_of(r), r["rate"]
-        since = None
+        since, prev, old_start = None, None, None
         for day, quotes in reversed(days):
             if k not in quotes:
                 continue
-            if quotes[k] == now:
+            if prev is None and quotes[k] == now:
                 since = day
                 continue
-            if since and date.fromisoformat(since) >= today - timedelta(days=CHANGE_WINDOW_DAYS):
-                eff = as_of.get(r["bank"]) or ""
-                out[k] = {"prev": quotes[k], "since": eff if day < eff <= since else since}
-            break
+            if prev is None:
+                prev = quotes[k]
+            if quotes[k] != prev:
+                break
+            old_start = day        # earliest day of the run of the old rate
+        if since and prev is not None and date.fromisoformat(since) >= today - timedelta(days=CHANGE_WINDOW_DAYS):
+            # The bank's own effective date wins if it is newer than the start of the old rate
+            # (so it isn't the old sheet's date) and not after the first day the new rate was seen.
+            # Hand-entered banks keep showing the old rate until retyped, so the gap can be days.
+            eff = as_of.get(r["bank"]) or ""
+            out[k] = {"prev": prev, "since": eff if old_start < eff <= since else since}
     return out
 
 
