@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-16T09:17+07:00",
+ "generated_at": "2026-11-16T16:17+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-16",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 102
   },
   {
@@ -68,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-06",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 72
   },
   {
@@ -78,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-01",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 171
   },
   {
@@ -88,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 42
   },
   {
@@ -98,7 +98,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 14
   },
   {
@@ -108,7 +108,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 17
   },
   {
@@ -118,7 +118,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 54
   },
   {
@@ -128,7 +128,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 34
   },
   {
@@ -138,7 +138,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 37
   },
   {
@@ -148,7 +148,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 48
   },
   {
@@ -158,12 +158,13 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 33,
    "manual": true,
    "checked_at": "2026-11-05",
    "document_url": "https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf",
-   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ."
+   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ.",
+   "watch_error": "ParseError: no rate-sheet PDF matching '(https://bvbank\\\\.net\\\\.vn/wp-content/uploads/\\\\d{4}/\\\\d{2}/Bieu-LSNY[^\\\\\"\\']*?\\\\.pdf)' on https://bvbank.net.vn/"
   },
   {
    "code": "cake",
@@ -172,7 +173,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -186,7 +187,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-31",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 29,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -200,7 +201,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -214,12 +215,13 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 38,
    "manual": true,
    "checked_at": "2026-11-05",
    "document_url": "https://www.ncb-bank.vn/InterestRates/2026/10/Bieu%20lai%20suat%20niem%20yet%20-%20hieu%20luc%2019.10.2026%20update.pdf",
-   "product": "Tiết kiệm truyền thống, lĩnh lãi cuối kỳ (tại quầy: Tiết kiệm truyền thống và Tiền gửi có kỳ hạn An Khang; online: Tiết kiệm truyền thống trên Mobile/Internet Banking)."
+   "product": "Tiết kiệm truyền thống, lĩnh lãi cuối kỳ (tại quầy: Tiết kiệm truyền thống và Tiền gửi có kỳ hạn An Khang; online: Tiết kiệm truyền thống trên Mobile/Internet Banking).",
+   "watch_error": "ParseError: no rate-sheet PDF matching '(/InterestRates/\\\\d{4}/\\\\d{2}/Bieu lai suat niem yet[^\\\\\"\\']*?\\\\.pdf)' on https://www.ncb-bank.vn/vi/lai-suat-tien-gui"
   },
   {
    "code": "vietin",
@@ -228,7 +230,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -242,7 +244,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-02",
-   "fetched_at": "2026-11-16T09:17+07:00",
+   "fetched_at": "2026-11-16T16:17+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-03",
