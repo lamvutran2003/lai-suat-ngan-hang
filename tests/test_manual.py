@@ -71,3 +71,17 @@ def test_pdf_watchers_read_the_file_name():
     assert name == "Bieu lai suat niem yet - hieu luc 19.10.2026 update.pdf" and url.startswith("https://www.ncb-bank.vn/InterestRates/2026/10/Bieu%20lai")
     bvb = '<a href="https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf">Lãi suất</a>'
     assert manual.watch_bvb(FakeSession(bvb))[0] == "Bieu-LSNY_Web_19.10.2026.pdf"
+
+
+def test_blocked_watcher_falls_back_to_recheck_reminder(tmp_path):
+    # BVBank's site added bot protection (11/2026): the watcher fails, so after 14 days ask for a manual check
+    m, d = bank(tmp_path, code="bvb", name="BVBank")
+    blocked = {**d, "_latest": None, "_watch_error": "ParseError: no rate-sheet PDF"}
+    m.parse(json.dumps(blocked, ensure_ascii=False), today=date(2026, 11, 10))
+    assert not m.meta().get("update_needed")                      # within 14 days of checked_at: quiet
+    m.parse(json.dumps(blocked, ensure_ascii=False), today=date(2026, 11, 20))
+    assert m.meta()["update_needed"] and "re-check" in m.meta()["update_reason"]
+    assert "watch_error" in m.meta()
+    # a working watcher with an unchanged sheet never nags, however old checked_at is
+    m.parse(raw(d, ("sheet-0211.pdf", "https://x/sheet-0211.pdf")), today=date(2027, 1, 1))
+    assert not m.meta().get("update_needed")

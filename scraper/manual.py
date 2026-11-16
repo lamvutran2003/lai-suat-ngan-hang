@@ -6,7 +6,8 @@ site that blocks scripts). Each run:
   2. asks the bank's "watcher" (if it has one) for the newest rate sheet; if it
      differs from the sheet the numbers were typed from, the bank is flagged
      update_needed and the run fails, so GitHub emails you the link,
-  3. for banks without a watcher, flags the bank after REVIEW_DAYS so you check it.
+  3. for banks without a watcher, or whose watcher can't read the bank's site (e.g. bot
+     protection), flags the bank after REVIEW_DAYS so you check it by hand.
 
 File format (amount bands are optional; leave "amount" out for "every amount"):
 {
@@ -134,7 +135,7 @@ class ManualBank:
         if latest and latest[0] != d.get("watch"):
             meta.update(update_needed=True, latest_document=latest[1],
                         update_reason=f"{self.NAME} published a new rate sheet: {latest[1]}")
-        elif self.CODE not in WATCHERS and (today - checked).days > REVIEW_DAYS:
+        elif (self.CODE not in WATCHERS or d.get("_watch_error")) and (today - checked).days > REVIEW_DAYS:
             meta.update(update_needed=True, latest_document=d.get("source_url"),
                         update_reason=f"{self.NAME} was last checked {checked:%d/%m/%Y}; please re-check its rate sheet")
         if d.get("_watch_error"):

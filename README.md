@@ -47,7 +47,7 @@ tests/                parser tests against saved copies of each bank's page
 | ABBank | rate index → current dated page (counter + online tables) | ✓ | ✓ | |
 | VietBank | one HTML page (standard savings + "Tiền gửi Online") | ✓ | ✓ | |
 | Eximbank | **Hand-entered**; watcher reads the PDF name on its rate page | ✓ | ✓ (weekday) | |
-| BVBank | **Hand-entered**; watcher reads the PDF linked from the homepage | ✓ | ✓ | |
+| BVBank | **Hand-entered**; site added bot protection (11/2026), so the watcher usually fails and a 14-day re-check reminder takes over | ✓ | ✓ | |
 | NCB | **Hand-entered**; watcher reads the PDF list on its rate page | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
