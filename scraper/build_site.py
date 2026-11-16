@@ -52,13 +52,16 @@ def fmt(x: float) -> str:
 
 
 # ---------------------------------------------------------------- rate changes
-def compute_changes(current_rates, history_dir: Path, today: date) -> dict:
+def compute_changes(current_rates, history_dir: Path, today: date, as_of: dict | None = None) -> dict:
     """For each current quote, find when it last changed and from what.
 
     Returns {key: {"prev": old_rate, "since": "YYYY-MM-DD"}} for quotes whose value
     changed within CHANGE_WINDOW_DAYS. Days where a bank wasn't scraped are skipped,
-    so a missing day never looks like a change.
+    so a missing day never looks like a change. "since" is the first day the new rate
+    was seen, or the bank's own effective date (as_of[bank]) when that falls between
+    the last day with the old rate and the first day with the new one.
     """
+    as_of = as_of or {}
     days = []
     for f in sorted(history_dir.glob("*.json")):
         try:
@@ -78,7 +81,8 @@ def compute_changes(current_rates, history_dir: Path, today: date) -> dict:
                 since = day
                 continue
             if since and date.fromisoformat(since) >= today - timedelta(days=CHANGE_WINDOW_DAYS):
-                out[k] = {"prev": quotes[k], "since": since}
+                eff = as_of.get(r["bank"]) or ""
+                out[k] = {"prev": quotes[k], "since": eff if day < eff <= since else since}
             break
     return out
 
@@ -223,7 +227,8 @@ def build() -> None:
     affiliates = {k: ({"url": v, "label": "Mở tài khoản online"} if isinstance(v, str) else v)
                   for k, v in affiliates.items() if v}
     generated = datetime.fromisoformat(data["generated_at"])
-    data["changes"] = compute_changes(data["rates"], HISTORY, generated.date())
+    data["changes"] = compute_changes(data["rates"], HISTORY, generated.date(),
+                                      {b["code"]: (b.get("as_of") or "")[:10] for b in data["banks"]})
     data["site_url"] = SITE_URL + "/"
 
     css, header, footer = read("partials/style.css"), read("partials/header.html"), read("partials/footer.html")

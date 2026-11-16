@@ -27,3 +27,11 @@ def test_old_change_hidden(tmp_path):
 def test_missing_days_are_not_changes(tmp_path):
     write(tmp_path, "2026-10-30", 6.8); write(tmp_path, "2026-11-01", 9.9, bank="vcb"); write(tmp_path, "2026-11-03", 6.8)
     assert compute_changes(CUR, tmp_path, date(2026, 11, 3)) == {}
+
+
+def test_uses_bank_effective_date_when_it_fits(tmp_path):
+    # VPBank 11/2026: sheet effective 14/11, first seen by the scraper on 16/11 (old rate last seen 13/11)
+    write(tmp_path, "2026-11-13", 6.5); write(tmp_path, "2026-11-16", 6.8)
+    assert compute_changes(CUR, tmp_path, date(2026, 11, 16), {"stb": "2026-11-14"})[KEY]["since"] == "2026-11-14"
+    # an effective date that predates the last day the old rate was seen can't be right: keep the seen date
+    assert compute_changes(CUR, tmp_path, date(2026, 11, 16), {"stb": "2026-11-01"})[KEY]["since"] == "2026-11-16"
