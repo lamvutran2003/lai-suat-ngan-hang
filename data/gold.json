@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T10:47+07:00",
+ "generated_at": "2026-11-17T11:47+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-17T09:46+07:00",
-   "fetched_at": "2026-11-17T10:47+07:00",
+   "fetched_at": "2026-11-17T11:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -126,8 +126,8 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-17T10:38+07:00",
-   "fetched_at": "2026-11-17T10:47+07:00",
+   "updated": "2026-11-17T11:42+07:00",
+   "fetched_at": "2026-11-17T11:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -185,41 +185,41 @@
    "source_url": "https://baotinmanhhai.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-17T10:34+07:00",
-   "fetched_at": "2026-11-17T10:47+07:00",
+   "updated": "2026-11-17T10:55+07:00",
+   "fetched_at": "2026-11-17T11:47+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
-     "buy": 138200000,
-     "sell": 142200000,
+     "buy": 138300000,
+     "sell": 142300000,
      "kind": null
     },
     {
      "name": "Kim Gia Bảo 24K",
-     "buy": 133200000,
-     "sell": 137200000,
+     "buy": 133300000,
+     "sell": 137300000,
      "kind": "ring"
     },
     {
      "name": "Vàng trang sức 24K (999.9)",
-     "buy": 131200000,
-     "sell": 136200000,
+     "buy": 131300000,
+     "sell": 136300000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng trang sức 24K 999",
-     "buy": 131100000,
-     "sell": 136100000,
+     "buy": 131200000,
+     "sell": 136200000,
      "kind": null
     }
    ]
   }
  ],
  "world": {
-  "usd_oz": 3875.25,
+  "usd_oz": 3875.15,
   "usd_vnd": 25930.0,
-  "vnd_luong": 121150322,
-  "updated": "2026-11-17T03:47:28Z",
+  "vnd_luong": 121147192,
+  "updated": "2026-11-17T04:47:28Z",
   "fx_updated": "2026-11-17T10:32:12+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
