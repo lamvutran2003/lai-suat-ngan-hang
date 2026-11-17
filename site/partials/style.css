@@ -388,3 +388,10 @@ h2{font-size:20px;font-weight:700}
   .rates.rank tbody tr:hover>*{background:none}
   .rates.term-rows thead th{min-width:64px}
 }
+
+/* Text comparison table in guides (wraps, unlike the numeric rate tables) */
+table.compare{width:100%;border-collapse:collapse;font-size:15px;line-height:1.45}
+table.compare th,table.compare td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;white-space:normal}
+table.compare thead th{background:var(--surface);font-weight:600}
+table.compare tbody th{font-weight:600;width:24%}
+@media (max-width:480px){table.compare{font-size:14px}table.compare th,table.compare td{padding:8px 6px}}
