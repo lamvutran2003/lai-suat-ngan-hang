@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T15:47+07:00",
+ "generated_at": "2026-11-18T16:18+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-18T15:30+07:00",
-   "fetched_at": "2026-11-18T15:47+07:00",
+   "fetched_at": "2026-11-18T16:18+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -126,31 +126,31 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-18T15:46+07:00",
-   "fetched_at": "2026-11-18T15:47+07:00",
+   "updated": "2026-11-18T16:17+07:00",
+   "fetched_at": "2026-11-18T16:18+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
-     "buy": 133700000,
+     "buy": 133200000,
      "sell": 137200000,
      "kind": "sjc"
     },
     {
      "name": "Nhẫn tròn Phú Quý 999.9",
-     "buy": 133700000,
-     "sell": 136700000,
+     "buy": 133200000,
+     "sell": 136200000,
      "kind": "ring"
     },
     {
      "name": "Phú Quý 1 Lượng 999.9",
-     "buy": 133700000,
-     "sell": 136700000,
+     "buy": 133200000,
+     "sell": 136200000,
      "kind": null
     },
     {
      "name": "Phú quý 1 lượng 99.9",
-     "buy": 133600000,
-     "sell": 136600000,
+     "buy": 133100000,
+     "sell": 136100000,
      "kind": null
     },
     {
@@ -183,44 +183,43 @@
    "code": "btmh",
    "name": "Bảo Tín Mạnh Hải",
    "source_url": "https://baotinmanhhai.vn/",
-   "status": "error",
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='baotinmanhhai.vn', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='baotinmanhhai.vn', port=443) at 0x7fb1484499a0>, 'Connection to baotinmanhhai.vn timed out. (connect timeout=30)'))",
-   "stale": true,
-   "updated": "2026-11-18T14:42+07:00",
-   "fetched_at": "2026-11-18T14:47+07:00",
+   "status": "ok",
+   "stale": false,
+   "updated": "2026-11-18T16:13+07:00",
+   "fetched_at": "2026-11-18T16:18+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
-     "buy": 137500000,
-     "sell": 141500000,
+     "buy": 137200000,
+     "sell": 141200000,
      "kind": null
     },
     {
      "name": "Kim Gia Bảo 24K",
-     "buy": 132500000,
-     "sell": 136500000,
+     "buy": 132200000,
+     "sell": 136200000,
      "kind": "ring"
     },
     {
      "name": "Vàng trang sức 24K (999.9)",
-     "buy": 130500000,
-     "sell": 135500000,
+     "buy": 130200000,
+     "sell": 135200000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng trang sức 24K 999",
-     "buy": 130400000,
-     "sell": 135400000,
+     "buy": 130100000,
+     "sell": 135100000,
      "kind": null
     }
    ]
   }
  ],
  "world": {
-  "usd_oz": 3767.52,
+  "usd_oz": 3769.97,
   "usd_vnd": 25900.0,
-  "vnd_luong": 117646135,
-  "updated": "2026-11-18T08:49:30Z",
+  "vnd_luong": 117722638,
+  "updated": "2026-11-18T09:18:00Z",
   "fx_updated": "2026-11-18T15:24:22+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
