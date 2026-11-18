@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18T13:47+07:00",
+ "generated_at": "2026-11-18T14:47+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -7,8 +7,8 @@
    "source_url": "https://www.pnj.com.vn/site/gia-vang",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-18T13:25+07:00",
-   "fetched_at": "2026-11-18T13:47+07:00",
+   "updated": "2026-11-18T14:01+07:00",
+   "fetched_at": "2026-11-18T14:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -42,80 +42,80 @@
     },
     {
      "name": "Vàng nữ trang 999.9",
-     "buy": 128490000,
-     "sell": 134280000,
+     "buy": 128180000,
+     "sell": 133970000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng nữ trang 999",
-     "buy": 128360000,
-     "sell": 134150000,
+     "buy": 128050000,
+     "sell": 133840000,
      "kind": null
     },
     {
      "name": "Vàng nữ trang 9920",
-     "buy": 127010000,
-     "sell": 133210000,
+     "buy": 126700000,
+     "sell": 132900000,
      "kind": null
     },
     {
      "name": "Vàng nữ trang 99",
-     "buy": 126740000,
-     "sell": 132940000,
+     "buy": 126430000,
+     "sell": 132630000,
      "kind": null
     },
     {
      "name": "Vàng 916 (22K)",
-     "buy": 116800000,
-     "sell": 123000000,
+     "buy": 116520000,
+     "sell": 122720000,
      "kind": null
     },
     {
      "name": "Vàng 750 (18K)",
-     "buy": 94510000,
-     "sell": 100710000,
+     "buy": 94280000,
+     "sell": 100480000,
      "kind": null
     },
     {
      "name": "Vàng 680 (16.3K)",
-     "buy": 85110000,
-     "sell": 91310000,
+     "buy": 84900000,
+     "sell": 91100000,
      "kind": null
     },
     {
      "name": "Vàng 650 (15.6K)",
-     "buy": 81080000,
-     "sell": 87280000,
+     "buy": 80880000,
+     "sell": 87080000,
      "kind": null
     },
     {
      "name": "Vàng 610 (14.6K)",
-     "buy": 75710000,
-     "sell": 81910000,
+     "buy": 75520000,
+     "sell": 81720000,
      "kind": null
     },
     {
      "name": "Vàng 585 (14K)",
-     "buy": 72350000,
-     "sell": 78550000,
+     "buy": 72170000,
+     "sell": 78370000,
      "kind": null
     },
     {
      "name": "Vàng 416 (10K)",
-     "buy": 49660000,
-     "sell": 55860000,
+     "buy": 49530000,
+     "sell": 55730000,
      "kind": null
     },
     {
      "name": "Vàng 375 (9K)",
-     "buy": 44160000,
-     "sell": 50360000,
+     "buy": 44040000,
+     "sell": 50240000,
      "kind": null
     },
     {
      "name": "Vàng 333 (8K)",
-     "buy": 38520000,
-     "sell": 44720000,
+     "buy": 38410000,
+     "sell": 44610000,
      "kind": null
     }
    ]
@@ -126,8 +126,8 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-18T13:44+07:00",
-   "fetched_at": "2026-11-18T13:47+07:00",
+   "updated": "2026-11-18T14:40+07:00",
+   "fetched_at": "2026-11-18T14:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -185,41 +185,41 @@
    "source_url": "https://baotinmanhhai.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-18T13:43+07:00",
-   "fetched_at": "2026-11-18T13:47+07:00",
+   "updated": "2026-11-18T14:42+07:00",
+   "fetched_at": "2026-11-18T14:47+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
-     "buy": 137600000,
-     "sell": 141600000,
+     "buy": 137500000,
+     "sell": 141500000,
      "kind": null
     },
     {
      "name": "Kim Gia Bảo 24K",
-     "buy": 132600000,
-     "sell": 136600000,
+     "buy": 132500000,
+     "sell": 136500000,
      "kind": "ring"
     },
     {
      "name": "Vàng trang sức 24K (999.9)",
-     "buy": 130600000,
-     "sell": 135600000,
+     "buy": 130500000,
+     "sell": 135500000,
      "kind": "jewelry"
     },
     {
      "name": "Vàng trang sức 24K 999",
-     "buy": 130500000,
-     "sell": 135500000,
+     "buy": 130400000,
+     "sell": 135400000,
      "kind": null
     }
    ]
   }
  ],
  "world": {
-  "usd_oz": 3782.57,
+  "usd_oz": 3767.75,
   "usd_vnd": 25880.0,
-  "vnd_luong": 118024884,
-  "updated": "2026-11-18T06:47:30Z",
+  "vnd_luong": 117562464,
+  "updated": "2026-11-18T07:47:30Z",
   "fx_updated": "2026-11-18T09:13:30+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
