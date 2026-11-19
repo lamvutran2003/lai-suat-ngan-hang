@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T01:10+07:00",
+ "generated_at": "2026-11-19T09:17+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -7,8 +7,8 @@
    "source_url": "https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/KHCN---Lai-suat",
    "status": "ok",
    "stale": false,
-   "as_of": "2026-11-18",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "as_of": "2026-11-19",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 16
   },
   {
@@ -18,18 +18,17 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 29
   },
   {
    "code": "agri",
    "name": "Agribank",
    "source_url": "https://www.agribank.com.vn/vn/lai-suat-tien-gui",
-   "status": "error",
-   "error": "HTTPError: 404 Client Error: Not Found for url: https://www.agribank.com.vn/wcm/connect/ttkhac/lai-suat/lai-suat-cn?source=library&srv=cmpnt&cmpntid=c1687c7c-142f-4616-a8b0-02f09a14f844",
-   "stale": true,
+   "status": "ok",
+   "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-18T17:08+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 16
   },
   {
@@ -39,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 37
   },
   {
@@ -49,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 12
   },
   {
@@ -59,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 102
   },
   {
@@ -69,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-06",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 72
   },
   {
@@ -79,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-01",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 171
   },
   {
@@ -89,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 42
   },
   {
@@ -97,7 +96,7 @@
    "name": "MBV",
    "source_url": "https://www.mbv.com.vn/",
    "status": "error",
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='www.mbv.com.vn', port=443): Max retries exceeded with url: /client-api/primary_menu?language_code=vi (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mbv.com.vn', port=443) at 0x7fae0179fbc0>, 'Connection to www.mbv.com.vn timed out. (connect timeou",
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='www.mbv.com.vn', port=443): Max retries exceeded with url: /client-api/primary_menu?language_code=vi (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.mbv.com.vn', port=443) at 0x73cec8a13a10>, 'Connection to www.mbv.com.vn timed out. (connect timeou",
    "stale": true,
    "as_of": "2026-10-20",
    "fetched_at": "2026-11-18T17:08+07:00",
@@ -110,7 +109,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 17
   },
   {
@@ -120,7 +119,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 54
   },
   {
@@ -130,7 +129,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 34
   },
   {
@@ -140,7 +139,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 37
   },
   {
@@ -150,7 +149,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 48
   },
   {
@@ -160,13 +159,12 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 33,
    "manual": true,
    "checked_at": "2026-11-16",
    "document_url": "https://bvbank.net.vn/wp-content/uploads/2026/10/Bieu-LSNY_Web_19.10.2026.pdf",
-   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ.",
-   "watch_error": "ParseError: no rate-sheet PDF matching '(https://bvbank\\\\.net\\\\.vn/wp-content/uploads/\\\\d{4}/\\\\d{2}/Bieu-LSNY[^\\\\\"\\']*?\\\\.pdf)' on https://bvbank.net.vn/"
+   "product": "Tại quầy: Tiền gửi, tiết kiệm thông thường (mục V). Online: Tiền gửi trực tuyến (mục I). Lĩnh lãi cuối kỳ."
   },
   {
    "code": "cake",
@@ -175,7 +173,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -189,7 +187,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-31",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 29,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -203,7 +201,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -217,7 +215,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 38,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -232,7 +230,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -246,7 +244,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-14",
-   "fetched_at": "2026-11-19T01:10+07:00",
+   "fetched_at": "2026-11-19T09:17+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-16",
