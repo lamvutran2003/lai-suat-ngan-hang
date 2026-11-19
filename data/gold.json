@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T10:47+07:00",
+ "generated_at": "2026-11-19T11:47+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -7,13 +7,13 @@
    "source_url": "https://www.pnj.com.vn/site/gia-vang",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-19T09:02+07:00",
-   "fetched_at": "2026-11-19T10:47+07:00",
+   "updated": "2026-11-19T11:24+07:00",
+   "fetched_at": "2026-11-19T11:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
-     "buy": 133700000,
-     "sell": 136700000,
+     "buy": 133200000,
+     "sell": 136200000,
      "kind": "sjc"
     },
     {
@@ -126,31 +126,31 @@
    "source_url": "https://phuquygroup.vn/",
    "status": "ok",
    "stale": false,
-   "updated": "2026-11-19T10:46+07:00",
-   "fetched_at": "2026-11-19T10:47+07:00",
+   "updated": "2026-11-19T11:46+07:00",
+   "fetched_at": "2026-11-19T11:47+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
-     "buy": 133000000,
-     "sell": 136700000,
+     "buy": 132500000,
+     "sell": 136200000,
      "kind": "sjc"
     },
     {
      "name": "Nhẫn tròn Phú Quý 999.9",
-     "buy": 133000000,
-     "sell": 136000000,
+     "buy": 132500000,
+     "sell": 135500000,
      "kind": "ring"
     },
     {
      "name": "Phú Quý 1 Lượng 999.9",
-     "buy": 133000000,
-     "sell": 136000000,
+     "buy": 132500000,
+     "sell": 135500000,
      "kind": null
     },
     {
      "name": "Phú quý 1 lượng 99.9",
-     "buy": 132900000,
-     "sell": 135900000,
+     "buy": 132400000,
+     "sell": 135400000,
      "kind": null
     },
     {
@@ -186,7 +186,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-19T10:19+07:00",
-   "fetched_at": "2026-11-19T10:47+07:00",
+   "fetched_at": "2026-11-19T11:47+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
@@ -216,10 +216,10 @@
   }
  ],
  "world": {
-  "usd_oz": 3713.75,
+  "usd_oz": 3727.27,
   "usd_vnd": 25920.0,
-  "vnd_luong": 116056640,
-  "updated": "2026-11-19T03:47:32Z",
+  "vnd_luong": 116479147,
+  "updated": "2026-11-19T04:47:32Z",
   "fx_updated": "2026-11-19T08:05:20+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",
