@@ -16,6 +16,7 @@ scraper/pages.py      generated pages: /ngan-hang/<bank>/ for each bank with dat
                       terms 1–36 months that at least 3 banks publish; all text computed from the data
 site/partials/        shared style.css, header.html, footer.html (incl. sharing script)
 site/static/          favicon, share image (og.png), logos/<bank>.png (official icons): copied to the site root
+tools/make_icons.js   draws the logo (map pin + %), favicons, apple-touch icon and og.png; then tools/make_ico.py
 scraper/gold.py       gold prices (PNJ, Phú Quý, Bảo Tín Mạnh Hải + world price) -> data/gold.json, data/gold-history/
 scraper/gold_page.py  /gia-vang/ page from that data; scraper/gold_chart.py draws its price chart
 scraper/gold_daily.py daily series for the chart (data/gold-daily.json), with a one-off backfill

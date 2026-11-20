@@ -1,12 +1,12 @@
 /* Layout: top bar → hero (title, update stamp, channel tabs, best-rate tiles, sortable bank×term table)
    → calculator → browse links → sources → footer. One 1040px column, mobile-first. */
 /* Palette: neutral greys and near-black text; colour is reserved for data (green = best, red = down)
-   and the brand blue appears only in the logo mark. System fonts, like most banking sites. */
+   and the brand orange appears only in the logo (map pin + %, "đâu" = where) and its ".vn". System fonts, like most banking sites. */
 :root{
   --bg:#ffffff; --surface:#f6f7f9; --line:#e6e8eb; --line-strong:#d4d7dc;
   --ink:#16191d; --muted:#6b7280;
   --primary:#16191d; --primary-ink:#ffffff; --primary-soft:#f1f2f4;
-  --brand:#0f4c81; --link:#1f5f99;
+  --brand:#ea580c; --link:#1f5f99;
   --green:#12803f; --green-fill:#16a34a; --green-soft:#f0f9f3;
   --red:#d92d20; --red-soft:#fdf0ef;
   --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -16,14 +16,14 @@
   --bg:#111315; --surface:#181b1f; --line:#262a30; --line-strong:#343a42;
   --ink:#e8eaed; --muted:#9aa1ab;
   --primary:#e8eaed; --primary-ink:#111315; --primary-soft:#22262b;
-  --brand:#6aa8e0; --link:#8ab6e8;
+  --brand:#fb923c; --link:#8ab6e8;
   --green:#4ade80; --green-fill:#22c55e; --green-soft:#15261b;
   --red:#f87171; --red-soft:#2a1717; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#111315; --surface:#181b1f; --line:#262a30; --line-strong:#343a42;
   --ink:#e8eaed; --muted:#9aa1ab;
   --primary:#e8eaed; --primary-ink:#111315; --primary-soft:#22262b;
-  --brand:#6aa8e0; --link:#8ab6e8;
+  --brand:#fb923c; --link:#8ab6e8;
   --green:#4ade80; --green-fill:#22c55e; --green-soft:#15261b;
   --red:#f87171; --red-soft:#2a1717; color-scheme:dark}
 
@@ -203,7 +203,7 @@ body{font-size:15px;line-height:1.5}
 a{color:var(--link)}
 .logo{color:var(--ink);font-size:18px}
 .logo svg{color:var(--brand)}
-.logo .dot{color:var(--muted)}
+.logo .dot{color:var(--brand)}
 h1{font-size:clamp(24px,4vw,30px);font-weight:700;letter-spacing:-.015em}
 h2{font-size:20px;font-weight:700}
 .live{background:var(--surface);color:var(--muted);font-weight:500;border:1px solid var(--line)}
