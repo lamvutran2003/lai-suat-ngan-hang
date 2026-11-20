@@ -139,8 +139,9 @@ def static_table(data, changes, ch=DEFAULT_CHANNEL, amount=DEFAULT_AMOUNT) -> st
                 arrow = (f'<span class="chg {"up" if d > 0 else "down"}" title="Từ {fmt(chg["prev"])}%">'
                          f'{"▲" if d > 0 else "▼"}{fmt(abs(d))}</span>')
             tds.append(f'<td class="r{cls}"><span class="v">{fmt(r["rate"])}</span>{arrow}</td>')
+        tag = '<span class="tier old" title="Lần lấy dữ liệu gần nhất bị lỗi; đang hiện số liệu trước đó">dữ liệu cũ</span>' if b.get("stale") else ""
         body.append(f'<tr><th scope="row">{logo_img(b["code"])}'
-                    f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{html.escape(b["name"])}</a></th>{"".join(tds)}</tr>')
+                    f'<a class="bn" href="/ngan-hang/{SLUG[b["code"]]}/">{html.escape(b["name"])}</a>{tag}</th>{"".join(tds)}</tr>')
     return (f'<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>{head}</tr></thead>'
             f'<tbody>{"".join(body)}</tbody></table>')
 
@@ -157,6 +158,7 @@ def best_sentence(data, term=12) -> str:
 
 # ---------------------------------------------------------------- build
 SITE = ROOT / "site"
+OLD_AFTER_HOURS = 48     # stale longer than this: left out of comparisons (see build())
 FONT_LINK = ""  # system fonts (SF Pro / Segoe UI / Roboto): fast, no third-party request
 CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL") or "lienhe@tietkiemdau.vn"
 CF_BEACON_TOKEN = os.environ.get("CF_BEACON_TOKEN", "").strip()   # Cloudflare Web Analytics, optional
@@ -235,6 +237,15 @@ def build() -> None:
     affiliates = {k: ({"url": v, "label": "Mở tài khoản online"} if isinstance(v, str) else v)
                   for k, v in affiliates.items() if v}
     generated = datetime.fromisoformat(data["generated_at"])
+    # A bank whose site has failed for more than OLD_AFTER_HOURS keeps its own page (numbers marked
+    # "dữ liệu cũ"), but its numbers leave every comparison (table, best-rate boxes, calculator, term
+    # pages, guides) until it updates again, so a dead feed can never top the ranking.
+    for b in data["banks"]:
+        b["old"] = bool(b.get("stale") and b.get("fetched_at")
+                        and generated - datetime.fromisoformat(b["fetched_at"]) > timedelta(hours=OLD_AFTER_HOURS))
+    old = {b["code"] for b in data["banks"] if b["old"]}
+    all_rates = data["rates"]
+    data["rates"] = [r for r in all_rates if r["bank"] not in old]
     data["changes"] = compute_changes(data["rates"], HISTORY, generated.date(),
                                       {b["code"]: (b.get("as_of") or "")[:10] for b in data["banks"]})
     data["site_url"] = SITE_URL + "/"
@@ -300,7 +311,8 @@ def build() -> None:
 
     # Generated pages: one per bank with data, one per common term, the guides
     browse = gp.browse_links(data)
-    generated_pages = [gp.bank_page(data, data["changes"], b, generated, affiliates.get(b["code"]))
+    with_old = {**data, "rates": all_rates}        # a bank's own page still shows its last numbers
+    generated_pages = [gp.bank_page(with_old, data["changes"], b, generated, affiliates.get(b["code"]))
                        for b in gp.banks_with_data(data)]
     generated_pages += [gp.term_page(data, data["changes"], t, generated) for t in gp.term_pages(data)]
     generated_pages += guide_pages

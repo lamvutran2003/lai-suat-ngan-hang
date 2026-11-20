@@ -97,6 +97,8 @@
   }
 
   /* ---------- table ---------- */
+  // Last fetch failed: still showing the previous numbers. (After 2 days the build drops the bank from comparisons.)
+  const oldTag = b => b.stale ? `<span class="tier old" title="Lần lấy dữ liệu gần nhất bị lỗi; đang hiện số liệu trước đó">dữ liệu cũ</span>` : "";
   const logo = code => `<img class="bl" src="/logos/${code}.png" alt="" width="22" height="22" loading="lazy" onerror="this.style.visibility='hidden'">`;
   function rows(ch, amount){
     const out = [];
@@ -128,14 +130,16 @@
       return `<th scope="col"${on ? ` aria-sort="${state.sortDir === "asc" ? "ascending" : "descending"}" class="sorted"` : ""}>` +
         `<button class="sort" type="button" data-t="${t}" aria-label="Sắp xếp theo kỳ hạn ${t} tháng">${t} tháng<span class="ar" aria-hidden="true">${on ? (state.sortDir === "asc" ? "↑" : "↓") : "↕"}</span></button></th>`;
     }).join("");
-    const body = rs.map(({b, cells}) => `<tr><th scope="row">${logo(b.code)}<a class="bn" href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a></th>${
+    const body = rs.map(({b, cells}) => `<tr><th scope="row">${logo(b.code)}<a class="bn" href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a>${oldTag(b)}</th>${
       TABLE_TERMS.map(t => { const r = cells[t]; if (!r) return `<td class="na">–</td>`;
         return `<td class="r${r.rate === best[t] ? " best" : ""}"><span class="v">${pct(r.rate)}</span>${arrow(r)}</td>`; }).join("")}</tr>`).join("");
     $("tableWrap").innerHTML = `<table class="rates"><thead><tr><th scope="col">Ngân hàng</th>${head}</tr></thead><tbody>${body}</tbody></table>`;
-    const missing = D.banks.filter(b => b.count && !rs.some(x => x.b.code === b.code)).map(b => b.name);
+    const missing = D.banks.filter(b => b.count && !b.old && !rs.some(x => x.b.code === b.code)).map(b => b.name);
+    const hidden = D.banks.filter(b => b.old).map(b => `${b.name} (lần cuối lấy được ${dmy(b.fetched_at)})`);
     $("tableNote").textContent = `Mức lãi cho khoản gửi ${vnd(state.amount)} ₫. ${PHONE.matches ? "Chọn kỳ hạn để xếp hạng." : "Bấm vào kỳ hạn để sắp xếp."} ` +
       `Kỳ hạn dưới 6 tháng bị giới hạn tối đa 4,75%/năm theo quy định của Ngân hàng Nhà nước.` +
-      (missing.length ? ` ${missing.join(", ")} không niêm yết lãi ${state.ch==="online"?"online":"tại quầy"}.` : "");
+      (missing.length ? ` ${missing.join(", ")} không niêm yết lãi ${state.ch==="online"?"online":"tại quầy"}.` : "") +
+      (hidden.length ? ` Tạm không so sánh ${hidden.join(", ")}: hơn 2 ngày nay chưa lấy được lãi suất mới từ website ngân hàng.` : "");
     $("tableWrap").setAttribute("aria-labelledby", "tab-" + state.ch);
     renderCards(rs, best);
   }
@@ -163,7 +167,7 @@
       rank += 1;
       const top = r.rate === best[t];
       return `<li class="mcard${top ? " top" : ""}"><span class="rk">${rank}</span>${logo(b.code)}` +
-        `<div class="mn"><a href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a><span class="mini">${mini}</span></div>` +
+        `<div class="mn"><a href="/ngan-hang/${SLUG[b.code]}/">${esc(b.name)}</a>${oldTag(b)}<span class="mini">${mini}</span></div>` +
         `<div class="mr"><span class="v">${pct(r.rate)}<small>%</small></span>${arrow(r)}</div></li>`;
     }).join("");
     // Keep the chosen term button in view without moving the page.

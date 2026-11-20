@@ -395,3 +395,4 @@ table.compare th,table.compare td{padding:9px 10px;border-bottom:1px solid var(-
 table.compare thead th{background:var(--surface);font-weight:600}
 table.compare tbody th{font-weight:600;width:24%}
 @media (max-width:480px){table.compare{font-size:14px}table.compare th,table.compare td{padding:8px 6px}}
+.tier.old{color:var(--red);border-color:color-mix(in srgb,var(--red) 40%,transparent)}

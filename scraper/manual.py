@@ -84,7 +84,16 @@ def watch_ncb(session):
                      r"(/InterestRates/\d{4}/\d{2}/Bieu lai suat niem yet[^\"']*?\.pdf)", "https://www.ncb-bank.vn/")
 
 
-WATCHERS = {"vpb": watch_vpb, "eib": watch_eib, "bvb": watch_bvb, "ncb": watch_ncb}
+def watch_mbv(session):
+    """MBV: the site menu links "LÃI SUẤT" to the current rate post (tin-tuc/bieu-lai-suat-DDMMYYYY)."""
+    from .banks import mbv
+    menu = session.get(mbv.MENU_URL, timeout=30)
+    menu.raise_for_status()
+    slug = mbv.current_slug(menu.json())
+    return slug, mbv.SOURCE_URL + slug
+
+
+WATCHERS = {"vpb": watch_vpb, "eib": watch_eib, "bvb": watch_bvb, "ncb": watch_ncb, "mbv": watch_mbv}
 
 
 # ---------------------------------------------------------------- loading

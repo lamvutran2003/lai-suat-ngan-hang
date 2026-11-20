@@ -5,6 +5,9 @@ on:
     - cron: "17 2 * * *"   # 09:17 Vietnam time
     - cron: "17 9 * * *"   # 16:17 Vietnam time (catches afternoon rate changes)
     - cron: "47 2-14 * * *" # gold only: hourly 09:47–21:47 Vietnam time
+  push:                     # a change to the site, scrapers or hand-entered rates goes live without waiting for the timer
+    branches: [main]
+    paths: ["site/**", "scraper/**", "data/manual/**", "data/affiliates.json", "requirements.txt", ".github/workflows/update.yml"]
   workflow_dispatch:        # "Run workflow" button, or an outside timer (cron-job.org) calling the API
     inputs:
       mode:
@@ -30,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy-retry.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -80,6 +83,13 @@ jobs:
         with:
           path: dist
       - id: deploy
+        continue-on-error: true   # GitHub sometimes can't find the artifact it was just given; retry once below
+        uses: actions/deploy-pages@v4
+      - name: Wait before retrying the deploy
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 60
+      - id: deploy-retry
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v4
 
       # Tell Bing (and other IndexNow search engines) which pages changed, now that they are live

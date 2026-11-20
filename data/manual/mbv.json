@@ -1,0 +1,35 @@
+{
+  "name": "MBV",
+  "source_url": "https://www.mbv.com.vn/tin-tuc/bieu-lai-suat-20102026",
+  "document_url": "https://www.mbv.com.vn/tin-tuc/bieu-lai-suat-20102026",
+  "watch": "tin-tuc/bieu-lai-suat-20102026",
+  "as_of": "2026-10-20",
+  "checked_at": "2026-11-18",
+  "product": "Khách hàng cá nhân, trả lãi cuối kỳ (tại quầy / online). Số liệu đọc tự động từ website MBV đến 18/11/2026; từ đó website không trả lời máy chủ GitHub nên nhập tay.",
+  "counter": [
+    {
+      "rates": {
+        "1": 4.5,
+        "3": 4.75,
+        "6": 6.0,
+        "12": 7.0,
+        "18": 7.0,
+        "24": 7.0,
+        "36": 7.0
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.6,
+        "3": 4.75,
+        "6": 6.5,
+        "12": 7.0,
+        "18": 7.0,
+        "24": 7.0,
+        "36": 7.0
+      }
+    }
+  ]
+}

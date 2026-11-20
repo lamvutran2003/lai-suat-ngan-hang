@@ -39,7 +39,7 @@ tests/                parser tests against saved copies of each bank's page
 | Techcombank | PDF found via its document-list API (Phát Lộc, normal customer) | ✓ | ✓ | ✓ |
 | VPBank | **Hand-entered** (`data/manual/vpb.json`); watcher spots new sheets | ✓ | ✓ | ✓ |
 | LPBank | JSON API (`TK_TTQ_KHCN` counter, `TK_ONLINE` online) | ✓ | ✓ | |
-| MBV | rate post linked from the site menu; table inside the Next.js page data | ✓ | ✓ | |
+| MBV | **Hand-entered** (`data/manual/mbv.json`) since its site stopped answering GitHub (18/11/2026); watcher reads the rate post from the site menu, else 14-day re-check | ✓ | ✓ | |
 | Bac A Bank | ASP.NET page, VND table after a postback | ✓ | | |
 | Nam A Bank | index page → current online and counter pages | ✓ | ✓ | |
 | Vikki Bank | two HTML pages (HDBank's digital bank) | ✓ | ✓ | |
@@ -49,7 +49,7 @@ tests/                parser tests against saved copies of each bank's page
 | VietBank | one HTML page (standard savings + "Tiền gửi Online") | ✓ | ✓ | |
 | Eximbank | **Hand-entered**; watcher reads the PDF name on its rate page | ✓ | ✓ (weekday) | |
 | BVBank | **Hand-entered**; site added bot protection (11/2026), so the watcher usually fails and a 14-day re-check reminder takes over | ✓ | ✓ | |
-| NCB | **Hand-entered**; watcher reads the PDF list on its rate page | ✓ | ✓ | |
+| NCB | **Hand-entered**; watcher reads the PDF list on its rate page (blocked since 11/2026, so the 14-day re-check takes over) | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
 (HTTP 405), but `scraper/banks/vietin.py` still works from other machines, so refresh the file by
@@ -87,7 +87,9 @@ python -m scraper.build_site     # -> dist/index.html (open it in a browser)
 ## When you get a "workflow failed" email
 
 The site still deployed; the broken bank just shows its last good numbers
-marked "Dữ liệu cũ". To fix:
+marked "dữ liệu cũ" in the table. After 48 hours without fresh data the bank is left out of every
+comparison (table, best-rate boxes, calculator, term pages, guides) and listed under the table as
+"tạm không so sánh"; its own page keeps the old numbers. To fix:
 
 1. Open the failed run; the last step names the bank and the error.
 2. Save the bank's current page over its file in `tests/fixtures/`.
@@ -136,7 +138,7 @@ To update (about 5 minutes, all on github.com):
    - `"watch"`: the last part of that link (the file name), e.g. `2.-20261115-Phu-luc-BLS-niem-yet.pdf`
    - `"as_of"`: the effective date as `YYYY-MM-DD`
    - `"checked_at"`: today, `YYYY-MM-DD`
-5. Commit, then Actions → Update rates → Run workflow. Green = done.
+5. Commit. The commit starts a run by itself (changes under `site/`, `scraper/`, `data/manual/` deploy on push). Green = done.
 
 If a number is mistyped badly (e.g. `67.0` instead of `6.70`), the run rejects the file
 and keeps the previous numbers, so a typo can't reach the site.

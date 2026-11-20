@@ -85,3 +85,27 @@ def test_blocked_watcher_falls_back_to_recheck_reminder(tmp_path):
     # a working watcher with an unchanged sheet never nags, however old checked_at is
     m.parse(raw(d, ("sheet-0211.pdf", "https://x/sheet-0211.pdf")), today=date(2027, 1, 1))
     assert not m.meta().get("update_needed")
+
+
+def test_mbv_watcher_reads_the_rate_post_from_the_site_menu():
+    from scraper import manual
+    menu = {"data": {"items": [{"page_translation": {"slug": "gioi-thieu"}},
+                               {"page_translation": {"slug": "tin-tuc/bieu-lai-suat-20102026"}}]}}
+
+    class Menu:
+        def get(self, url, timeout=None):
+            return type("R", (), {"json": lambda self: menu, "raise_for_status": lambda self: None})()
+    assert manual.watch_mbv(Menu()) == ("tin-tuc/bieu-lai-suat-20102026",
+                                       "https://www.mbv.com.vn/tin-tuc/bieu-lai-suat-20102026")
+
+
+def test_mbv_hand_entered_file_is_valid():
+    # MBV's site stopped answering GitHub (18/11/2026); its numbers live in data/manual/mbv.json
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    m = ManualBank(Path(__file__).resolve().parents[1] / "data" / "manual" / "mbv.json")
+    rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 20))
+    assert as_of == "2026-10-20" and len(rates) == 14
+    assert {r.channel for r in rates} == {"counter", "online"}
+    assert not m.meta().get("update_needed")          # re-check due 14 days after 18/11
+    assert all(a.CODE != "mbv" for a in ADAPTERS)     # not scraped and hand-entered at the same time
