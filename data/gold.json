@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-22T16:20+07:00",
+ "generated_at": "2026-11-22T16:48+07:00",
  "shops": [
   {
    "code": "pnj",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-21T08:20+07:00",
-   "fetched_at": "2026-11-22T16:20+07:00",
+   "fetched_at": "2026-11-22T16:48+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC 999.9",
@@ -127,7 +127,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-21T08:31+07:00",
-   "fetched_at": "2026-11-22T16:20+07:00",
+   "fetched_at": "2026-11-22T16:48+07:00",
    "items": [
     {
      "name": "Vàng miếng SJC",
@@ -186,7 +186,7 @@
    "status": "ok",
    "stale": false,
    "updated": "2026-11-22T15:45+07:00",
-   "fetched_at": "2026-11-22T16:20+07:00",
+   "fetched_at": "2026-11-22T16:48+07:00",
    "items": [
     {
      "name": "Kim Gia Bảo Gift 24K",
@@ -219,7 +219,7 @@
   "usd_oz": 3539.0,
   "usd_vnd": 25980.0,
   "vnd_luong": 110851619,
-  "updated": "2026-11-22T09:20:09Z",
+  "updated": "2026-11-22T09:48:39Z",
   "fx_updated": "2026-11-21T23:00:00+07:00",
   "source": "gold-api.com, tỷ giá USD bán ra Vietcombank",
   "status": "ok",

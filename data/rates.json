@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-22T16:17+07:00",
+ "generated_at": "2026-11-22T16:45+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-22",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 102
   },
   {
@@ -68,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-06",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 72
   },
   {
@@ -78,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-01",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 171
   },
   {
@@ -88,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 42
   },
   {
@@ -98,7 +98,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 17
   },
   {
@@ -108,7 +108,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 54
   },
   {
@@ -118,7 +118,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 34
   },
   {
@@ -128,7 +128,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 37
   },
   {
@@ -138,7 +138,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 48
   },
   {
@@ -148,7 +148,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 33,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -162,7 +162,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -176,7 +176,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-31",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 29,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -190,7 +190,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -204,7 +204,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 14,
    "manual": true,
    "checked_at": "2026-11-18",
@@ -219,7 +219,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 38,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -234,7 +234,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -248,7 +248,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-14",
-   "fetched_at": "2026-11-22T16:17+07:00",
+   "fetched_at": "2026-11-22T16:45+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-16",
