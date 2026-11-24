@@ -51,6 +51,7 @@ tests/                parser tests against saved copies of each bank's page
 | BVBank | **Hand-entered**; site added bot protection (11/2026), so the watcher usually fails and a 14-day re-check reminder takes over | ✓ | ✓ | |
 | MB | **Hand-entered** (`data/manual/mb.json`); site blocks all automated access (Akamai), so no watcher, 14-day re-check. Read the sheet in a browser: Hỗ trợ → Biểu lãi suất → Lãi suất huy động (counter = section I, online = section IV "Tiền gửi số truyền thống", Mass) | ✓ | ✓ | |
 | VIB | **Hand-entered** (`data/manual/vib.json`); site serves a bot challenge to scripts, so no watcher, 14-day re-check. Rates are on www.vib.com.vn/vn/tiet-kiem: online = "Tiền gửi trực tuyến" table, counter = "Tiền gửi tại quầy → Tiền gửi có kỳ hạn" (3 amount bands each) | ✓ | ✓ | |
+| SHB | **Hand-entered** (`data/manual/shb.json`); site serves a security check to scripts, but the PDF itself downloads fine (`pdftotext -layout`). Rate page: shb.com.vn → Liên kết nhanh → Lãi suất → "Lãi suất huy động VND dành cho khách hàng cá nhân". Counter = section 1, online = section 4. No watcher (index page blocked); 14-day re-check | ✓ | ✓ | |
 | NCB | **Hand-entered**; watcher reads the PDF list on its rate page (blocked since 11/2026, so the 14-day re-check takes over) | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
@@ -58,7 +59,7 @@ tests/                parser tests against saved copies of each bank's page
 running it locally: `python -c "from scraper.banks import vietin; from scraper.common import make_session as m; print(vietin.parse(vietin.fetch(m())))"`.
 
 Checked and **not covered** (11/2026): VCBNeo (publishes only "maximum" rates that vary by region),
-SaigonBank and BaoViet Bank (tables drawn by scripts; need a browser), MSB, SHB, SeABank, PVcomBank,
+SaigonBank and BaoViet Bank (tables drawn by scripts; need a browser), MSB, SeABank, PVcomBank,
 PGBank, Kienlongbank (block GitHub or time out).
 
 Eximbank's PDF server sends an incomplete certificate chain (the DigiCert G5 intermediate is missing),

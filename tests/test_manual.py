@@ -139,3 +139,17 @@ def test_vib_hand_entered_file_is_valid():
     assert q[("online", 12, 0)] == 7.0 and q[("online", 1, 300 * 10**6)] == 4.4 and q[("counter", 3, 3 * B)] == 4.45
     assert "vib" not in WATCHERS and not m.meta().get("update_needed")
     assert all(a.CODE != "vib" for a in ADAPTERS)
+
+
+def test_shb_hand_entered_file_is_valid():
+    # SHB's site serves a security check to scripts; numbers typed from its PDF (QĐ 3991 and 3990, from 20/10/2026)
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    from scraper.manual import WATCHERS
+    m = ManualBank(Path(__file__).resolve().parents[1] / "data" / "manual" / "shb.json")
+    rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 24))
+    assert as_of == "2026-10-20" and len(rates) == 51 and m.NAME == "SHB"
+    q = {(r.channel, r.term_months, r.min_amount): r.rate for r in rates}
+    assert q[("counter", 12, 0)] == 5.7 and q[("counter", 36, 2 * B)] == 6.1 and q[("online", 9, 0)] == 5.9
+    assert "shb" not in WATCHERS and not m.meta().get("update_needed")
+    assert all(a.CODE != "shb" for a in ADAPTERS)
