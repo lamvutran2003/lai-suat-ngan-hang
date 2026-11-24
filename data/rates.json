@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-24T18:06+07:00",
+ "generated_at": "2026-11-24T18:25+07:00",
  "banks": [
   {
    "code": "vcb",
@@ -8,7 +8,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-24",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 16
   },
   {
@@ -18,7 +18,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 29
   },
   {
@@ -28,7 +28,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 16
   },
   {
@@ -38,7 +38,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 37
   },
   {
@@ -48,7 +48,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 12
   },
   {
@@ -58,7 +58,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 102
   },
   {
@@ -68,7 +68,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-06",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 72
   },
   {
@@ -78,7 +78,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-01",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 171
   },
   {
@@ -88,7 +88,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 42
   },
   {
@@ -98,7 +98,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 17
   },
   {
@@ -108,7 +108,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 54
   },
   {
@@ -118,7 +118,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-03",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 34
   },
   {
@@ -128,7 +128,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 37
   },
   {
@@ -138,7 +138,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 48
   },
   {
@@ -148,7 +148,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 33,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -162,7 +162,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 17,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -176,7 +176,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-31",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 29,
    "manual": true,
    "checked_at": "2026-11-05",
@@ -190,7 +190,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 34,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -204,7 +204,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-21",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 76,
    "manual": true,
    "checked_at": "2026-11-24",
@@ -218,7 +218,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 14,
    "manual": true,
    "checked_at": "2026-11-18",
@@ -227,13 +227,27 @@
    "watch_error": "ConnectTimeout: HTTPSConnectionPool(host='www.mbv.com.vn', port=443): Max retries exceeded with url: /client-api/primary_menu?language_code=vi (Caused by ConnectTimeoutError(<HTTPSConnection(host='www"
   },
   {
+   "code": "msb",
+   "name": "MSB",
+   "source_url": "https://www.msb.com.vn/khach-hang-ca-nhan/lai-suat-tiet-kiem/",
+   "status": "ok",
+   "stale": false,
+   "as_of": "2026-10-20",
+   "fetched_at": "2026-11-24T18:25+07:00",
+   "count": 34,
+   "manual": true,
+   "checked_at": "2026-11-24",
+   "document_url": "https://www.msb.com.vn/msb-website/QD-12026-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf",
+   "product": "Lãi cuối kỳ, sản phẩm \"Lãi suất cao nhất\" (QĐ 12026/2026/QĐ-TGĐ1). Tại quầy: Phụ lục 01; online: Phụ lục 02. Chưa tính sản phẩm \"Lãi suất đặc biệt\" online (chỉ cho khách chưa có sổ tại MSB, tối đa 5 tỷ)."
+  },
+  {
    "code": "ncb",
    "name": "NCB",
    "source_url": "https://www.ncb-bank.vn/vi/lai-suat-tien-gui",
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-19",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 38,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -248,12 +262,26 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 51,
    "manual": true,
    "checked_at": "2026-11-24",
    "document_url": "https://www.shb.com.vn/wp-content/uploads/2023/02/01.-BIEU-LS-HDV-VND-KHCN-Thang-10.pdf",
    "product": "Lãi cuối kỳ. Tại quầy: Tiết kiệm bậc thang / Hợp đồng tiền gửi (mục 1). Online: Tiền gửi tiết kiệm online (mục 4). Biểu hiệu lực 20/10/2026."
+  },
+  {
+   "code": "ssb",
+   "name": "SeABank",
+   "source_url": "https://www.seabank.com.vn/cong-cu-tien-ich/bieu-lai-suat",
+   "status": "ok",
+   "stale": false,
+   "as_of": null,
+   "fetched_at": "2026-11-24T18:25+07:00",
+   "count": 85,
+   "manual": true,
+   "checked_at": "2026-11-24",
+   "document_url": "https://www.seabank.com.vn/cong-cu-tien-ich/bieu-lai-suat",
+   "product": "Lãi cuối kỳ, tại quầy: Tiết kiệm Bậc thang (dưới 500 triệu: Tiền gửi có kỳ hạn lĩnh lãi cuối kỳ, cùng mức). SeABank không công bố lãi suất Tiết kiệm Online trên website."
   },
   {
    "code": "vib",
@@ -262,7 +290,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-10-20",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 96,
    "manual": true,
    "checked_at": "2026-11-24",
@@ -276,7 +304,7 @@
    "status": "ok",
    "stale": false,
    "as_of": null,
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 16,
    "manual": true,
    "checked_at": "2026-11-20",
@@ -290,7 +318,7 @@
    "status": "ok",
    "stale": false,
    "as_of": "2026-11-14",
-   "fetched_at": "2026-11-24T18:06+07:00",
+   "fetched_at": "2026-11-24T18:25+07:00",
    "count": 68,
    "manual": true,
    "checked_at": "2026-11-16",
@@ -9202,6 +9230,346 @@
    "notes": []
   },
   {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 6.0,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 1,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 2,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 3,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 4,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 5,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 6,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 7,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 8,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 9,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 10,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 11,
+   "rate": 5.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 12,
+   "rate": 6.3,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 13,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 15,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 18,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 24,
+   "rate": 6.1,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "msb",
+   "channel": "online",
+   "term_months": 36,
+   "rate": 5.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
    "bank": "ncb",
    "channel": "counter",
    "term_months": 1,
@@ -10088,6 +10456,856 @@
    "rate": 6.2,
    "product": "",
    "min_amount": 0,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.15,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.23,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.26,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.29,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.32,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.35,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.6,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.8,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.85,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.85,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.85,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.85,
+   "product": "",
+   "min_amount": 0,
+   "max_amount": 500000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.2,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.28,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.31,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.34,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.37,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.4,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.65,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.85,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.9,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.9,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.9,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.9,
+   "product": "",
+   "min_amount": 500000000,
+   "max_amount": 1000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.25,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.33,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.36,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.39,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.42,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.45,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.7,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.9,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 4.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 4.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 4.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 4.95,
+   "product": "",
+   "min_amount": 1000000000,
+   "max_amount": 5000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.3,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.38,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.41,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.44,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.47,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.5,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.75,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 4.95,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 5000000000,
+   "max_amount": 10000000000,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 1,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 2,
+   "rate": 3.65,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 3,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 4,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 5,
+   "rate": 3.95,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 6,
+   "rate": 4.35,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 7,
+   "rate": 4.43,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 8,
+   "rate": 4.46,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 9,
+   "rate": 4.49,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 10,
+   "rate": 4.52,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 11,
+   "rate": 4.55,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 12,
+   "rate": 4.8,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 13,
+   "rate": 5.0,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 15,
+   "rate": 5.05,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 18,
+   "rate": 5.05,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 24,
+   "rate": 5.05,
+   "product": "",
+   "min_amount": 10000000000,
+   "max_amount": null,
+   "notes": []
+  },
+  {
+   "bank": "ssb",
+   "channel": "counter",
+   "term_months": 36,
+   "rate": 5.05,
+   "product": "",
+   "min_amount": 10000000000,
    "max_amount": null,
    "notes": []
   },
