@@ -173,3 +173,18 @@ def test_seabank_and_msb_hand_entered_files():
     page = '<a href="https://www.msb.com.vn/msb-website/2026/12/QD-13000-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf">'
     assert manual.watch_msb(FakeSession(page))[0].startswith("QD-13000-")
     assert all(a.CODE not in ("ssb", "msb") for a in ADAPTERS)
+
+
+def test_saigonbank_pgbank_baoviet_hand_entered_files():
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    root = Path(__file__).resolve().parents[1] / "data" / "manual"
+    want = {"sgb": ("2026-10-23", 32, ("online", 13), 7.9), "pgb": ("2026-11-24", 28, ("online", 12), 7.0),
+            "baoviet": (None, 34, ("counter", 12), 5.3)}
+    for code, (as_of_want, n, key, rate) in want.items():
+        m = ManualBank(root / f"{code}.json")
+        rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 24))
+        q = {(r.channel, r.term_months): r.rate for r in rates}
+        assert (as_of, len(rates), q[key]) == (as_of_want, n, rate), code
+        assert not m.meta().get("update_needed")
+    assert not {a.CODE for a in ADAPTERS} & set(want)

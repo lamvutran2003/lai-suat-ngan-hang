@@ -54,15 +54,19 @@ tests/                parser tests against saved copies of each bank's page
 | SHB | **Hand-entered** (`data/manual/shb.json`); site serves a security check to scripts, but the PDF itself downloads fine (`pdftotext -layout`). Rate page: shb.com.vn → Liên kết nhanh → Lãi suất → "Lãi suất huy động VND dành cho khách hàng cá nhân". Counter = section 1, online = section 4. No watcher (index page blocked); 14-day re-check | ✓ | ✓ | |
 | SeABank (`ssb`) | **Hand-entered** (`data/manual/ssb.json`), counter only: the "Biểu lãi suất" tool at seabank.com.vn/cong-cu-tien-ich/bieu-lai-suat loads rates through Next.js server actions; product "Tiết kiệm Bậc thang", pick each amount band. Online savings rates are not published. No date on the page (as_of empty); 14-day re-check | ✓ | | |
 | MSB | **Hand-entered** (`data/manual/msb.json`) from a *scanned* PDF (read the page images; Phụ lục 01 counter, Phụ lục 02 online, column "Lãi suất cao nhất"). Watcher reads the PDF name on the savings-rate page (may be blocked from GitHub; then the 14-day re-check takes over) | ✓ | ✓ | |
+| PVcomBank (`pvcb`) | two static PDFs with real text (`GD_Tai_quay_…` counter, `GD_Online_…` online), product "Đại Chúng" lãi cuối kỳ; at the counter the plain 12/13-month rows are for deposits from 2.000 tỷ (10%), so the `(*)` rows are used. The rate tool on the site needs reCAPTCHA, so it's not used | ✓ | ✓ | |
+| Saigonbank (`sgb`) | **Hand-entered** (`data/manual/sgb.json`): the page has plain HTML tables, but its filter refuses the scraper's requests, so no adapter; 14-day re-check | ✓ | ✓ | |
+| PGBank (`pgb`) | **Hand-entered** (`data/manual/pgb.json`), site serves a bot challenge; table at pgbank.com.vn/lai-suat-tiet-kiem/ca-nhan-vnd ("thông thường" cuối kỳ / "Online" cuối kỳ); 14-day re-check | ✓ | ✓ | |
+| BaoViet Bank (`baoviet`) | **Hand-entered** (`data/manual/baoviet.json`), site blocks servers; baovietbank.vn/vn/lai-suat, first VND table (cuối kỳ) and "Tiết kiệm Online - EZ Saving". No date on the page; 14-day re-check | ✓ | ✓ | |
 | NCB | **Hand-entered**; watcher reads the PDF list on its rate page (blocked since 11/2026, so the 14-day re-check takes over) | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
 (HTTP 405), but `scraper/banks/vietin.py` still works from other machines, so refresh the file by
 running it locally: `python -c "from scraper.banks import vietin; from scraper.common import make_session as m; print(vietin.parse(vietin.fetch(m())))"`.
 
-Checked and **not covered** (11/2026): VCBNeo (publishes only "maximum" rates that vary by region),
-SaigonBank and BaoViet Bank (tables drawn by scripts; need a browser), PVcomBank,
-PGBank, Kienlongbank (block GitHub or time out).
+Checked and **not covered** (11/2026): VCBNeo (publishes only "maximum" rates and says actual rates vary by region and branch),
+Kienlongbank (rate tables live in iframes on laisuat.kienlongbank.com that don't load from servers and stayed blank in a browser too;
+the iframe page redirects when opened directly).
 
 Eximbank's PDF server sends an incomplete certificate chain (the DigiCert G5 intermediate is missing),
 so scripts can't download the PDF with normal verification. The watcher only reads the main site.

@@ -1,0 +1,52 @@
+{
+  "name": "Saigonbank",
+  "source_url": "https://www.saigonbank.com.vn/vi/truy-cap-nhanh/lai-suat",
+  "document_url": "https://www.saigonbank.com.vn/vi/truy-cap-nhanh/lai-suat",
+  "as_of": "2026-10-23",
+  "checked_at": "2026-11-24",
+  "product": "Lãi cuối kỳ. Tại quầy: Tiền gởi tiết kiệm bằng VND của cá nhân; online: Tiền gửi tiết kiệm online bằng VND. Biểu hiệu lực 23/10/2026.",
+  "counter": [
+    {
+      "rates": {
+        "1": 4.75,
+        "2": 4.75,
+        "3": 4.75,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 5.9,
+        "7": 5.6,
+        "8": 5.6,
+        "9": 5.6,
+        "10": 5.6,
+        "11": 5.6,
+        "12": 6.2,
+        "13": 7.9,
+        "18": 6.0,
+        "24": 5.5,
+        "36": 5.6
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.75,
+        "2": 4.75,
+        "3": 4.75,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 6.4,
+        "7": 6.1,
+        "8": 6.1,
+        "9": 6.1,
+        "10": 6.1,
+        "11": 6.1,
+        "12": 6.7,
+        "13": 7.9,
+        "18": 6.5,
+        "24": 6.0,
+        "36": 6.1
+      }
+    }
+  ]
+}

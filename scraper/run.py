@@ -31,7 +31,7 @@ FIXTURE_NAMES = {"vcb": "vcb.json", "bidv": "bidv.json", "vietin": "vietin.html"
                  "agri": "agri.html", "acb": "acb.html", "tpb": "tpb.html",
                  "stb": "stb.pdf", "ocb": "ocb.pdf", "tcb": "tcb.pdf",
                  "lpb": "lpb.json", "mbv": "mbv.html", "bab": "bab.html", "nab": "nab.json", "vikki": "vikki.json",
-                 "abb": "abb.json", "vbb": "vbb.html"}
+                 "abb": "abb.json", "vbb": "vbb.html", "pvcb": "pvcb.pdf"}
 
 
 def read_fixture(folder: Path, code: str):

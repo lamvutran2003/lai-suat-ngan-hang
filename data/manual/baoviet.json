@@ -1,0 +1,54 @@
+{
+  "name": "BaoViet Bank",
+  "source_url": "https://www.baovietbank.vn/vn/lai-suat",
+  "document_url": "https://www.baovietbank.vn/vn/lai-suat",
+  "as_of": null,
+  "checked_at": "2026-11-24",
+  "product": "Lãi cuối kỳ. Tại quầy: Tiết kiệm/tiền gửi có kỳ hạn VND; online: Tiết kiệm Online EZ Saving. Trang lãi suất không ghi ngày hiệu lực.",
+  "counter": [
+    {
+      "rates": {
+        "1": 3.9,
+        "2": 4.0,
+        "3": 4.2,
+        "4": 4.2,
+        "5": 4.2,
+        "6": 5.0,
+        "7": 5.0,
+        "8": 4.85,
+        "9": 4.9,
+        "10": 4.9,
+        "11": 4.95,
+        "12": 5.3,
+        "13": 5.3,
+        "15": 5.25,
+        "18": 5.25,
+        "24": 5.25,
+        "36": 5.25
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.75,
+        "2": 4.75,
+        "3": 4.75,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 5.9,
+        "7": 5.9,
+        "8": 5.9,
+        "9": 5.9,
+        "10": 5.9,
+        "11": 5.9,
+        "12": 6.0,
+        "13": 6.0,
+        "15": 6.0,
+        "18": 6.0,
+        "24": 6.0,
+        "36": 6.0
+      }
+    }
+  ]
+}

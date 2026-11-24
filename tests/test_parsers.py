@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from scraper.banks import abb, acb, agri, bab, bidv, lpb, mbv, nab, ocb, stb, tcb, tpb, vbb, vcb, vietin, vikki
+from scraper.banks import abb, acb, agri, bab, bidv, lpb, mbv, nab, ocb, pvcb, stb, tcb, tpb, vbb, vcb, vietin, vikki
 from scraper.common import parse_amount_range, parse_rate, parse_term_months, soup, table_grid
 
 FX = Path(__file__).parent / "fixtures"
@@ -169,3 +169,12 @@ def test_vietbank_standard_and_online_tables():
     assert as_of == "2026-10-19"
     assert r[("counter", 12, 0)] == 5.5 and r[("online", 12, 0)] == 5.6
     assert ("counter", 13, 0) not in r                    # "13 tháng (*)": discontinued
+
+
+def test_pvcombank_two_pdfs_dai_chung_column():
+    r, as_of = rates_of(pvcb, "pvcb.pdf")
+    assert as_of == "2026-10-20"
+    assert r[("counter", 1, 0)] == 4.5 and r[("online", 6, 0)] == 4.8
+    assert r[("counter", 12, 0)] == 4.8 and r[("counter", 13, 0)] == 5.0   # the (*) rows, not the 2.000-tỷ 10%
+    assert r[("online", 36, 0)] == 5.8
+    assert ("counter", 48, 0) not in r and ("online", 60, 0) not in r      # only instalment products go that long
