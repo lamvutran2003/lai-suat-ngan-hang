@@ -125,3 +125,17 @@ def test_mb_hand_entered_file_is_valid():
     assert "mb" not in WATCHERS                 # site blocks scripts: 14-day re-check instead
     assert m.parse(m.fetch(None), today=date(2026, 12, 9))[0] and m.meta().get("update_needed")
     assert all(a.CODE != "mb" for a in ADAPTERS)
+
+
+def test_vib_hand_entered_file_is_valid():
+    # VIB's site serves a bot challenge to scripts; numbers typed from www.vib.com.vn/vn/tiet-kiem (24/11/2026)
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    from scraper.manual import WATCHERS
+    m = ManualBank(Path(__file__).resolve().parents[1] / "data" / "manual" / "vib.json")
+    rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 24))
+    assert as_of == "2026-10-20" and len(rates) == 96 and m.NAME == "VIB"
+    q = {(r.channel, r.term_months, r.min_amount): r.rate for r in rates}
+    assert q[("online", 12, 0)] == 7.0 and q[("online", 1, 300 * 10**6)] == 4.4 and q[("counter", 3, 3 * B)] == 4.45
+    assert "vib" not in WATCHERS and not m.meta().get("update_needed")
+    assert all(a.CODE != "vib" for a in ADAPTERS)

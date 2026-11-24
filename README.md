@@ -50,13 +50,14 @@ tests/                parser tests against saved copies of each bank's page
 | Eximbank | **Hand-entered**; watcher reads the PDF name on its rate page | ✓ | ✓ (weekday) | |
 | BVBank | **Hand-entered**; site added bot protection (11/2026), so the watcher usually fails and a 14-day re-check reminder takes over | ✓ | ✓ | |
 | MB | **Hand-entered** (`data/manual/mb.json`); site blocks all automated access (Akamai), so no watcher, 14-day re-check. Read the sheet in a browser: Hỗ trợ → Biểu lãi suất → Lãi suất huy động (counter = section I, online = section IV "Tiền gửi số truyền thống", Mass) | ✓ | ✓ | |
+| VIB | **Hand-entered** (`data/manual/vib.json`); site serves a bot challenge to scripts, so no watcher, 14-day re-check. Rates are on www.vib.com.vn/vn/tiet-kiem: online = "Tiền gửi trực tuyến" table, counter = "Tiền gửi tại quầy → Tiền gửi có kỳ hạn" (3 amount bands each) | ✓ | ✓ | |
 | NCB | **Hand-entered**; watcher reads the PDF list on its rate page (blocked since 11/2026, so the 14-day re-check takes over) | ✓ | ✓ | |
 
 **VietinBank** is hand-entered (`data/manual/vietin.json`): its site refuses GitHub's servers
 (HTTP 405), but `scraper/banks/vietin.py` still works from other machines, so refresh the file by
 running it locally: `python -c "from scraper.banks import vietin; from scraper.common import make_session as m; print(vietin.parse(vietin.fetch(m())))"`.
 
-Checked and **not covered** (11/2026): VIB (rate feed uses internal product codes), VCBNeo (publishes only "maximum" rates that vary by region),
+Checked and **not covered** (11/2026): VCBNeo (publishes only "maximum" rates that vary by region),
 SaigonBank and BaoViet Bank (tables drawn by scripts; need a browser), MSB, SHB, SeABank, PVcomBank,
 PGBank, Kienlongbank (block GitHub or time out).
 
