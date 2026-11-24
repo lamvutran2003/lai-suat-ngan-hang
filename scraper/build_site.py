@@ -29,11 +29,11 @@ SLUG = {"vcb": "vietcombank", "bidv": "bidv", "vietin": "vietinbank", "agri": "a
         "acb": "acb", "tpb": "tpbank", "stb": "sacombank", "ocb": "ocb", "tcb": "techcombank",
         "vpb": "vpbank", "mb": "mbbank", "lpb": "lpbank", "mbv": "mbv", "bab": "bac-a-bank", "nab": "nam-a-bank",
         "vikki": "vikki-bank", "cake": "cake", "hdb": "hdbank", "abb": "abbank", "vbb": "vietbank", "eib": "eximbank",
-        "bvb": "bvbank", "ncb": "ncb", "vib": "vib", "shb": "shb"}
+        "bvb": "bvbank", "ncb": "ncb", "vib": "vib", "shb": "shb", "ssb": "seabank", "msb": "msb"}
 TICKER = {"vcb": "VCB", "bidv": "BID", "vietin": "CTG", "agri": "AGR", "acb": "ACB",
           "tpb": "TPB", "stb": "STB", "ocb": "OCB", "tcb": "TCB", "vpb": "VPB", "mb": "MBB", "lpb": "LPB",
           "mbv": "MBV", "bab": "BAB", "nab": "NAB", "vikki": "VKB", "cake": "CAKE", "hdb": "HDB", "abb": "ABB",
-          "vbb": "VBB", "eib": "EIB", "bvb": "BVB", "ncb": "NVB", "vib": "VIB", "shb": "SHB"}
+          "vbb": "VBB", "eib": "EIB", "bvb": "BVB", "ncb": "NVB", "vib": "VIB", "shb": "SHB", "ssb": "SSB", "msb": "MSB"}
 
 
 # ---------------------------------------------------------------- rate lookup

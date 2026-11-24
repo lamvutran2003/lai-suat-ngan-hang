@@ -1,0 +1,55 @@
+{
+  "name": "MSB",
+  "source_url": "https://www.msb.com.vn/khach-hang-ca-nhan/lai-suat-tiet-kiem/",
+  "document_url": "https://www.msb.com.vn/msb-website/QD-12026-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf",
+  "watch": "QD-12026-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf",
+  "as_of": "2026-10-20",
+  "checked_at": "2026-11-24",
+  "product": "Lãi cuối kỳ, sản phẩm \"Lãi suất cao nhất\" (QĐ 12026/2026/QĐ-TGĐ1). Tại quầy: Phụ lục 01; online: Phụ lục 02. Chưa tính sản phẩm \"Lãi suất đặc biệt\" online (chỉ cho khách chưa có sổ tại MSB, tối đa 5 tỷ).",
+  "counter": [
+    {
+      "rates": {
+        "1": 4.5,
+        "2": 4.5,
+        "3": 4.5,
+        "4": 4.5,
+        "5": 4.5,
+        "6": 5.6,
+        "7": 5.6,
+        "8": 5.6,
+        "9": 5.6,
+        "10": 5.6,
+        "11": 5.6,
+        "12": 6.0,
+        "13": 5.8,
+        "15": 5.8,
+        "18": 5.8,
+        "24": 5.8,
+        "36": 5.3
+      }
+    }
+  ],
+  "online": [
+    {
+      "rates": {
+        "1": 4.75,
+        "2": 4.75,
+        "3": 4.75,
+        "4": 4.75,
+        "5": 4.75,
+        "6": 5.8,
+        "7": 5.8,
+        "8": 5.8,
+        "9": 5.8,
+        "10": 5.8,
+        "11": 5.8,
+        "12": 6.3,
+        "13": 6.1,
+        "15": 6.1,
+        "18": 6.1,
+        "24": 6.1,
+        "36": 5.6
+      }
+    }
+  ]
+}

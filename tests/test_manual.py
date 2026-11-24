@@ -153,3 +153,23 @@ def test_shb_hand_entered_file_is_valid():
     assert q[("counter", 12, 0)] == 5.7 and q[("counter", 36, 2 * B)] == 6.1 and q[("online", 9, 0)] == 5.9
     assert "shb" not in WATCHERS and not m.meta().get("update_needed")
     assert all(a.CODE != "shb" for a in ADAPTERS)
+
+
+def test_seabank_and_msb_hand_entered_files():
+    # SeABank: counter only ("Tiết kiệm Bậc thang", five amount bands); MSB: scanned sheet QĐ 12026 from 20/10/2026
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    from scraper import manual
+    root = Path(__file__).resolve().parents[1] / "data" / "manual"
+    s = ManualBank(root / "ssb.json")
+    rates, as_of = s.parse(s.fetch(None), today=date(2026, 11, 24))
+    q = {(r.channel, r.term_months, r.min_amount): r.rate for r in rates}
+    assert as_of is None and len(rates) == 85 and {r.channel for r in rates} == {"counter"}
+    assert q[("counter", 12, 0)] == 4.6 and q[("counter", 36, 10 * B)] == 5.05
+    m = ManualBank(root / "msb.json")
+    rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 24))
+    q = {(r.channel, r.term_months): r.rate for r in rates}
+    assert as_of == "2026-10-20" and len(rates) == 34 and q[("online", 12)] == 6.3 and q[("counter", 36)] == 5.3
+    page = '<a href="https://www.msb.com.vn/msb-website/2026/12/QD-13000-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf">'
+    assert manual.watch_msb(FakeSession(page))[0].startswith("QD-13000-")
+    assert all(a.CODE not in ("ssb", "msb") for a in ADAPTERS)

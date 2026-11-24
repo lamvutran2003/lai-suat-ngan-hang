@@ -84,6 +84,13 @@ def watch_ncb(session):
                      r"(/InterestRates/\d{4}/\d{2}/Bieu lai suat niem yet[^\"']*?\.pdf)", "https://www.ncb-bank.vn/")
 
 
+def watch_msb(session):
+    """MSB: 'QD-<số>-Ban-hanh-bieu-lai-suat-cac-san-pham-tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN.pdf' (scanned)."""
+    return _pdf_link(session, "https://www.msb.com.vn/khach-hang-ca-nhan/lai-suat-tiet-kiem/",
+                     r"(https://www\.msb\.com\.vn/msb-website/(?:\d{4}/\d{2}/)?QD-[^\"'<>]*?"
+                     r"tien-gui-bang-dong-Viet-Nam-doi-voi-KHCN[^\"'<>]*?\.pdf)")
+
+
 def watch_mbv(session):
     """MBV: the site menu links "LÃI SUẤT" to the current rate post (tin-tuc/bieu-lai-suat-DDMMYYYY)."""
     from .banks import mbv
@@ -93,7 +100,7 @@ def watch_mbv(session):
     return slug, mbv.SOURCE_URL + slug
 
 
-WATCHERS = {"vpb": watch_vpb, "eib": watch_eib, "bvb": watch_bvb, "ncb": watch_ncb, "mbv": watch_mbv}
+WATCHERS = {"vpb": watch_vpb, "eib": watch_eib, "bvb": watch_bvb, "ncb": watch_ncb, "mbv": watch_mbv, "msb": watch_msb}
 
 
 # ---------------------------------------------------------------- loading
