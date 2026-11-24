@@ -274,7 +274,9 @@ def bank_page(data, changes, b, generated: datetime, aff: dict | None = None):
                f"({CH[top['channel']].lower()}{top_band}).")
     tname = bank_title_name(code, name)
     title = f"Lãi suất {tname} hôm nay {date_vn} | Tiết Kiệm Đâu?"
-    desc = f"{top_txt} Bảng lãi suất {name} online và tại quầy theo kỳ hạn và số tiền, cập nhật mỗi ngày."
+    chans = {r["channel"] for r in rates}
+    ch_txt = "online và tại quầy" if len(chans) == 2 else CH[chans.pop()].lower()
+    desc = f"{top_txt} Bảng lãi suất {name} {ch_txt} theo kỳ hạn và số tiền, cập nhật mỗi ngày."
     body = f'''<section class="page gutter"><div class="wrap stack">
 {crumbs(("Ngân hàng", None), (name, None))}
 <div class="bank-head">{logo_img(code, 48).replace('class="bl"', 'class="bl big"')}
