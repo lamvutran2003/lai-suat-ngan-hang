@@ -109,3 +109,19 @@ def test_mbv_hand_entered_file_is_valid():
     assert {r.channel for r in rates} == {"counter", "online"}
     assert not m.meta().get("update_needed")          # re-check due 14 days after 18/11
     assert all(a.CODE != "mbv" for a in ADAPTERS)     # not scraped and hand-entered at the same time
+
+
+def test_mb_hand_entered_file_is_valid():
+    # MB's site blocks all automated access; numbers typed from its 21/10/2026 sheet (sections I and IV)
+    from pathlib import Path
+    from scraper.banks import ADAPTERS
+    m = ManualBank(Path(__file__).resolve().parents[1] / "data" / "manual" / "mb.json")
+    rates, as_of = m.parse(m.fetch(None), today=date(2026, 11, 24))
+    assert as_of == "2026-10-21" and len(rates) == 76 and m.NAME == "MB"
+    q = {(r.channel, r.term_months, r.min_amount): r.rate for r in rates}
+    assert q[("counter", 12, 0)] == 5.7 and q[("online", 6, 0)] == 5.2 and q[("online", 12, 1_000_000_000)] == 5.85
+    assert not m.meta().get("update_needed")
+    from scraper.manual import WATCHERS
+    assert "mb" not in WATCHERS                 # site blocks scripts: 14-day re-check instead
+    assert m.parse(m.fetch(None), today=date(2026, 12, 9))[0] and m.meta().get("update_needed")
+    assert all(a.CODE != "mb" for a in ADAPTERS)
